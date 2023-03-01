@@ -1,0 +1,30 @@
+{
+  "name": "hyperlocal-front",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "git-commit-msg-linter": "^4.7.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}
