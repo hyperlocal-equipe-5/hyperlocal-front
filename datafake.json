@@ -1,0 +1,110 @@
+{
+  "restaurante": {
+    "categoria": {
+      "podrão": [
+        {
+          "id": 1,
+          "category": "Podrão",
+          "name": "Hambúrguer de frango",
+          "Ingredients": [
+            "Pão duro",
+            "Hambúrguer de frango",
+            "Alface",
+            "Tomate",
+            "Bacon",
+            "Ovo",
+            "Calabresa",
+            "Mussarela"
+          ],
+          "price": 15.95,
+          "img": "https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png"
+        },
+        {
+          "id": 2,
+          "category": "Podrão",
+          "name": "Hambúrguer de frango",
+          "Ingredients": [
+            "Pão duro",
+            "Hambúrguer de frango",
+            "Alface",
+            "Tomate",
+            "Bacon",
+            "Ovo",
+            "Calabresa",
+            "Mussarela"
+          ],
+          "price": 15.95,
+          "img": "https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png"
+        },
+        {
+          "id": 3,
+          "category": "Podrão",
+          "name": "Hambúrguer de frango",
+          "Ingredients": [
+            "Pão duro",
+            "Hambúrguer de frango",
+            "Alface",
+            "Tomate",
+            "Bacon",
+            "Ovo",
+            "Calabresa",
+            "Mussarela"
+          ],
+          "price": 15.95,
+          "img": "https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png"
+        },
+        {
+          "id": 4,
+          "category": "Podrão",
+          "name": "Hambúrguer de frango",
+          "Ingredients": [
+            "Pão duro",
+            "Hambúrguer de frango",
+            "Alface",
+            "Tomate",
+            "Bacon",
+            "Ovo",
+            "Calabresa",
+            "Mussarela"
+          ],
+          "price": 15.95,
+          "img": "https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png"
+        },
+        {
+          "id": 5,
+          "category": "Podrão",
+          "name": "Hambúrguer de frango",
+          "Ingredients": [
+            "Pão duro",
+            "Hambúrguer de frango",
+            "Alface",
+            "Tomate",
+            "Bacon",
+            "Ovo",
+            "Calabresa",
+            "Mussarela"
+          ],
+          "price": 15.95,
+          "img": "https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png"
+        },
+        {
+          "id": 6,
+          "category": "Podrão",
+          "name": "Hambúrguer de frango",
+          "Ingredients": [
+            "Pão duro",
+            "Hambúrguer de frango",
+            "Alface",
+            "Tomate",
+            "Bacon",
+            "Ovo",
+            "Calabresa",
+            "Mussarela"
+          ],
+          "price": 15.95,
+          "img": "https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png"
+        }
+      ]
+    }
+  }
+}
