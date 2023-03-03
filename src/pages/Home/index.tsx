@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Container } from './styled';
 
 const App = (): JSX.Element => {
 	const [count, setCount] = useState(0);
 
 	return (
-		<Container>
+		<div>
 			<div>
 				<a href="https://vitejs.dev" target="_blank" rel="noreferrer">
 					<img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -26,7 +25,7 @@ const App = (): JSX.Element => {
 					Click on the Vite and React logos to learn more
 				</p>
 			</div>
-		</Container>
+		</div>
 	);
 };
 
