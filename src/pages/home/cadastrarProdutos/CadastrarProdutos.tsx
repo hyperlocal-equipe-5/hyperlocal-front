@@ -1,14 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 
-
-const NavBar = () => {
+const CadastrarProdutos = () => {
   return (
     <div>
-      
-       
+      cadastrar produtos
     </div>
   )
 }
 
-export default NavBar
+export default CadastrarProdutos

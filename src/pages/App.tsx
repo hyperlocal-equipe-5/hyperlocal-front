@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 
 import { Outlet } from "react-router";
-import NavBar from "../assets/components/NavBar";
+
+import Routes from "../assets/components/routes";
 
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
 			<div>
 				
 				<h1>header</h1>
-				<NavBar/>
+				<Routes/>
 			    <Outlet/>
 				
 				<p className="read-the-docs">
