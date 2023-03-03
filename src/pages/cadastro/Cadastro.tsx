@@ -1,11 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
+import Form from '../../assets/components/Form';
 
 function Cadastro() {
   return (
-		<div className="flex flex-col w-full h-screen bg-[#010000] text-[#fefbff] items-center justify-center">
-			Cadastro
-		</div>
+	    <body className=" items-center justify-center flex flex-col p-60  rounded-sm  w-full ">
+			<div>
+				<Form/>
+			</div>
+		
+		</body>
 	);
 }
 
