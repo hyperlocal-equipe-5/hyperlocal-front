@@ -7,11 +7,12 @@ const Form = () => {
 	const [emailConfirm, setEmailConfirm] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
+	const [name, setName] = useState('');
 
 	const navigate = useNavigate();
 	
 const handleCadastrar = () => {
-	if (!email || !emailConfirm || !password) {
+	if (!email || !emailConfirm || !password || !name ) {
 		// verifica se os campos tem informação
 		setError('Prencha todos os campos');
 		return;
@@ -32,35 +33,40 @@ const handleCadastrar = () => {
 			<form className=" bg-red-700">
 				<div>
 					<label htmlFor="nome"> Cadastro de usuario</label>
-                    <input 
-                    type="text"
-                    placeholder='Digite seu nome' />
-					<input 
-                    type="email" 
-                    placeholder="Digite seu email" 
-                    value={email}
-                    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-                    onChange={(e) => [setEmail(e.target.value), setError('')]}
-                    />
-					<input 
-                    type="email" 
-                    placeholder="Digite seu email" 
-                    value={emailConfirm}
-                    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-                    onChange={(e) => [setEmailConfirm(e.target.value), setError('')]}
-                    />
-					<input 
-                    type="password" 
-                    placeholder="Digite sua senha" 
-                    value={password}
-                    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-                    onChange={(e) => [setPassword(e.target.value), setError('')]}
-                    
-                    />
-                    <label>{error}</label>
-                    <button title='iscreva-se' onClick={handleCadastrar} >Increva-se</button>
-                    <h5>Já tem conta? </h5>
-                    <Link to="/">&nbsp; Entrar </Link>
+					<input
+						type="text"
+						placeholder="Digite seu nome"
+						value={name}
+						// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+						onChange={e => [setName(e.target.value), setError('')]}
+					/>
+					<input
+						type="email"
+						placeholder="Digite seu email"
+						value={email}
+						// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+						onChange={e => [setEmail(e.target.value), setError('')]}
+					/>
+					<input
+						type="email"
+						placeholder="Digite seu email"
+						value={emailConfirm}
+						// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+						onChange={e => [setEmailConfirm(e.target.value), setError('')]}
+					/>
+					<input
+						type="password"
+						placeholder="Digite sua senha"
+						value={password}
+						// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+						onChange={e => [setPassword(e.target.value), setError('')]}
+					/>
+					<label>{error}</label>
+					<button title="inscreva-se" onClick={handleCadastrar}>
+						Inscreva-se
+					</button>
+					<h5>Já tem conta? </h5>
+					<Link to="/">&nbsp; Entrar </Link>
 				</div>
 			</form>
 		</div>
