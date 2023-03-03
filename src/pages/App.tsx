@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 import { Outlet } from "react-router";
-import NavBar from "./components/NavBar";
+import NavBar from "../assets/components/NavBar";
 
 
 const App = () => {
