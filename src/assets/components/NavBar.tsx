@@ -1,14 +1,7 @@
-/* eslint-disable prettier/prettier */
-import React from 'react'
-
+import React from 'react';
 
 const NavBar = () => {
-  return (
-    <div>
-      
-       
-    </div>
-  )
-}
+	return <div></div>;
+};
 
-export default NavBar
+export default NavBar;

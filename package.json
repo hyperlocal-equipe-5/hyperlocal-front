@@ -9,8 +9,8 @@
     "build": "tsc && vite build",
     
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+    "format": "prettier --write \"src/**/*.tsx\" \"src/**/*.tsx\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.tsx\" --fix"
   },
   "dependencies": {
     "react": "^18.2.0",

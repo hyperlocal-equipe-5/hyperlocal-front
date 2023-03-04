@@ -1,12 +1,7 @@
-/* eslint-disable prettier/prettier */
-import React from 'react'
+import React from 'react';
 
 const CadastrarProdutos = () => {
-  return (
-    <div>
-      cadastrar produtos
-    </div>
-  )
-}
+	return <div>cadastrar produtos</div>;
+};
 
-export default CadastrarProdutos
+export default CadastrarProdutos;
