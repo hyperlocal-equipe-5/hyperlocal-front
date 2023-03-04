@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import Form from './pages/Form';
+import { RouterProvider } from 'react-router-dom';
+import './index.scss';
+import './reset.css';
+import Routes from './routes';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<Form />
+		<RouterProvider router={Routes} />
 	</React.StrictMode>,
 );
