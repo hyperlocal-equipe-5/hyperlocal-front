@@ -1,12 +1,40 @@
+import { type FormEvent, useState } from 'react';
+
 import styled from './styled.module.scss';
 
 const UserForm = () => {
+	const [name, setName] = useState('');
+
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+	};
+
 	return (
-		<div className={styled.test}>
-			<h1 className={styled.teste3}>teste</h1>
-			<h1 className="teste3">teste 2</h1>
-			<h1 className="teste3">teste 3 </h1>
-		</div>
+		<>
+			<div className={styled.box_form}>
+				<form onSubmit={handleSubmit}>
+					<label>Nome</label>
+					<input
+						id="name"
+						name="name"
+						type="text"
+						placeholder="Digite seu nome."
+						onChange={e => {
+							setName(e.target.value);
+						}}
+						autoComplete="off"
+					/>
+
+					<label>Função</label>
+					<select name="select" id="select">
+						<option value="select"></option>
+						<option value="select">Adicionar mais uma função</option>
+					</select>
+
+					<button type="submit">Cadastrar</button>
+				</form>
+			</div>
+		</>
 	);
 };
 export default UserForm;

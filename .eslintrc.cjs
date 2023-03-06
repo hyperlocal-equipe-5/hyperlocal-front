@@ -28,5 +28,6 @@ module.exports = {
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/triple-slash-reference': 'off',
+    "@typescript-eslint/no-unused-vars" : "off",
 	},
 };
