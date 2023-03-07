@@ -8,13 +8,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+    "format": "prettier --write \"src/**/*.tsx\" \"test/**/*.tsx\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.tsx\" --fix"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2",
     "sass": "^1.58.3"
   },
