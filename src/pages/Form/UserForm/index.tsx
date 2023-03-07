@@ -2,6 +2,10 @@ import { type FormEvent, useState } from 'react';
 
 import styled from './styled.module.scss';
 
+interface UserFormRequest {
+	Name: string;
+}
+
 const UserForm = () => {
 	const [name, setName] = useState('');
 
