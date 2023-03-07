@@ -1,5 +1,5 @@
+import Form from '../pages/Form';
 import Home from '../pages/Home';
-import UserForm from '../pages/Form/UserForm';
 import { createBrowserRouter } from 'react-router-dom';
 
 const Routes = createBrowserRouter([
@@ -8,8 +8,8 @@ const Routes = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path: '/useform',
-		element: <UserForm />,
+		path: '/form',
+		element: <Form />,
 	},
 ]);
 
