@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from 'react';
 
+import { NavLink } from 'react-router-dom';
 import styled from './styled.module.scss';
 
 interface UserFormRequest {
@@ -32,7 +33,9 @@ const UserForm = () => {
 					<label>Função</label>
 					<select name="select" id="select">
 						<option value="select"></option>
-						<option value="select">Adicionar mais uma função</option>
+						<option value="select">
+							<NavLink to={'/roleform'}> Adicionar mais uma função </NavLink>
+						</option>
 					</select>
 
 					<button type="submit">Cadastrar</button>
