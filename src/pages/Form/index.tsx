@@ -15,9 +15,9 @@ const Form = () => {
 					Restaurantes{dropDown ? <BiDownArrow /> : <BiRightArrow />}
 				</Buttons>
 				<div className={dropDown ? 'w-full' : 'hidden'}>
-					<NavButtons to="/restaurantes">Restaurante 1</NavButtons>
-					<NavButtons to="/restaurantes">Restaurante 2</NavButtons>
-					<NavButtons to="/restaurantes">Restaurante 3</NavButtons>
+					<NavButtons to="restaurantes/1">Restaurante 1</NavButtons>
+					<NavButtons to="restaurantes/2">Restaurante 2</NavButtons>
+					<NavButtons to="restaurantes/3">Restaurante 3</NavButtons>
 				</div>
 			</ButtonsBox>
 		</Container>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
 
 export const Container = tw.div`
@@ -31,7 +31,7 @@ export const Buttons = tw.button`
   hover:bg-[#75ba12]  hover:text-[#fefbff]  hover:duration-500 hover: cursor-pointer
 `;
 
-export const NavButtons = tw(Link)`
+export const NavButtons = tw(NavLink)`
   flex  items-center  justify-start
   pl-4
   text-xl font-semibold
