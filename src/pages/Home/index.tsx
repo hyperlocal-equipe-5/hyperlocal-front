@@ -1,31 +1,19 @@
-import { useState } from 'react';
+import DropdownButton from '../../components/buttons';
+import { Container } from '../Form/styled';
+import { Box } from './styled';
 
+const teste = ['restaurante 1', 'restaurante 2', 'restaurante 3'];
+const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
 const Home = () => {
-	const [count, setCount] = useState(0);
-
 	return (
-		<div>
-			<div>
-				<a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-					<img src="/vite.svg" className="logo" alt="Vite logo" />
-				</a>
-				<h1>Vite + React</h1>
-				<div className="card">
-					<button
-						onClick={() => {
-							setCount(count => count + 1);
-						}}>
-						count is {count}
-					</button>
-					<p>
-						Edit <code>src/App.tsx</code> and save to test HMR
-					</p>
-				</div>
-				<p className="read-the-docs">
-					Click on the Vite and React logos to learn more
-				</p>
-			</div>
-		</div>
+		<Container>
+			<Box>
+				<DropdownButton text={'Home'} itensName={teste} link={teste} />
+				<DropdownButton text={'Cardápio'} itensName={teste} link={teste} />
+				<DropdownButton text={'Funcionários'} itensName={teste2} link={teste} />
+				<DropdownButton text={'Financeiro'} itensName={teste} link={teste} />
+			</Box>
+		</Container>
 	);
 };
 

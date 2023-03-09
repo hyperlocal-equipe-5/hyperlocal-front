@@ -4,7 +4,6 @@ import { Buttons, ButtonsBox, NavButtons } from './styled';
 
 interface IButtons {
 	text: string;
-	click?: () => void;
 	itensName: string[];
 	link: string[];
 }

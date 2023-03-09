@@ -17,9 +17,10 @@ export const ButtonsBox = tw.div`
   flex-wrap
   justify-center
   h-auto
+  mt-1 mb-1
   rounded-xl
   bg-[#d1d1d1]
-  w-5/6
+  w-full
 `;
 
 export const Buttons = tw.button`

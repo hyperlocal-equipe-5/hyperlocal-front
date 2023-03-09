@@ -1,13 +1,24 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from '../app';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
+import Navbar from '../components/menu';
+import ErrorPage from '../pages/errorPage';
 import Form from '../pages/Form';
 import RestaurantForm from '../pages/Form/RestaurantForm';
 import Home from '../pages/Home';
+
+const App = () => {
+	return (
+		<>
+			<Navbar />
+			<Outlet />
+		</>
+	);
+};
 
 const Routes = createBrowserRouter([
 	{
 		path: '/',
 		element: <App />,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: '/',
