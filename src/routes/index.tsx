@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import Navbar from '../components/menu';
+import Navbar from '../components/navbar';
 import ErrorPage from '../pages/errorPage';
 import Form from '../pages/Form';
 import RestaurantForm from '../pages/Form/RestaurantForm';
