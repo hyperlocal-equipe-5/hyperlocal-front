@@ -1,34 +1,34 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import {
 	BoxContainer,
+	ContentBox,
+	Image,
 	ProductBox,
 	ScrollBox,
-	ScrollBoxdobox,
 	Title,
+	TitleCategory,
 } from './styled';
 
-const CategoryBox = () => {
+export interface ICategoryBox {
+	NameCategory: string;
+	LinkCategory: string;
+	Product: [{ LinkProduct: string; image: string; NameProduct: string }];
+}
+
+const CategoryBox = ({ NameCategory, LinkCategory, Product }: ICategoryBox) => {
 	return (
 		<BoxContainer>
-			<Title>Texto</Title>
-			<ScrollBoxdobox>
+			<TitleCategory to={LinkCategory}>{NameCategory}</TitleCategory>
+			<ContentBox>
 				<ScrollBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
+					{Product.map((el, i) => (
+						<ProductBox key={i} to={`/${el.LinkProduct}`}>
+							<Image src={el.image} />
+							<Title>{el.NameProduct}</Title>
+						</ProductBox>
+					))}
 				</ScrollBox>
-			</ScrollBoxdobox>
+			</ContentBox>
 		</BoxContainer>
 	);
 };
