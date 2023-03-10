@@ -1,5 +1,4 @@
 import { type FormEvent, useState } from 'react';
-
 import Header from '../../../components/Header/Header';
 import Permissions from '../../../components/Permissions/Permissions';
 import { permissions } from '../../../mocks/permissions';
@@ -28,6 +27,8 @@ const RoleForm = () => {
 						}}
 						autoComplete="off"
 					/>
+
+					<h2 className={styled.titulo}>Permições</h2>
 					{permissions.map((permission: any) => (
 						<Permissions key={permission.name} permission={permission} />
 					))}

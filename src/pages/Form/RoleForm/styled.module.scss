@@ -1,80 +1,82 @@
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 2000px;
-  min-height: 100%;
-  min-height: 100vh;
-  min-width: 100%;
-  margin: 0 auto;
+body{
+  background-color: #1e222b;
 }
 
 .box_form {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
   min-width: 300px;
-	height: 100vh;
+  height: 100%;
   margin: 0 auto;
 
   form {
-		display: flex;
-		flex-direction: column;
-    margin-top: 10rem;
-	}
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+  }
 
-	label {
-		display: flex;
-		align-items: flex-start;
-		width: 100%;
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 24px;
-		color: #8bf24f;
-		margin: 10px;
-	}
+  label {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #8bf24f;
+    margin: 10px;
+  }
 
-	input
-	 {
-		box-sizing: border-box;
-		width: 312px;
-		height: 46px;
-		background: #ffffff;
-		border: 1px solid #8bf24f;
-		border-radius: 20px;
-		box-shadow: none;
+  input {
+    box-sizing: border-box;
+    width: 370px;
+    height: 46px;
+    background: #ffffff;
+    border: 1px solid #8bf24f;
+    border-radius: 20px;
+    box-shadow: none;
     margin-bottom: 20px;
-		outline: 0;
-	}
+    outline: 0;
+  }
 
-	button {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 40%;
-		height: 45px;
+  .titulo {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #8bf24f;
+    margin: 10px;
+  }
 
-		background: #8bf24f;
-		border-radius: 20px;
-		margin: 20px 0 0 100px;
-		border: none;
-		font-style: normal;
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 24px;
-		text-align: center;
-		color: #ffffff;
-		cursor: pointer;
-		transition: ease-in-out 0.5s;
-	}
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 45px;
+    background: #8bf24f;
+    border-radius: 20px;
+    margin: 20px 0 20px 120px;
+    border: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: ease-in-out 0.5s;
+  }
 
-	button:hover {
-		transform: scale(1.05);
-	}
+  button:hover {
+    transform: scale(1.05);
+  }
 }
-
-

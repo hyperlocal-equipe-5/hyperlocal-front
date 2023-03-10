@@ -1,6 +1,6 @@
 import { type FormEvent, useState } from 'react';
 
-import { NavLink } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from './styled.module.scss';
 
 interface UserFormRequest {
@@ -10,8 +10,16 @@ interface UserFormRequest {
 const UserForm = () => {
 	const [name, setName] = useState('');
 
+	const navigate = useNavigate();
+
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+	};
+
+	const handleClick = (e: any) => {
+		if (e.target.value === 'new') {
+			navigate('/roleform');
+		}
 	};
 
 	return (
@@ -31,11 +39,9 @@ const UserForm = () => {
 					/>
 
 					<label>Função</label>
-					<select name="select" id="select">
-						<option value="select"></option>
-						<option value="select">
-							<NavLink to={'/roleform'}> Adicionar mais uma função </NavLink>
-						</option>
+					<select name="select" id="select" onClick={handleClick}>
+						<option value=""></option>
+						<option value="new">Adicionar mais uma função</option>
 					</select>
 
 					<button type="submit">Cadastrar</button>
