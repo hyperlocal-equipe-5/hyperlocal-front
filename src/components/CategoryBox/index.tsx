@@ -15,18 +15,6 @@ const CategoryBox = () => {
 					<ProductBox>
 						<p>Texto</p>
 					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
-					<ProductBox>
-						<p>Texto</p>
-					</ProductBox>
 				</ScrollBox>
 			</ScrollBoxdobox>
 		</BoxContainer>
