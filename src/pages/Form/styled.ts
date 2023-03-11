@@ -3,12 +3,10 @@ import tw from 'tailwind-styled-components';
 
 export const Container = tw.div`
 	container
+  flex  flex-col items-center justify-evenly
 bg-[#010000]
-  max-w-full
-  h-screen flex
-  flex-col
-  items-center
-  justify-evenly
+  max-w-full  min-h-screen max-h-full
+  mobile:pb-14 mobile:pt-14
 `;
 
 export const ButtonsBox = tw.div`
