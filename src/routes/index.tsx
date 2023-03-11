@@ -1,9 +1,10 @@
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 import Navbar from '../components/navbar';
-import ErrorPage from '../pages/errorPage';
 import Form from '../pages/Form';
 import RestaurantForm from '../pages/Form/RestaurantForm';
+import RoleForm from '../pages/Form/RoleForm';
 import Home from '../pages/Home';
+import ErrorPage from '../pages/errorPage';
 
 const App = () => {
 	return (
@@ -27,6 +28,10 @@ const Routes = createBrowserRouter([
 			{
 				path: '/form',
 				element: <Form />,
+			},
+			{
+				path: '/roleform',
+				element: <RoleForm />,
 			},
 			{
 				path: '/form/restaurantes/:id',

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { addProduct } from '../../store/slices/testProduct.slice';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 export function CreateTestProduct() {
 	const [product, setProduct] = useState('');
@@ -12,7 +12,7 @@ export function CreateTestProduct() {
 
 	return (
 		<div>
-			<form>
+			{/* <form>
 				<input
 					type="text"
 					onChange={event => {
@@ -22,7 +22,7 @@ export function CreateTestProduct() {
 				<button type="button" onClick={addNewProduct}>
 					Add
 				</button>
-			</form>
+			</form> */}
 		</div>
 	);
 }
