@@ -1,46 +1,27 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
 
 export const Container = tw.div`
 	container
-  flex  flex-col items-center justify-evenly
+  flex  flex-col items-start justify-end
 bg-[#010000]
-  max-w-full  min-h-screen max-h-full
-  mobile:pb-14 mobile:pt-14
-`;
-
-export const ButtonsBox = tw.div`
-  flex
-  flex-row
-  flex-wrap
-  justify-center
-  gap-4
-  h-auto
-  rounded-xl
-  bg-[#d1d1d1]
-  w-full
-`;
-
-export const Buttons = tw.button`
-  flex  items-center  justify-between
-  pl-4 pr-4
-  text-xl font-semibold
-  mobile:w-full mobile:h-12
-  hover:bg-[#75ba12]  hover:text-[#fefbff]  hover:duration-500 hover: cursor-pointer
-`;
-
-export const NavButtons = tw(NavLink)`
-  flex  items-center  justify-start
-  pl-4
-  text-xl font-semibold
-  mobile:w-full mobile:h-12
-  hover:bg-[#75ba12]  hover:text-[#fefbff] hover:duration-300 hover: cursor-pointer
+  max-w-full  h-screen
+  mobile:pb-8 mobile:pt-8 mobile:overflow-y-hidden
 `;
 
 export const Title = tw.h1`
-  self-start
-  ml-6
-  text-3xl
-  font-bold
-  text-[#75ba12]
+  text-4xl text-[#75ba12] font-bold
+  mobile:pl-6 mobile:mb-5
+`;
+
+export const ContentAddBox = tw.div`
+  flex flex-row flex-wrap items-center gap-3 justify-center
+  w-full h-full
+`;
+
+export const Box = tw(Link)`
+  flex items-center justify-center
+  mobile:w-36 mobile h-32 mobile:rounded-2xl
+  text-[#fefbff] font-semibold text-2xl
+  bg-[#979393]
 `;
