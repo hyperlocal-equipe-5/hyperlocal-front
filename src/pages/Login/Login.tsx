@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Form } from '../../components/form/Form';
 
@@ -9,11 +10,14 @@ enum ButonType {
 	reset = 'reset',
 	button = 'button',
 }
-const handleLogin = () => {
-	console.log(handleLogin);
-};
 
 const Login: React.FC = () => {
+	const navigate = useNavigate();
+	const handleLogin = (body: any, buttonName: any) => {
+		if (buttonName === 'Cadastrar') {
+			navigate('/cadastro');
+		}
+	};
 	return (
 		<Form
 			title={'Acessar sua Conta'}

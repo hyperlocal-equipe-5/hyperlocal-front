@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import './form.scss';
 
 interface Props {
@@ -23,6 +24,7 @@ enum ButonType {
 
 export function Form({ buttons, fields, title, callbackFunction }: Props) {
 	const [state, setstate] = useState<any>();
+
 	function handleClick(buttonName: string) {
 		callbackFunction(state, buttonName);
 	}

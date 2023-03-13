@@ -1,9 +1,63 @@
-import React, { useCallback, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Form } from '../../components/form/Form';
 import './cadastro.scss';
 
+enum ButonType {
+	submit = 'submit',
+	reset = 'reset',
+	button = 'button',
+}
+
 const Cadastro: React.FC = () => {
-	const [email, setEmail] = useState('');
+	const navigate = useNavigate();
+	const handleLogin = (body: any, buttonName: any) => {
+		if (buttonName === 'Login') {
+			navigate('/login');
+		}
+	};
+	return (
+		<>
+			<div className="cadastro">
+				<Form
+					title={'Acessar sua Conta'}
+					buttons={[
+						{ type: ButonType.button, name: 'Cadastrar', color: 'yellow' },
+						{ type: ButonType.button, name: 'Login', color: 'green' },
+					]}
+					fields={[
+						{
+							label: 'Nome',
+							inputType: 'text',
+							placeholder: 'Digite seu Nome',
+						},
+						{
+							label: 'Celular',
+							inputType: 'text',
+							placeholder: 'Digite seu Contato',
+						},
+						{
+							label: 'Email',
+							inputType: 'text',
+							placeholder: 'Digite seu email',
+						},
+						{
+							label: 'Senha',
+							inputType: 'password',
+							placeholder: 'Digite sua Senha',
+						},
+					]}
+					callbackFunction={handleLogin}
+				/>
+			</div>
+		</>
+	);
+};
+
+export default Cadastro;
+
+/*
+const [email, setEmail] = useState('');
 	const [nome, setNome] = useState('');
 	const [password, setPassword] = useState('');
 	const [restaurante, setRestaurante] = useState('');
@@ -12,7 +66,6 @@ const Cadastro: React.FC = () => {
 	const navigate = useNavigate();
 	const handleCadastrar = () => {
 		if (!email || !password) {
-			// verifica se os campos tem informação
 			setError('Prencha todos os campos');
 			return;
 		}
@@ -27,71 +80,4 @@ const Cadastro: React.FC = () => {
 		},
 		[email, password],
 	);
-
-	return (
-		<>
-			<form>
-				<div className="cadastro" onSubmit={handleSublimit}>
-					<div className="input">
-						<div className="card">
-							<h1>Cadastro de usuarios</h1>
-							<input
-								type="nome"
-								placeholder=" Digite seu nome"
-								value={nome}
-								onChange={e => {
-									setNome(e.target.value);
-								}}
-							/>
-							<input
-								type="email"
-								placeholder=" Digite seu email"
-								value={email}
-								onChange={e => {
-									setEmail(e.target.value);
-								}}
-							/>
-							<input
-								type="password"
-								placeholder=" Digite sua Senha"
-								value={password}
-								onChange={e => {
-									setPassword(e.target.value);
-								}}
-							/>
-							<input
-								type="text"
-								placeholder="Digite o nome do Restaurante"
-								value={restaurante}
-								onChange={e => {
-									setRestaurante(e.target.value);
-								}}
-							/>
-							<input
-								type="text"
-								placeholder="Insira uma imagem"
-								value={imagem}
-								onChange={e => {
-									setImagem(e.target.value);
-								}}
-							/>
-							<div>{error}</div>
-							<div className="entrar">
-								<button type="submit" onClick={handleCadastrar}>
-									Cadastrar
-								</button>
-
-								<h6>Já tem conta?</h6>
-								<div className="conta">
-									<Link to="/"> Entrar</Link>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</form>
-		</>
-	);
-};
-
-export default Cadastro;
+	*/
