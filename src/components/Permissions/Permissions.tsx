@@ -1,6 +1,5 @@
-import { type PermissionsResponse } from './type';
-import React from 'react';
 import styled from './styled.module.scss';
+import { type PermissionsResponse } from './type';
 
 interface PermissionsProps {
 	permission: PermissionsResponse;

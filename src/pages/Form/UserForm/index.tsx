@@ -1,6 +1,6 @@
-import { type FormEvent, useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from './styled.module.scss';
 
 interface UserFormRequest {
@@ -18,7 +18,7 @@ const UserForm = () => {
 
 	const handleClick = (e: any) => {
 		if (e.target.value === 'new') {
-			navigate('/roleform');
+			navigate('/add/role');
 		}
 	};
 

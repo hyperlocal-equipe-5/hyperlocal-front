@@ -1,5 +1,5 @@
 import CategoryBox from '../../components/CategoryBox';
-import { Container } from '../Form/styled';
+import { Container } from './styled';
 
 const teste = [
 	{
