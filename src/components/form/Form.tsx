@@ -28,17 +28,17 @@ export function Form({
 	buttons,
 	fields,
 	title,
-
+	titleSecundary,
 	callbackFunction,
 }: Props) {
-	const [state, setstate] = useState<any>();
+	const [state, setState] = useState<any>();
 
 	function handleClick(buttonName: string) {
 		callbackFunction(state, buttonName);
 	}
 	return (
 		<form className="form">
-			<div className="input">
+			<div className="form-group">
 				<h2>{title}</h2>
 				<div className="label">
 					{fields.map((item, index) => (
@@ -48,13 +48,13 @@ export function Form({
 								type={item.inputType}
 								placeholder={item.placeholder}
 								onChange={event => {
-									setstate({ ...state, [item.label]: event.target.value });
+									setState({ ...state, [item.label]: event.target.value });
 								}}
 							/>
 						</div>
 					))}
 				</div>
-
+				<h4> {titleSecundary} </h4>
 				<div className="button">
 					{buttons.map((item, index) => (
 						<button

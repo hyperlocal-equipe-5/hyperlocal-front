@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form } from '../../components/form/Form';
-import './cadastro.scss';
 
 enum ButonType {
 	submit = 'submit',
@@ -11,13 +10,18 @@ enum ButonType {
 
 const Cadastro: React.FC = () => {
 	const navigate = useNavigate();
-
+	const [error, setError] = useState('');
 	const handleLogin = (body: any, buttonName: any) => {
 		if (buttonName === 'Login') {
 			navigate('/login');
 		}
+		if (!body.Email || !body.Senha || !body.Nome || !body.Celular) {
+			setError('Preencha todos os Campos');
+			setTimeout(() => {
+				setError('');
+			}, 2000);
+		}
 	};
-
 	return (
 		<>
 			<Form
@@ -26,6 +30,7 @@ const Cadastro: React.FC = () => {
 					{ type: ButonType.button, name: 'Cadastrar', color: 'yellow' },
 					{ type: ButonType.button, name: 'Login', color: 'green' },
 				]}
+				titleSecundary={error}
 				fields={[
 					{
 						label: 'Nome',
