@@ -33,7 +33,7 @@ const teste = [
 		NameProduct: 'restaurante 4',
 	},
 ];
-// const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
+const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
 const Home = () => {
 	return (
 		<Container>
