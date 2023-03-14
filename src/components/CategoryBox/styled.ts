@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
-import tw from 'tailwind-styled-components';
+import { Link } from "react-router-dom";
+import tw from "tailwind-styled-components";
 
 export const BoxContainer = tw.div`
   flex flex-col
-  mobile:w-full mobile:h-60 mobile:overflow-y-scroll mobile:m-4
-  border border-solid border-red-500
+  mobile:w-full mobile:h-60 mobile:overflow-y-scroll
 `;
 export const TitleCategory = tw(Link)`
   text-[#75ba12] text-4xl font-semibold
@@ -27,7 +26,6 @@ export const ProductBox = tw(Link)`
   mobile:w-40 mobile:h-40
   pl-1 pr-1 mr-3 ml-3
   text-[#fefbff]
-  border border-solid border-red-500
 `;
 
 export const Title = tw.h2`

@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import tw from 'tailwind-styled-components';
+import { Link } from "react-router-dom";
+import tw from "tailwind-styled-components";
 
 export const Container = tw.div`
 	container
-  flex  flex-col items-start justify-end
+  flex  flex-col items-start justify-start
 bg-[#010000]
   max-w-full  h-screen
-  mobile:pb-8 mobile:pt-8 mobile:overflow-y-hidden
+  mobile:pb-8 mobile:pt-14 mobile:overflow-x-hidden
 `;
 
 export const Title = tw.h1`
@@ -15,8 +15,9 @@ export const Title = tw.h1`
 `;
 
 export const ContentAddBox = tw.div`
-  flex flex-row flex-wrap items-center gap-3 justify-center
+  flex flex-row flex-wrap items-start gap-3 justify-center
   w-full h-full
+  border-solid border-red-400 border
 `;
 
 export const Box = tw(Link)`
