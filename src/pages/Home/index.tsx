@@ -34,6 +34,7 @@ const teste = [
 	},
 ];
 const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
+
 const Home = () => {
 	return (
 		<Container>
