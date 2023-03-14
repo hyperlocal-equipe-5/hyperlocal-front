@@ -11,45 +11,45 @@ enum ButonType {
 
 const Cadastro: React.FC = () => {
 	const navigate = useNavigate();
+
 	const handleLogin = (body: any, buttonName: any) => {
 		if (buttonName === 'Login') {
 			navigate('/login');
 		}
 	};
+
 	return (
 		<>
-			<div className="cadastro">
-				<Form
-					title={'Acessar sua Conta'}
-					buttons={[
-						{ type: ButonType.button, name: 'Cadastrar', color: 'yellow' },
-						{ type: ButonType.button, name: 'Login', color: 'green' },
-					]}
-					fields={[
-						{
-							label: 'Nome',
-							inputType: 'text',
-							placeholder: 'Digite seu Nome',
-						},
-						{
-							label: 'Celular',
-							inputType: 'text',
-							placeholder: 'Digite seu Contato',
-						},
-						{
-							label: 'Email',
-							inputType: 'text',
-							placeholder: 'Digite seu email',
-						},
-						{
-							label: 'Senha',
-							inputType: 'password',
-							placeholder: 'Digite sua Senha',
-						},
-					]}
-					callbackFunction={handleLogin}
-				/>
-			</div>
+			<Form
+				title={'Cadastre um novo Usuario'}
+				buttons={[
+					{ type: ButonType.button, name: 'Cadastrar', color: 'yellow' },
+					{ type: ButonType.button, name: 'Login', color: 'green' },
+				]}
+				fields={[
+					{
+						label: 'Nome',
+						inputType: 'text',
+						placeholder: 'Digite seu Nome',
+					},
+					{
+						label: 'Celular',
+						inputType: 'number',
+						placeholder: 'Digite seu Contato',
+					},
+					{
+						label: 'Email',
+						inputType: 'email',
+						placeholder: 'Digite seu email',
+					},
+					{
+						label: 'Senha',
+						inputType: 'password',
+						placeholder: 'Digite sua Senha',
+					},
+				]}
+				callbackFunction={handleLogin}
+			/>
 		</>
 	);
 };

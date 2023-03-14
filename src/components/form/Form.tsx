@@ -4,6 +4,7 @@ import './form.scss';
 
 interface Props {
 	title: string;
+	titleSecundary?: string;
 	buttons: Array<{
 		name: string;
 		type: ButonType;
@@ -14,6 +15,7 @@ interface Props {
 		inputType: string;
 		placeholder: string;
 	}>;
+
 	callbackFunction: (body: any, buttonName: string) => void;
 }
 enum ButonType {
@@ -22,7 +24,13 @@ enum ButonType {
 	button = 'button',
 }
 
-export function Form({ buttons, fields, title, callbackFunction }: Props) {
+export function Form({
+	buttons,
+	fields,
+	title,
+
+	callbackFunction,
+}: Props) {
 	const [state, setstate] = useState<any>();
 
 	function handleClick(buttonName: string) {
@@ -46,6 +54,7 @@ export function Form({ buttons, fields, title, callbackFunction }: Props) {
 						</div>
 					))}
 				</div>
+
 				<div className="button">
 					{buttons.map((item, index) => (
 						<button
