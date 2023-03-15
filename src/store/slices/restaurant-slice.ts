@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateRestaurantDto } from '../../domain/dto/restaurant/createRestaurant-dto';
 import { type UpdateRestaurantDto } from '../../domain/dto/restaurant/updateRestaurant-dto';
 import { type Restaurant } from '../../domain/entities/restaurant';
+import { makeRestaurantRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantRouter-factory';
 import { ArraySort } from '../utils/array-sorter';
 
 interface InitialState {
@@ -60,6 +61,16 @@ const restaurantSlice = createSlice({
 				updatedAt: foundEntity?.updatedAt ?? '',
 			});
 			state.value = ArraySort.sort(newState, 'name');
+		},
+
+		getRestaurats(state) {
+			const router = makeRestaurantRouterFactory();
+			router
+				.getAllRestaurants()
+				.then(data => {
+					state.value = data.body;
+				})
+				.catch(error => console.log(error.message));
 		},
 	},
 });

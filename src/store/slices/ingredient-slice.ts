@@ -4,6 +4,7 @@ import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { type Ingredient } from '../../domain/entities/ingredient';
 import { type CreateIngredientDto } from '../../domain/dto/ingredient/createIngredient-dto';
 import { type UpdateIngredientDto } from '../../domain/dto/ingredient/updateIngredient-dto';
+import { makeIngredientRouterFactory } from '../../infra/api/factories/routers/ingredient/ingredientRouter-factory';
 
 interface InitialState {
 	value: Ingredient[];
@@ -60,6 +61,16 @@ const ingredientSlice = createSlice({
 				updatedAt: foundEntity?.updatedAt ?? '',
 			});
 			state.value = ArraySort.sort(newState, 'name');
+		},
+
+		getIngredients(state, action: PayloadAction<{ restaurant: string }>) {
+			const router = makeIngredientRouterFactory();
+			router
+				.getAllIngredients(action.payload.restaurant)
+				.then(data => {
+					state.value = data.body;
+				})
+				.catch(error => console.log(error.message));
 		},
 	},
 });

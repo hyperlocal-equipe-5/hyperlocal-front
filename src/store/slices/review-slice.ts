@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateReviewDto } from '../../domain/dto/review/createReview-dto';
 import { type UpdateReviewDto } from '../../domain/dto/review/updateReview-dto';
 import { type Review } from '../../domain/entities/review';
+import { makeReviewRouterFactory } from '../../infra/api/factories/routers/review/reviewRouter-factory';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 
 interface InitialState {
@@ -17,6 +18,18 @@ const reviewSlice = createSlice({
 	initialState,
 	reducers: {
 		createReview(state, action: PayloadAction<CreateReviewDto>) {
+			const router = makeReviewRouterFactory();
+			router
+				.postReview(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => {
+					console.log(error);
+				});
+
 			const newState = state.value;
 			newState.push({
 				id: '',

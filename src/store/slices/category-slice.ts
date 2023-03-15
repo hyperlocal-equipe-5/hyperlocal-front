@@ -4,6 +4,7 @@ import { type Category } from '../../domain/entities/category';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { type CreateCategoryDto } from '../../domain/dto/category/createCategory-dto';
 import { type UpdateCategoryDto } from '../../domain/dto/category/updateCategory-dto';
+import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 
 interface InitialState {
 	value: Category[];
@@ -59,6 +60,16 @@ const categorySlice = createSlice({
 				highlight: action.payload.highlight ?? foundEntity?.highlight ?? false,
 			});
 			state.value = ArraySort.sort(newState, 'name');
+		},
+
+		getCategories(state, action: PayloadAction<{ restaurant: string }>) {
+			const router = makeCategoryRouterFactory();
+			router
+				.getAllCategories(action.payload.restaurant)
+				.then(data => {
+					state.value = data.body;
+				})
+				.catch(error => console.log(error.message));
 		},
 	},
 });

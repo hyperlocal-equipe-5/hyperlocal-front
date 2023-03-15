@@ -27,7 +27,7 @@ export class AuthRouter implements AuthRouterInterface {
 		const response = await this.httpRequestAdapter
 			.post(apiLink + '/login', loginData)
 			.then(data => {
-				data.this.tokenHandler.storeToken(data.token);
+				this.tokenHandler.storeToken(data.token);
 				return data;
 			});
 

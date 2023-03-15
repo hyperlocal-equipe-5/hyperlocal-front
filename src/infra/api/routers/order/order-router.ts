@@ -3,6 +3,7 @@ import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/a
 import { type HttpResponse } from '../../../../domain/dto/http/http-response';
 import { type Order } from '../../../../domain/entities/order';
 import { type OrderRouterInterface } from '../../abstract/routers/order/orderRouter-interface';
+import { type CreateOrderDto } from '../../../../domain/dto/order/createOrder-dto';
 
 export class OrderRouter implements OrderRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
@@ -23,7 +24,7 @@ export class OrderRouter implements OrderRouterInterface {
 		const apiLink = this.apiConnection.getLink();
 
 		return await this.httpRequestAdapter.get(
-			apiLink + `/order/${orderId}?restaurant=${restaurantId}`,
+			apiLink + `admin/order/${orderId}?restaurant=${restaurantId}`,
 		);
 	}
 
@@ -33,7 +34,13 @@ export class OrderRouter implements OrderRouterInterface {
 		const apiLink = this.apiConnection.getLink();
 
 		return await this.httpRequestAdapter.get(
-			apiLink + `/order?restaurant=${restaurantId}`,
+			apiLink + `admin/order?restaurant=${restaurantId}`,
 		);
+	}
+
+	public async createOrder(body: CreateOrderDto): Promise<Order> {
+		const apiLink = this.apiConnection.getLink();
+
+		return await this.httpRequestAdapter.post(apiLink + '/orders', body);
 	}
 }

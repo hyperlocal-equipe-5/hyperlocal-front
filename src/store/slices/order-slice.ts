@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateOrderDto } from '../../domain/dto/order/createOrder-dto';
 import { type UpdateOrderDto } from '../../domain/dto/order/updateOrder-dto';
 import { type Order } from '../../domain/entities/order';
+import { makeOrderRouterFactory } from '../../infra/api/factories/routers/order/orderRouter-factory';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 
 interface InitialState {
@@ -17,6 +18,18 @@ const orderSlice = createSlice({
 	initialState,
 	reducers: {
 		createOrder(state, action: PayloadAction<CreateOrderDto>) {
+			const router = makeOrderRouterFactory();
+			router
+				.createOrder(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data);
+					state.value = currentState;
+				})
+				.catch(error => {
+					console.log(error);
+				});
+
 			const newState = state.value;
 			newState.push({
 				id: '',
@@ -63,6 +76,16 @@ const orderSlice = createSlice({
 				updatedAt: foundEntity?.updatedAt ?? '',
 			});
 			state.value = newState;
+		},
+
+		getOrders(state, action: PayloadAction<{ restaurant: string }>) {
+			const router = makeOrderRouterFactory();
+			router
+				.getAllOrders(action.payload.restaurant)
+				.then(data => {
+					state.value = data.body;
+				})
+				.catch(error => console.log(error.message));
 		},
 	},
 });
