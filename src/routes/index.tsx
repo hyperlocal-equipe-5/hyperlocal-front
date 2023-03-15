@@ -1,10 +1,12 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import Navbar from '../components/navbar';
+
+import ErrorPage from '../pages/errorPage';
 import Form from '../pages/Form';
+import Home from '../pages/Home';
+import IngredientForm from '../pages/Form/IngredientForm';
+import Navbar from '../components/navbar';
 import RestaurantForm from '../pages/Form/RestaurantForm';
 import RoleForm from '../pages/Form/RoleForm';
-import Home from '../pages/Home';
-import ErrorPage from '../pages/errorPage';
 
 const App = () => {
 	return (
@@ -42,8 +44,8 @@ const Routes = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/menu',
-				element: <Home />,
+				path: '/ingredientform',
+				element: <IngredientForm />,
 			},
 			{
 				path: '/finance',
