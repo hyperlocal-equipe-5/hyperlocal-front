@@ -1,17 +1,26 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { ArraySort } from '../utils/array-sorter';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { makeRoleStub } from '../stubs/entities/role-stub';
 import { type User } from '../../domain/entities/user';
 import { type CreateUserDto } from '../../domain/dto/user/createUser-dto';
 import { type UpdateUserDto } from '../../domain/dto/user/updateUser-dto';
+import { makeUserRouterFactory } from '../../infra/api/factories/routers/user/userRouter-factory';
 
 interface InitialState {
-	value: User[];
+	value: User;
 }
 
 const initialState: InitialState = {
-	value: [],
+	value: {
+		id: '',
+		name: '',
+		email: '',
+		password: '',
+		role: makeRoleStub(),
+		restaurant: makeRestaurantStub(),
+		createdAt: '',
+		updatedAt: '',
+	},
 };
 
 const userSlice = createSlice({
@@ -19,8 +28,12 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		createUser(state, action: PayloadAction<CreateUserDto>) {
-			const newState = state.value;
-			newState.push({
+			const userRouter = makeUserRouterFactory();
+			userRouter
+				.createUser(action.payload)
+				.catch(error => console.log(error.message));
+
+			state.value = {
 				id: '',
 				name: action.payload.name,
 				email: action.payload.email,
@@ -29,25 +42,38 @@ const userSlice = createSlice({
 				restaurant: makeRestaurantStub(action.payload.restaurant),
 				createdAt: '',
 				updatedAt: '',
-			});
-			state.value = ArraySort.sort(newState, 'name');
+			};
 		},
 
-		deleteUser(state, action: PayloadAction<string>) {
-			const newState = state.value.filter(
-				category => category.id !== action.payload,
-			);
-			state.value = ArraySort.sort(newState, 'name');
+		deleteUser(
+			state,
+			action: PayloadAction<{ userId: string; restaurantId: string }>,
+		) {
+			const userRouter = makeUserRouterFactory();
+			userRouter
+				.deleteUser(action.payload.userId, action.payload.restaurantId)
+				.catch(error => console.log(error.message));
+
+			state.value = {
+				id: '',
+				name: '',
+				email: '',
+				password: '',
+				role: makeRoleStub(),
+				restaurant: makeRestaurantStub(),
+				createdAt: '',
+				updatedAt: '',
+			};
 		},
 
 		updateUser(state, action: PayloadAction<UpdateUserDto>) {
-			const index = state.value.findIndex(
-				item => item.id === action.payload.id,
-			);
-			const foundEntity = state.value.find(
-				item => item.id === action.payload.id,
-			);
-			const newState = state.value.splice(index, 1, {
+			const userRouter = makeUserRouterFactory();
+			userRouter
+				.updateUser(action.payload.id, action.payload)
+				.catch(error => console.log(error.message));
+
+			const foundEntity = state.value;
+			state.value = {
 				id: foundEntity?.id ?? '',
 				name: action.payload.name ?? foundEntity?.name ?? '',
 				email: action.payload.email ?? foundEntity?.email ?? '',
@@ -58,8 +84,20 @@ const userSlice = createSlice({
 					makeRestaurantStub(action.payload.restaurant),
 				createdAt: foundEntity?.createdAt ?? '',
 				updatedAt: foundEntity?.updatedAt ?? '',
-			});
-			state.value = ArraySort.sort(newState, 'name');
+			};
+		},
+
+		getUser(
+			state,
+			action: PayloadAction<{ userId: string; restaurantId: string }>,
+		) {
+			const userRouter = makeUserRouterFactory();
+			userRouter
+				.getOneUser(action.payload.userId, action.payload.restaurantId)
+				.then(data => {
+					state.value = data.body;
+				})
+				.catch(error => console.log(error.message));
 		},
 	},
 });
