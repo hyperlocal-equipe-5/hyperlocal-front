@@ -11,6 +11,14 @@ body{
   min-width: 300px;
   height: 100%;
   margin: 0 auto;
+  margin-top: 100px;
+
+  @media(max-width: 300px){
+    input{
+      width: 30%;
+      margin-left: 5px;
+    }
+  }
 
   form {
     display: flex;
@@ -31,9 +39,10 @@ body{
     margin: 10px;
   }
 
-  input {
+  input,
+  select {
     box-sizing: border-box;
-    width: 370px;
+    width: 312px;
     height: 46px;
     background: #ffffff;
     border: 1px solid #8bf24f;
@@ -41,19 +50,11 @@ body{
     box-shadow: none;
     margin-bottom: 20px;
     outline: 0;
+    cursor: pointer;
   }
 
-  .titulo {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    color: #8bf24f;
-    margin: 10px;
+  option {
+    cursor: pointer;
   }
 
   button {
@@ -64,7 +65,7 @@ body{
     height: 45px;
     background: #8bf24f;
     border-radius: 20px;
-    margin: 20px 0 20px 120px;
+    margin: 20px 0 0 100px;
     border: none;
     font-style: normal;
     font-weight: 700;
@@ -78,5 +79,27 @@ body{
 
   button:hover {
     transform: scale(1.05);
+  }
+
+  .qrcode{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e222b;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+
+  }
+
+  span{
+    display:flex;
+    justify-content: center;
+    margin-top: 5px;
+    color: #ccc;
+    margin-left: 22px;
   }
 }
