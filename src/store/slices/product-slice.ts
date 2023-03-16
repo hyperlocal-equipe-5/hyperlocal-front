@@ -6,6 +6,7 @@ import { type Product } from '../../domain/entities/product';
 import { type CreateProductDto } from '../../domain/dto/product/createProduct-dto';
 import { type UpdateProductDto } from '../../domain/dto/product/updateProduct-dto';
 import { makeProductRouterFactory } from '../../infra/api/factories/routers/product/productRouter-factory';
+import { makeProductAdminRouterFactory } from '../../infra/api/factories/routers/product/productAdminRouter-factory';
 
 interface InitialState {
 	value: Product[];
@@ -20,6 +21,16 @@ const productSlice = createSlice({
 	initialState,
 	reducers: {
 		createProduct(state, action: PayloadAction<CreateProductDto>) {
+			const router = makeProductAdminRouterFactory();
+			router
+				.createProduct(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value;
 			newState.push({
 				id: '',
@@ -38,14 +49,37 @@ const productSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteProduct(state, action: PayloadAction<string>) {
+		deleteProduct(
+			state,
+			action: PayloadAction<{ productId: string; restaurantId: string }>,
+		) {
+			const router = makeProductAdminRouterFactory();
+			router
+				.deleteProduct(action.payload.productId, action.payload.restaurantId)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value.filter(
-				category => category.id !== action.payload,
+				category => category.id !== action.payload.productId,
 			);
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
 		updateProduct(state, action: PayloadAction<UpdateProductDto>) {
+			const router = makeProductAdminRouterFactory();
+			router
+				.updateProduct(action.payload.id, action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const index = state.value.findIndex(
 				item => item.id === action.payload.id,
 			);
@@ -71,10 +105,10 @@ const productSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getProducts(state, action: PayloadAction<{ restaurant: string }>) {
+		getProducts(state, action: PayloadAction<string>) {
 			const router = makeProductRouterFactory();
 			router
-				.getAllProducts(action.payload.restaurant)
+				.getAllProducts(action.payload)
 				.then(data => {
 					state.value = data.body;
 				})

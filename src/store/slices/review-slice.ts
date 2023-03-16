@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateReviewDto } from '../../domain/dto/review/createReview-dto';
 import { type UpdateReviewDto } from '../../domain/dto/review/updateReview-dto';
 import { type Review } from '../../domain/entities/review';
+import { makeReviewAdminRouterFactory } from '../../infra/api/factories/routers/review/reviewAdminRouter-factory';
 import { makeReviewRouterFactory } from '../../infra/api/factories/routers/review/reviewRouter-factory';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 
@@ -42,9 +43,22 @@ const reviewSlice = createSlice({
 			state.value = newState;
 		},
 
-		deleteReview(state, action: PayloadAction<string>) {
+		deleteReview(
+			state,
+			action: PayloadAction<{ reviewId: string; restaurantId: string }>,
+		) {
+			const router = makeReviewAdminRouterFactory();
+			router
+				.deleteReview(action.payload.reviewId, action.payload.restaurantId)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value.filter(
-				category => category.id !== action.payload,
+				category => category.id !== action.payload.restaurantId,
 			);
 			state.value = newState;
 		},
@@ -67,6 +81,16 @@ const reviewSlice = createSlice({
 				updatedAt: foundEntity?.updatedAt ?? '',
 			});
 			state.value = newState;
+		},
+
+		getReviews(state, action: PayloadAction<string>) {
+			const router = makeReviewAdminRouterFactory();
+			router
+				.getAllReviews(action.payload)
+				.then(data => {
+					state.value = data.body;
+				})
+				.catch(error => console.log(error.message));
 		},
 	},
 });

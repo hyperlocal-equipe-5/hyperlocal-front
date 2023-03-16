@@ -3,6 +3,7 @@ import { type CreateOrderDto } from '../../domain/dto/order/createOrder-dto';
 import { type UpdateOrderDto } from '../../domain/dto/order/updateOrder-dto';
 import { type Order } from '../../domain/entities/order';
 import { makeOrderRouterFactory } from '../../infra/api/factories/routers/order/orderRouter-factory';
+import { makeOrderAdminRouterFactory } from '../../infra/api/factories/routers/order/orderRouterAdmin-factory';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 
 interface InitialState {
@@ -18,17 +19,15 @@ const orderSlice = createSlice({
 	initialState,
 	reducers: {
 		createOrder(state, action: PayloadAction<CreateOrderDto>) {
-			const router = makeOrderRouterFactory();
+			const router = makeOrderAdminRouterFactory();
 			router
 				.createOrder(action.payload)
 				.then(data => {
 					const currentState = state.value;
-					currentState.push(data);
+					currentState.push(data.body);
 					state.value = currentState;
 				})
-				.catch(error => {
-					console.log(error);
-				});
+				.catch(error => console.log(error.message));
 
 			const newState = state.value;
 			newState.push({
@@ -46,9 +45,22 @@ const orderSlice = createSlice({
 			state.value = newState;
 		},
 
-		deleteOrder(state, action: PayloadAction<string>) {
+		deleteOrder(
+			state,
+			action: PayloadAction<{ orderId: string; restaurantId: string }>,
+		) {
+			const router = makeOrderAdminRouterFactory();
+			router
+				.deleteOrder(action.payload.orderId, action.payload.restaurantId)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value.filter(
-				category => category.id !== action.payload,
+				category => category.id !== action.payload.orderId,
 			);
 			state.value = newState;
 		},
@@ -78,10 +90,10 @@ const orderSlice = createSlice({
 			state.value = newState;
 		},
 
-		getOrders(state, action: PayloadAction<{ restaurant: string }>) {
-			const router = makeOrderRouterFactory();
+		getOrders(state, action: PayloadAction<string>) {
+			const router = makeOrderAdminRouterFactory();
 			router
-				.getAllOrders(action.payload.restaurant)
+				.getAllOrders(action.payload)
 				.then(data => {
 					state.value = data.body;
 				})

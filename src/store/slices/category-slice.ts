@@ -5,6 +5,7 @@ import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { type CreateCategoryDto } from '../../domain/dto/category/createCategory-dto';
 import { type UpdateCategoryDto } from '../../domain/dto/category/updateCategory-dto';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
+import { makeCategoryAdminRouterFactory } from '../../infra/api/factories/routers/category/categoryAdminRouter-factory';
 
 interface InitialState {
 	value: Category[];
@@ -19,6 +20,16 @@ const categorySlice = createSlice({
 	initialState,
 	reducers: {
 		createCategory(state, action: PayloadAction<CreateCategoryDto>) {
+			const router = makeCategoryAdminRouterFactory();
+			router
+				.createCategory(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value;
 			newState.push({
 				id: '',
@@ -33,14 +44,37 @@ const categorySlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteCategory(state, action: PayloadAction<string>) {
+		deleteCategory(
+			state,
+			action: PayloadAction<{ categoryId: string; restaurantId: string }>,
+		) {
+			const router = makeCategoryAdminRouterFactory();
+			router
+				.deleteCategory(action.payload.categoryId, action.payload.restaurantId)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value.filter(
-				category => category.id !== action.payload,
+				category => category.id !== action.payload.categoryId,
 			);
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
 		updateCategory(state, action: PayloadAction<UpdateCategoryDto>) {
+			const router = makeCategoryAdminRouterFactory();
+			router
+				.updateCategory(action.payload.id, action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const index = state.value.findIndex(
 				item => item.id === action.payload.id,
 			);
@@ -62,10 +96,10 @@ const categorySlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getCategories(state, action: PayloadAction<{ restaurant: string }>) {
+		getCategories(state, action: PayloadAction<string>) {
 			const router = makeCategoryRouterFactory();
 			router
-				.getAllCategories(action.payload.restaurant)
+				.getAllCategories(action.payload)
 				.then(data => {
 					state.value = data.body;
 				})

@@ -5,6 +5,7 @@ import { type Ingredient } from '../../domain/entities/ingredient';
 import { type CreateIngredientDto } from '../../domain/dto/ingredient/createIngredient-dto';
 import { type UpdateIngredientDto } from '../../domain/dto/ingredient/updateIngredient-dto';
 import { makeIngredientRouterFactory } from '../../infra/api/factories/routers/ingredient/ingredientRouter-factory';
+import { makeIngredientAdminRouterFactory } from '../../infra/api/factories/routers/ingredient/IngredientAdminRouter-factory';
 
 interface InitialState {
 	value: Ingredient[];
@@ -19,6 +20,16 @@ const ingredientSlice = createSlice({
 	initialState,
 	reducers: {
 		createIngredient(state, action: PayloadAction<CreateIngredientDto>) {
+			const router = makeIngredientAdminRouterFactory();
+			router
+				.createIngredient(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value;
 			newState.push({
 				id: '',
@@ -34,14 +45,40 @@ const ingredientSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteIngredient(state, action: PayloadAction<string>) {
+		deleteIngredient(
+			state,
+			action: PayloadAction<{ ingredientId: string; restaurantId: string }>,
+		) {
+			const router = makeIngredientAdminRouterFactory();
+			router
+				.deleteIngredient(
+					action.payload.ingredientId,
+					action.payload.restaurantId,
+				)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value.filter(
-				category => category.id !== action.payload,
+				category => category.id !== action.payload.ingredientId,
 			);
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
 		updateIngredient(state, action: PayloadAction<UpdateIngredientDto>) {
+			const router = makeIngredientAdminRouterFactory();
+			router
+				.updateIngredient(action.payload.id, action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const index = state.value.findIndex(
 				item => item.id === action.payload.id,
 			);
@@ -63,10 +100,10 @@ const ingredientSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getIngredients(state, action: PayloadAction<{ restaurant: string }>) {
+		getIngredients(state, action: PayloadAction<string>) {
 			const router = makeIngredientRouterFactory();
 			router
-				.getAllIngredients(action.payload.restaurant)
+				.getAllIngredients(action.payload)
 				.then(data => {
 					state.value = data.body;
 				})

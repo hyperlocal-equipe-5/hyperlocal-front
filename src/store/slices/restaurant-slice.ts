@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateRestaurantDto } from '../../domain/dto/restaurant/createRestaurant-dto';
 import { type UpdateRestaurantDto } from '../../domain/dto/restaurant/updateRestaurant-dto';
 import { type Restaurant } from '../../domain/entities/restaurant';
+import { makeRestaurantAdminRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantAdminRouter-factory';
 import { makeRestaurantRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantRouter-factory';
 import { ArraySort } from '../utils/array-sorter';
 
@@ -18,6 +19,16 @@ const restaurantSlice = createSlice({
 	initialState,
 	reducers: {
 		createRestaurant(state, action: PayloadAction<CreateRestaurantDto>) {
+			const router = makeRestaurantAdminRouterFactory();
+			router
+				.createRestaurant(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value;
 			newState.push({
 				id: '',
@@ -35,6 +46,16 @@ const restaurantSlice = createSlice({
 		},
 
 		deleteRestaurant(state, action: PayloadAction<string>) {
+			const router = makeRestaurantAdminRouterFactory();
+			router
+				.deleteRestaurant(action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const newState = state.value.filter(
 				category => category.id !== action.payload,
 			);
@@ -42,6 +63,16 @@ const restaurantSlice = createSlice({
 		},
 
 		updateRestaurant(state, action: PayloadAction<UpdateRestaurantDto>) {
+			const router = makeRestaurantAdminRouterFactory();
+			router
+				.updateRestaurant(action.payload.id, action.payload)
+				.then(data => {
+					const currentState = state.value;
+					currentState.push(data.body);
+					state.value = currentState;
+				})
+				.catch(error => console.log(error.message));
+
 			const index = state.value.findIndex(
 				item => item.id === action.payload.id,
 			);
