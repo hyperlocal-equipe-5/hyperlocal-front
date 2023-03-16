@@ -1,5 +1,5 @@
 import { HttpRequestAdapter } from '../../../../../helpers/adapters/httpRequest-adapter';
-import { type ReviewRouterInterface } from '../../../abstract/routers/review/review-router';
+import { type ReviewRouterInterface } from '../../../abstract/routers/review/reviewRouter-interface';
 import { ApiConnection } from '../../../connection/apiConnection';
 import { ReviewRouter } from '../../../routers/review/review-router';
 

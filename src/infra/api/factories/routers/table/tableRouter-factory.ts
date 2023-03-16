@@ -1,5 +1,5 @@
 import { HttpRequestAdapter } from '../../../../../helpers/adapters/httpRequest-adapter';
-import { type TableRouterInterface } from '../../../abstract/routers/table/table-router';
+import { type TableRouterInterface } from '../../../abstract/routers/table/tableRouter-interface';
 import { ApiConnection } from '../../../connection/apiConnection';
 import { TableRouter } from '../../../routers/table/table-router';
 

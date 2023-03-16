@@ -3,7 +3,7 @@ import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/a
 import { type HttpResponse } from '../../../../domain/dto/http/http-response';
 import { type CreateReviewDto } from '../../../../domain/dto/review/createReview-dto';
 import { type Review } from '../../../../domain/entities/review';
-import { type ReviewRouterInterface } from '../../abstract/routers/review/review-router';
+import { type ReviewRouterInterface } from '../../abstract/routers/review/reviewRouter-interface';
 
 export class ReviewRouter implements ReviewRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;

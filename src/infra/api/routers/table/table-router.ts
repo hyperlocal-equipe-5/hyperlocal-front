@@ -2,7 +2,7 @@ import { type ApiConnectionInterface } from '../../abstract/connection/apiConnec
 import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
 import { type HttpResponse } from '../../../../domain/dto/http/http-response';
 import { type Table } from '../../../../domain/entities/table';
-import { type TableRouterInterface } from '../../abstract/routers/table/table-router';
+import { type TableRouterInterface } from '../../abstract/routers/table/tableRouter-interface';
 
 export class TableRouter implements TableRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;

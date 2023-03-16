@@ -3,10 +3,5 @@ import { type CreateOrderDto } from '../../../../../domain/dto/order/createOrder
 import { type Order } from '../../../../../domain/entities/order';
 
 export interface OrderRouterInterface {
-	getOneOrder: (
-		orderId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Order>>;
-	getAllOrders: (restaurantId: string) => Promise<HttpResponse<Order[]>>;
-	createOrder: (body: CreateOrderDto) => Promise<Order>;
+	createOrder: (body: CreateOrderDto) => Promise<HttpResponse<Order>>;
 }
