@@ -2,12 +2,12 @@ import { type ApiConnectionInterface } from '../../abstract/connection/apiConnec
 import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
 import { type HttpResponse } from '../../../../domain/dto/http/http-response';
 import { type Order } from '../../../../domain/entities/order';
-import { type OrderRouterAdminInterface } from '../../abstract/routers/order/orderRouterAdmin-interface';
+import { type OrderAdminRouterInterface } from '../../abstract/routers/order/orderRouterAdmin-interface';
 import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/tokenHandler-helper-interface';
 import { type CreateOrderDto } from '../../../../domain/dto/order/createOrder-dto';
 import { type UpdateOrderDto } from '../../../../domain/dto/order/updateOrder-dto';
 
-export class OrderRouter implements OrderRouterAdminInterface {
+export class OrderRouter implements OrderAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
 	private readonly apiConnection: ApiConnectionInterface;
 	private readonly tokenHandler: TokenHandlerInterface;

@@ -3,7 +3,7 @@ import { type Review } from '../../../../domain/entities/review';
 import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
 import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/tokenHandler-helper-interface';
 import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
-import { type ReviewAdminRouterInterface } from '../../abstract/routers/review/reviewRouterAdmin-router';
+import { type ReviewAdminRouterInterface } from '../../abstract/routers/review/reviewRouterAdmin-interface';
 
 export class ReviewAdminRouter implements ReviewAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
