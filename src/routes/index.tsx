@@ -1,5 +1,6 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 import Navbar from '../components/navbar';
+import CategoryPage from '../pages/CategoryPage';
 import Form from '../pages/Form';
 import RestaurantForm from '../pages/Form/RestaurantForm';
 import RoleForm from '../pages/Form/RoleForm';
@@ -25,6 +26,10 @@ const Routes = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+			},
+			{
+				path: '/category',
+				element: <CategoryPage />,
 			},
 			{
 				path: '/add',

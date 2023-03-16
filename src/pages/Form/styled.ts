@@ -17,7 +17,6 @@ export const Title = tw.h1`
 export const ContentAddBox = tw.div`
   flex flex-row flex-wrap items-start gap-3 justify-center
   w-full h-full
-  border-solid border-red-400 border
 `;
 
 export const Box = tw(Link)`

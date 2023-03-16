@@ -38,10 +38,26 @@ const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
 const Home = () => {
 	return (
 		<Container>
-			<CategoryBox LinkCategory="teste" NameCategory="Titulo" Product={teste} />
-			<CategoryBox LinkCategory="teste" NameCategory="Titulo" Product={teste} />
-			<CategoryBox LinkCategory="teste" NameCategory="Titulo" Product={teste} />
-			<CategoryBox LinkCategory="teste" NameCategory="Titulo" Product={teste} />
+			<CategoryBox
+				LinkCategory="/category"
+				NameCategory="Titulo"
+				Product={teste}
+			/>
+			<CategoryBox
+				LinkCategory="/category"
+				NameCategory="Titulo"
+				Product={teste}
+			/>
+			<CategoryBox
+				LinkCategory="/category"
+				NameCategory="Titulo"
+				Product={teste}
+			/>
+			<CategoryBox
+				LinkCategory="/category"
+				NameCategory="Titulo"
+				Product={teste}
+			/>
 		</Container>
 	);
 };
