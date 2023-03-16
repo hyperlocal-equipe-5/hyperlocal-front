@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { Form } from '../../components/form/Form';
 
-import './Login.scss';
-
 enum ButonType {
 	submit = 'submit',
 	reset = 'reset',
