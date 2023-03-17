@@ -1,10 +1,66 @@
-.container{
-    align-items: center;
-    justify-content: center;
-    
-    flex-direction: column;
-    gap: 9px;
+.container {
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../../assets/img/fundo.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.qrcode {
+	gap: 9px;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	display: flex;
+	width: 340px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: min-content;
+	background-color: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(15px);
+	border: 1px solid #fff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+.dowload {
+	width: 13vw;
+	height: 4vh;
+	align-items: center;
+    color: black;
+    font-weight: 700;
+	display: flex;
+	justify-content: center;
+	border-radius: 13px;
+	background-color: rgb(255, 252, 252);
+	backdrop-filter: blur(15px);
+	border: 1px solid #fff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.932);
+	border-right: 1px solid rgb(245, 242, 242);
+}
+.input{
+    border-radius: 6px;
+    width: 18vw;
+    height: min-content;
+    padding: 5px; 
+    background-color: rgb(255, 252, 252);
+	backdrop-filter: blur(15px);
+	border: 1px solid #fff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.932);
+	border-right: 1px solid rgb(245, 242, 242);
+
+}
+.input::placeholder{
+    text-align: center;
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }

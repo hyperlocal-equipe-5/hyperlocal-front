@@ -6,41 +6,42 @@ import './Qrcode.scss';
 
 const Qrcode = () => {
 	const [qrlink, setQrlink] = useState('');
-	const [qrcode, setQrcode] = useState('');
+	const [dowload, setDowload] = useState('');
 
-	function handrleGenerate(linkUrl: string) {
+	function handrleDowload(linkUrl: string) {
 		QRCodeLink.toDataURL(
 			linkUrl,
-			{
-				width: 600,
-				margin: 3,
-			},
+
 			function (_err, url) {
-				setQrcode(url);
+				setDowload(url);
 			},
 		);
 	}
 
-	function handleQrcode(e: any) {
+	function handleGenerate(e: any) {
 		setQrlink(e.target.value);
-		handrleGenerate(e.target.value);
+		handrleDowload(e.target.value);
 	}
 
 	return (
 		<div className="container">
-			<QRCode value={qrlink} />
-			<input
-				type="input"
-				placeholder="Digite o Qrcode desejado"
-				value={qrlink}
-				onChange={e => {
-					handleQrcode(e);
-				}}
-			/>
-			<a href={qrcode} download={`qrcode.png`}>
-				{' '}
-				Baixar Qrcode{' '}
-			</a>
+			<div className="qrcode">
+				<QRCode value={qrlink} />
+				<input
+					className="input"
+					type="text"
+					placeholder="Digite o Qrcode desejado"
+					value={qrlink}
+					required
+					onChange={e => {
+						handleGenerate(e);
+					}}
+				/>
+				<a className="dowload" href={dowload} download={qrlink}>
+					{' '}
+					Baixar Qrcode{' '}
+				</a>
+			</div>
 		</div>
 	);
 };
