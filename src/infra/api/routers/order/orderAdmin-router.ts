@@ -7,7 +7,7 @@ import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/t
 import { type CreateOrderDto } from '../../../../domain/dto/order/createOrder-dto';
 import { type UpdateOrderDto } from '../../../../domain/dto/order/updateOrder-dto';
 
-export class OrderRouter implements OrderAdminRouterInterface {
+export class OrderAdminRouter implements OrderAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
 	private readonly apiConnection: ApiConnectionInterface;
 	private readonly tokenHandler: TokenHandlerInterface;

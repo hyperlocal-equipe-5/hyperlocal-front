@@ -24,11 +24,11 @@ const Routes = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: '/',
+				path: '/:id',
 				element: <Home />,
 			},
 			{
-				path: '/category',
+				path: '/category/:id',
 				element: <CategoryPage />,
 			},
 			{
