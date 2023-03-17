@@ -1,5 +1,5 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import CategoryPage from '../pages/CategoryPage';
 import Form from '../pages/Form';
 import RestaurantForm from '../pages/Form/RestaurantForm';
@@ -25,7 +25,7 @@ const Routes = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: '/',
+				path: '/:id',
 				element: <Home />,
 			},
 			{

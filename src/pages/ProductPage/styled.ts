@@ -22,6 +22,10 @@ export const ProductTitle = tw.h2`
   mobile:pb-4
 `;
 
+export const BoxItem = tw.div`
+  mobile:flex mobile:flex-row mobile:pt-10
+`;
+
 export const ItemName = tw.input`
    text-2xl text-[#fefbff] capitalize
    mobile:pt-10
@@ -38,5 +42,5 @@ export const Price = tw.p`
 export const CartButton = tw.button`
   text-[#fefbff] text-3xl
   mobile:flex mobile:items-center mobile:justify-center
-  mobile:w-20 mobile:h-12 mobile:bg-[#75ba12] mobile:rounded-xl
+  mobile:w-auto mobile:h-auto mobile:px-5 mobile:py-2  mobile:bg-[#75ba12] mobile:rounded-xl
 `;

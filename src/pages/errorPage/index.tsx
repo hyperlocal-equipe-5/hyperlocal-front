@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar';
 import { Container } from '../Form/styled';
 
 const ErrorPage = () => {
