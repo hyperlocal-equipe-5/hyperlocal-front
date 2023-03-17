@@ -10,14 +10,19 @@ import {
 interface IProductButton {
 	name: string;
 	img: string;
-	link: string;
+	ProductId: string;
 	ingredient: string[];
 }
-const ProductButton = ({ name, img, link, ingredient }: IProductButton) => {
+const ProductButton = ({
+	name,
+	img,
+	ProductId,
+	ingredient,
+}: IProductButton) => {
 	return (
 		<>
 			<ContentBox>
-				<ProductBox to={link}>
+				<ProductBox to={`/product/${ProductId}`}>
 					<ProductImage src={img} />
 					<ProductBoxText>
 						<ProductTitle>{name}</ProductTitle>

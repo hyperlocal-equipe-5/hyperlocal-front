@@ -11,18 +11,20 @@ import {
 
 export interface ICategoryBox {
 	NameCategory: string;
-	LinkCategory: string;
-	Product: [{ LinkProduct: string; image: string; NameProduct: string }];
+	idCategory: string;
+	Product: Array<{ ProductId: string; image: string; NameProduct: string }>;
 }
 
-const CategoryBox = ({ NameCategory, LinkCategory, Product }: ICategoryBox) => {
+const CategoryBox = ({ NameCategory, idCategory, Product }: ICategoryBox) => {
 	return (
 		<BoxContainer>
-			<TitleCategory to={LinkCategory}>{NameCategory}</TitleCategory>
+			<TitleCategory to={`category/${idCategory}`}>
+				{NameCategory}
+			</TitleCategory>
 			<ContentBox>
 				<ScrollBox>
 					{Product.map((el, i) => (
-						<ProductBox key={i} to={`/${el.LinkProduct}`}>
+						<ProductBox key={i} to={`/product/${el.ProductId}`}>
 							<Image src={el.image} />
 							<Title>{el.NameProduct}</Title>
 						</ProductBox>

@@ -5,5 +5,5 @@ export const Container = tw.div`
   flex  flex-col items-start justify-center
 bg-[#010000]
   max-w-full  min-h-screen max-h-full
-  mobile:pb-8 mobile:pt-8 mobile:overflow-x-hidden
+  mobile:py-14 mobile:overflow-x-hidden
 `;

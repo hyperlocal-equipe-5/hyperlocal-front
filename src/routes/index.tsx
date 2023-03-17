@@ -6,6 +6,7 @@ import RestaurantForm from '../pages/Form/RestaurantForm';
 import RoleForm from '../pages/Form/RoleForm';
 import UserForm from '../pages/Form/UserForm';
 import Home from '../pages/Home';
+import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
 
 const App = () => {
@@ -28,8 +29,12 @@ const Routes = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/category',
+				path: '/category/:id',
 				element: <CategoryPage />,
+			},
+			{
+				path: '/product/:id',
+				element: <ProductPage />,
 			},
 			{
 				path: '/add',

@@ -19,25 +19,25 @@ const CategoryPage = () => {
 			<ProductButton
 				name="Produto"
 				img="teste.jpg"
-				link="produto"
+				ProductId="1"
 				ingredient={ingredient}
 			/>
 			<ProductButton
 				name="Produto"
 				img="teste.jpg"
-				link="produto"
+				ProductId="2"
 				ingredient={ingredient}
 			/>
 			<ProductButton
 				name="Produto"
 				img="teste.jpg"
-				link="produto"
+				ProductId="3"
 				ingredient={ingredient}
 			/>
 			<ProductButton
 				name="Produto"
 				img="teste.jpg"
-				link="produto"
+				ProductId="4"
 				ingredient={ingredient}
 			/>
 		</Container>

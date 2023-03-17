@@ -1,11 +1,11 @@
-import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
-import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
 import { type HttpResponse } from '../../../../domain/dto/http/http-response';
-import { type Order } from '../../../../domain/entities/order';
-import { type OrderAdminRouterInterface } from '../../abstract/routers/order/orderRouterAdmin-interface';
-import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/tokenHandler-helper-interface';
 import { type CreateOrderDto } from '../../../../domain/dto/order/createOrder-dto';
 import { type UpdateOrderDto } from '../../../../domain/dto/order/updateOrder-dto';
+import { type Order } from '../../../../domain/entities/order';
+import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
+import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/tokenHandler-helper-interface';
+import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
+import { type OrderAdminRouterInterface } from '../../abstract/routers/order/orderRouterAdmin-interface';
 
 export class OrderRouter implements OrderAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
