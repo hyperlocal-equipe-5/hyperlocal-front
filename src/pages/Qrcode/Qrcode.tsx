@@ -1,26 +1,21 @@
 /* eslint-disable react/jsx-no-undef */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import QRCode from 'react-qr-code';
 import QRCodeLink from 'qrcode';
 import './Qrcode.scss';
 
 const Qrcode = () => {
 	const [qrlink, setQrlink] = useState('');
-	const [dowload, setDowload] = useState('');
 
-	function handrleDowload(linkUrl: string) {
-		QRCodeLink.toDataURL(
-			linkUrl,
-
-			function (_err, url) {
-				setDowload(url);
-			},
-		);
-	}
-
-	function handleGenerate(e: any) {
-		setQrlink(e.target.value);
-		handrleDowload(e.target.value);
+	function handleDownload(linkUrl: string) {
+		QRCodeLink.toDataURL(linkUrl, function (_err, url) {
+			const link = document.createElement('a');
+			link.download = `${linkUrl}.png`;
+			link.href = url;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		});
 	}
 
 	return (
@@ -34,13 +29,20 @@ const Qrcode = () => {
 					value={qrlink}
 					required
 					onChange={e => {
-						handleGenerate(e);
+						setQrlink(e.target.value);
 					}}
 				/>
-				<a className="dowload" href={dowload} download={qrlink}>
-					{' '}
-					Baixar Qrcode{' '}
-				</a>
+				<button
+					onClick={() => {
+						if (!qrlink || qrlink.toString().trim() === '') {
+							alert('Insira um link válido!');
+						} else {
+							handleDownload(qrlink);
+						}
+					}}
+					className="dowload">
+					Baixar Qrcode
+				</button>
 			</div>
 		</div>
 	);
