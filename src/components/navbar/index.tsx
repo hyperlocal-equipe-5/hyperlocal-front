@@ -19,7 +19,7 @@ const Navbar = () => {
 					<AiFillBook />
 					<Title>Cardápio</Title>
 				</NavButton>
-				<NavButton to="/form">
+				<NavButton to="/add">
 					<AiOutlinePlus />
 					<Title>Adicionar</Title>
 				</NavButton>
