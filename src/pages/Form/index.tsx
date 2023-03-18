@@ -1,4 +1,5 @@
-import { Box, Container, ContentAddBox, Title } from './styled';
+import Container from '../../style/Container';
+import { Box, ContentAddBox, Title } from './styled';
 
 const Form = () => {
 	return (

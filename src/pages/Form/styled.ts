@@ -1,14 +1,6 @@
 import { Link } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
 
-export const Container = tw.div`
-	container
-  flex  flex-col items-start justify-start
-bg-[#010000]
-  max-w-full  h-screen
-  mobile:py-14 mobile:overflow-x-hidden
-`;
-
 export const Title = tw.h1`
   text-4xl text-[#75ba12] font-bold
   mobile:pl-6 mobile:mb-5
