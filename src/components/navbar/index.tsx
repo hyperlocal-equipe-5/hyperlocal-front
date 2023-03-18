@@ -5,11 +5,11 @@ import {
 	AiOutlineUser,
 	AiTwotoneHome,
 } from 'react-icons/ai';
-import { Container, NavBox, NavButton, Title } from './styled';
+import { NavBox, NavButton, Title } from './styled';
 
 const Navbar = () => {
 	return (
-		<Container>
+		<div className="flex flex-row w-full pl-6 pr-6 bg-black text-white mobile:fixed mobile:bottom-0 mobile:h-16">
 			<NavBox>
 				<NavButton to="/">
 					<AiTwotoneHome />
@@ -32,7 +32,7 @@ const Navbar = () => {
 					<Title>Financeiro</Title>
 				</NavButton>
 			</NavBox>
-		</Container>
+		</div>
 	);
 };
 

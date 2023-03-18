@@ -2,12 +2,7 @@ import { Link } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
 
 export const Container = tw.div`
-  flex flex-row
-  w-full
-  pl-6 pr-6
-  bg-black
-  text-white
-  mobile:fixed mobile:bottom-0 mobile:h-16
+
 `;
 
 export const NavBox = tw.div`

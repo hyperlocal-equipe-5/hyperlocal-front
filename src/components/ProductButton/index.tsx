@@ -3,7 +3,6 @@ import {
 	ProductBox,
 	ProductBoxText,
 	ProductImage,
-	ProductText,
 	ProductTitle,
 } from './styled';
 
@@ -11,7 +10,7 @@ interface IProductButton {
 	name: string;
 	img: string;
 	ProductId: string;
-	ingredient: string[];
+	ingredient?: string[];
 }
 const ProductButton = ({
 	name,
@@ -26,11 +25,11 @@ const ProductButton = ({
 					<ProductImage src={img} />
 					<ProductBoxText>
 						<ProductTitle>{name}</ProductTitle>
-						<ProductText>
+						{/* <ProductText>
 							{ingredient.map((el, i) => (
 								<p key={i}>{`${el}, `}</p>
 							))}
-						</ProductText>
+						</ProductText> */}
 					</ProductBoxText>
 				</ProductBox>
 			</ContentBox>

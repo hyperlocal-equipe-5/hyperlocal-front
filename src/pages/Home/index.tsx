@@ -5,7 +5,7 @@ import CategoryBox from '../../components/CategoryBox';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
-import { Container } from './styled';
+import Container from '../../style/Container';
 
 const Home = () => {
 	const dispatch = useDispatch();

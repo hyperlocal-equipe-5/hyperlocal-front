@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../../components/Header/Header';
 import { type CreateRoleDto } from '../../../domain/dto/role/createRole-dto';

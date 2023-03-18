@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ProductButton from '../../components/ProductButton';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
-import { Container, Title } from './styled';
+import Container from '../../style/Container';
+import { Title } from './styled';
 
 const CategoryPage = () => {
 	const dispatch = useDispatch();
