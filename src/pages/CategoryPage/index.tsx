@@ -29,16 +29,14 @@ const CategoryPage = () => {
 		<Container>
 			<Title>{category ? category.name : ''}</Title>
 			{category ? (
-				category.products.map((product, key) => (
-					<>
-						<ProductButton
-							key={key}
-							name={product.image}
-							img={product.image}
-							ProductId={product.id}
-							ingredient={product.ingredients.map(ingredient => ingredient.id)}
-						/>
-					</>
+				category.products.map(product => (
+					<ProductButton
+						key={product.id}
+						name={product.image}
+						img={product.image}
+						ProductId={product.id}
+						ingredient={product.ingredients.map(ingredient => ingredient.id)}
+					/>
 				))
 			) : (
 				<></>

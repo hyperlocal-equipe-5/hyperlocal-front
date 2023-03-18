@@ -7,7 +7,7 @@ import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/t
 import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
 import { type OrderAdminRouterInterface } from '../../abstract/routers/order/orderRouterAdmin-interface';
 
-export class OrderRouter implements OrderAdminRouterInterface {
+export class OrderAdminRouter implements OrderAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
 	private readonly apiConnection: ApiConnectionInterface;
 	private readonly tokenHandler: TokenHandlerInterface;

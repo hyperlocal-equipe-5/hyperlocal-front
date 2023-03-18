@@ -6,8 +6,6 @@ import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
 import { Container } from './styled';
 
-const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
-
 const Home = () => {
 	const dispatch = useDispatch();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
