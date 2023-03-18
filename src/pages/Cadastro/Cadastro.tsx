@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Form } from '../../components/form/Form';
+import { makeUserRouterFactory } from '../../infra/api/factories/routers/user/userRouter-factory';
 
 enum ButonType {
 	submit = 'submit',
@@ -11,6 +12,8 @@ enum ButonType {
 const Cadastro: React.FC = () => {
 	const navigate = useNavigate();
 	const [error, setError] = useState('');
+	const { id } = useParams();
+
 	const handleLogin = (body: any, buttonName: any) => {
 		if (buttonName === 'Login') {
 			navigate('/login');
@@ -21,7 +24,20 @@ const Cadastro: React.FC = () => {
 				setError('');
 			}, 2000);
 		}
+
+		makeUserRouterFactory()
+			.createUser({
+				name: body.Nome,
+				email: body.Email,
+				password: body.Senha,
+				cellphone: body.Celular,
+				restaurant: id || '',
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
+
 	return (
 		<>
 			<Form

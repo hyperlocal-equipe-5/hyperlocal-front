@@ -16,14 +16,14 @@ const CategoryPage = () => {
 
 	useEffect(() => {
 		makeCategoryRouterFactory()
-			.getAllCategories('16d0d019-4bf4-4782-84aa-5b4fafaa3ab0')
+			.getAllCategories(id || '')
 			.then(data => {
 				dispatch(getCategories(data.body));
 			})
 			.catch(error => {
 				console.log(error);
 			});
-	}, []);
+	});
 
 	return (
 		<Container>

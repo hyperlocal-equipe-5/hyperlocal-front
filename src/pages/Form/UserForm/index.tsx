@@ -1,6 +1,9 @@
 import { useState, type FormEvent } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { type CreateUserDto } from '../../../domain/dto/user/createUser-dto';
+import { makeUserAdminRouterFactory } from '../../../infra/api/factories/routers/user/userAdminRouter-factory';
+import { type RootState } from '../../../store/store';
 import styled from './styled.module.scss';
 
 interface UserFormRequest {
@@ -8,12 +11,26 @@ interface UserFormRequest {
 }
 
 const UserForm = () => {
-	const [name, setName] = useState('');
-
+	const [userInfo, setUserInfo] = useState<CreateUserDto>({
+		name: '',
+		email: '',
+		password: '',
+		restaurant: '',
+	});
 	const navigate = useNavigate();
+	const { id } = useParams();
+	const roles = useSelector((state: RootState) => state.role.value);
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		makeUserAdminRouterFactory()
+			.createUser({
+				...userInfo,
+				restaurant: id || '',
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
 
 	const handleClick = (e: any) => {
@@ -33,14 +50,45 @@ const UserForm = () => {
 						type="text"
 						placeholder="Digite seu nome."
 						onChange={e => {
-							setName(e.target.value);
+							setUserInfo({ ...userInfo, name: e.target.value });
 						}}
 						autoComplete="off"
+						required
+					/>
+
+					<label>Email</label>
+					<input
+						id="name"
+						name="name"
+						type="text"
+						placeholder="Digite seu nome."
+						onChange={e => {
+							setUserInfo({ ...userInfo, email: e.target.value });
+						}}
+						autoComplete="off"
+						required
+					/>
+
+					<label>Senha</label>
+					<input
+						id="name"
+						name="name"
+						type="text"
+						placeholder="Digite seu nome."
+						onChange={e => {
+							setUserInfo({ ...userInfo, password: e.target.value });
+						}}
+						autoComplete="off"
+						required
 					/>
 
 					<label>Função</label>
 					<select name="select" id="select" onClick={handleClick}>
-						<option value=""></option>
+						{roles.map((role, index) => (
+							<option key={index} value={role.id}>
+								{role.name}
+							</option>
+						))}
 						<option value="new">Adicionar mais uma função</option>
 					</select>
 

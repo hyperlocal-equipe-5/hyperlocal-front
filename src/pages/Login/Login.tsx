@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Form } from '../../components/form/Form';
+import { makeAuthRouterFactory } from '../../infra/api/factories/routers/auth/authRouter-factory';
 
 enum ButonType {
 	submit = 'submit',
@@ -22,6 +23,15 @@ const Login: React.FC = () => {
 				setError('');
 			}, 2000);
 		}
+
+		makeAuthRouterFactory()
+			.login({
+				email: body.Email,
+				password: body.Senha,
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
 	return (
 		<Form

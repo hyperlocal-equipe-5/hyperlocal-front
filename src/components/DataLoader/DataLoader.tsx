@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeRestaurantRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantRouter-factory';
 import { getRestaurats } from '../../store/slices/restaurant-slice';
-import { RootState } from '../../store/store';
 
 export default function DataLoader() {
 	const dispatch = useDispatch();
@@ -19,7 +18,7 @@ export default function DataLoader() {
 
 	useEffect(() => {
 		loadRestaurants();
-	}, []);
+	});
 
 	return <></>;
 }

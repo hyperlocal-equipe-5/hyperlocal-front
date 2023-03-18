@@ -1,4 +1,6 @@
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import CheckBox from '../../components/CheckBox';
 import {
 	CartButton,
@@ -9,21 +11,26 @@ import {
 	PriceBox,
 	ProductTitle,
 } from './styled';
+import { type RootState } from '../../store/store';
 
 const ProductPage = () => {
+	const { id } = useParams();
+
+	const product = useSelector((state: RootState) =>
+		state.product.value.find(item => item.id === id),
+	);
+
 	return (
 		<Container>
-			<Cover src="" />
+			<Cover src={product?.image} />
 			<ContentBox>
-				<ProductTitle>teste</ProductTitle>
-				<CheckBox id="item1" name="Item 1" />
-				<CheckBox id="item2" name="Item 2" />
-				<CheckBox id="item3" name="Item 3" />
-				<CheckBox id="item4" name="Item 4" />
-				<CheckBox id="item5" name="Item 5" />
+				<ProductTitle>{product?.name}</ProductTitle>
+				{product?.ingredients.map((ingredient, index) => (
+					<CheckBox key={index} id={ingredient.id} name={ingredient.name} />
+				))}
 			</ContentBox>
 			<PriceBox>
-				<Price>R$ 22,54</Price>
+				<Price>R$ {product?.price}</Price>
 				<CartButton type="button">
 					<AiOutlineShoppingCart />
 				</CartButton>
