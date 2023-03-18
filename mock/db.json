@@ -1,0 +1,40 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "name": "robervan",
+      "email": "robervan@gmail.com"
+    },
+    {
+      "email": "qweqe",
+      "password": "qweqwe",
+      "id": 2
+    },
+    {
+      "email": "qweqwe",
+      "password": "qweq",
+      "id": 3
+    },
+    {
+      "email": "asddasd",
+      "id": 4
+    },
+    {
+      "email": "ddasdasd",
+      "password": "adsasdas",
+      "id": 5
+    },
+    {
+      "email": "werwr",
+      "id": 6
+    },
+    {
+      "password": "werwr",
+      "id": 7
+    },
+    {
+      "email": "werwwerw",
+      "id": 8
+    }
+  ]
+}
