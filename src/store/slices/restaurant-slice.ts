@@ -94,14 +94,8 @@ const restaurantSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getRestaurats(state) {
-			const router = makeRestaurantRouterFactory();
-			router
-				.getAllRestaurants()
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getRestaurats(state, action: PayloadAction<Restaurant[]>) {
+			state.value = action.payload;
 		},
 	},
 });

@@ -90,14 +90,8 @@ const tableSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'number');
 		},
 
-		getTables(state, action: PayloadAction<{ restaurant: string }>) {
-			const router = makeTableRouterFactory();
-			router
-				.getAllTables(action.payload.restaurant)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getTables(state, action: PayloadAction<Table[]>) {
+			state.value = action.payload;
 		},
 	},
 });

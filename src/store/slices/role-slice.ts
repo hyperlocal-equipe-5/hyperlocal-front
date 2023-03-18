@@ -93,14 +93,8 @@ const roleSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getRoles(state, action: PayloadAction<string>) {
-			const router = makeRoleAdminRouterFactory();
-			router
-				.getAllRoles(action.payload)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getRoles(state, action: PayloadAction<Role[]>) {
+			state.value = action.payload;
 		},
 	},
 });

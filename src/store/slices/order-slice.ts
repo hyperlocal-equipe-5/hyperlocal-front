@@ -90,14 +90,8 @@ const orderSlice = createSlice({
 			state.value = newState;
 		},
 
-		getOrders(state, action: PayloadAction<string>) {
-			const router = makeOrderAdminRouterFactory();
-			router
-				.getAllOrders(action.payload)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getOrders(state, action: PayloadAction<Order[]>) {
+			state.value = action.payload;
 		},
 	},
 });

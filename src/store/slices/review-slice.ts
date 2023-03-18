@@ -83,14 +83,8 @@ const reviewSlice = createSlice({
 			state.value = newState;
 		},
 
-		getReviews(state, action: PayloadAction<string>) {
-			const router = makeReviewAdminRouterFactory();
-			router
-				.getAllReviews(action.payload)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getReviews(state, action: PayloadAction<Review[]>) {
+			state.value = action.payload;
 		},
 	},
 });

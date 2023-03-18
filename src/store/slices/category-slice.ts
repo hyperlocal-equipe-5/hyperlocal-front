@@ -96,14 +96,8 @@ const categorySlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getCategories(state, action: PayloadAction<string>) {
-			const router = makeCategoryRouterFactory();
-			router
-				.getAllCategories(action.payload)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getCategories(state, action: PayloadAction<Category[]>) {
+			state.value = action.payload;
 		},
 	},
 });

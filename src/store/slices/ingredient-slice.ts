@@ -100,14 +100,8 @@ const ingredientSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getIngredients(state, action: PayloadAction<string>) {
-			const router = makeIngredientRouterFactory();
-			router
-				.getAllIngredients(action.payload)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getIngredients(state, action: PayloadAction<Ingredient[]>) {
+			state.value = action.payload;
 		},
 	},
 });

@@ -105,14 +105,8 @@ const productSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		getProducts(state, action: PayloadAction<string>) {
-			const router = makeProductRouterFactory();
-			router
-				.getAllProducts(action.payload)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getProducts(state, action: PayloadAction<Product[]>) {
+			state.value = action.payload;
 		},
 	},
 });

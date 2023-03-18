@@ -87,17 +87,8 @@ const userSlice = createSlice({
 			};
 		},
 
-		getUser(
-			state,
-			action: PayloadAction<{ userId: string; restaurantId: string }>,
-		) {
-			const userRouter = makeUserRouterFactory();
-			userRouter
-				.getOneUser(action.payload.userId, action.payload.restaurantId)
-				.then(data => {
-					state.value = data.body;
-				})
-				.catch(error => console.log(error.message));
+		getUser(state, action: PayloadAction<User>) {
+			state.value = action.payload;
 		},
 	},
 });
