@@ -100,6 +100,10 @@ const restaurantSlice = createSlice({
 	},
 });
 
-export const { createRestaurant, deleteRestaurant, updateRestaurant } =
-	restaurantSlice.actions;
+export const {
+	createRestaurant,
+	deleteRestaurant,
+	updateRestaurant,
+	getRestaurats,
+} = restaurantSlice.actions;
 export default restaurantSlice.reducer;

@@ -18,7 +18,7 @@ export interface ICategoryBox {
 const CategoryBox = ({ NameCategory, idCategory, Product }: ICategoryBox) => {
 	return (
 		<BoxContainer>
-			<TitleCategory to={`category/${idCategory}`}>
+			<TitleCategory to={`/category/${idCategory}`}>
 				{NameCategory}
 			</TitleCategory>
 			<ContentBox>

@@ -1,47 +1,40 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CategoryBox from '../../components/CategoryBox';
+import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
+import { getCategories } from '../../store/slices/category-slice';
+import { type RootState } from '../../store/store';
 import { Container } from './styled';
 
-const teste = [
-	{
-		ProductId: '1',
-		image: 'restaurante 1',
-		NameProduct: 'restaurante 1',
-	},
-	{
-		ProductId: '2',
-		image: 'restaurante 2',
-		NameProduct: 'restaurante 2',
-	},
-	{
-		ProductId: '3',
-		image: 'restaurante 3',
-		NameProduct: 'restaurante 3',
-	},
-	{
-		ProductId: '4',
-		image: 'restaurante 4',
-		NameProduct: 'restaurante 4',
-	},
-	{
-		ProductId: '5',
-		image: 'restaurante 5',
-		NameProduct: 'restaurante 5',
-	},
-	{
-		ProductId: '6',
-		image: 'restaurante 6',
-		NameProduct: 'restaurante 6',
-	},
-];
 const teste2 = ['Funcionários', 'Funcionários', 'Funcionários 3'];
 
 const Home = () => {
+	const dispatch = useDispatch();
+	const categoryStore = useSelector((state: RootState) => state.category.value);
+
+	useEffect(() => {
+		makeCategoryRouterFactory()
+			.getAllCategories('16d0d019-4bf4-4782-84aa-5b4fafaa3ab0')
+			.then(data => {
+				dispatch(getCategories(data.body));
+			})
+			.catch(error => console.log(error));
+	}, []);
+
 	return (
 		<Container>
-			<CategoryBox idCategory="1" NameCategory="Titulo" Product={teste} />
-			<CategoryBox idCategory="2" NameCategory="Titulo" Product={teste} />
-			<CategoryBox idCategory="3" NameCategory="Titulo" Product={teste} />
-			<CategoryBox idCategory="4" NameCategory="Titulo" Product={teste} />
+			{categoryStore.map((category, key) => (
+				<CategoryBox
+					key={key}
+					idCategory={category.id}
+					NameCategory={category.name}
+					Product={category.products.map(product => ({
+						ProductId: product.id,
+						image: product.image,
+						NameProduct: product.name,
+					}))}
+				/>
+			))}
 		</Container>
 	);
 };

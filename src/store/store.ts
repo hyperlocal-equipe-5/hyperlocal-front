@@ -7,12 +7,10 @@ import restaurantSlice from './slices/restaurant-slice';
 import reviewSlice from './slices/review-slice';
 import roleSlice from './slices/role-slice';
 import tableSlice from './slices/table-slice';
-import testProductSlice from './slices/testProduct.slice';
 import userSlice from './slices/user-slice';
 
 export const store = configureStore({
 	reducer: {
-		testProducts: testProductSlice,
 		category: categorySlice,
 		ingredient: ingredientSlice,
 		order: orderSlice,
