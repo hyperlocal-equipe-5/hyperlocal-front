@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CategoryBox from '../../components/CategoryBox';
+import { ImageInput } from '../../components/ImageInput/ImageInput';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
@@ -19,22 +20,26 @@ const Home = () => {
 				dispatch(getCategories(data.body));
 			})
 			.catch(error => console.log(error));
-	});
+	}, []);
 
 	return (
 		<Container>
-			{categoryStore.map((category, key) => (
-				<CategoryBox
-					key={key}
-					idCategory={category.id}
-					NameCategory={category.name}
-					Product={category.products.map(product => ({
-						ProductId: product.id,
-						image: product.image,
-						NameProduct: product.name,
-					}))}
-				/>
-			))}
+			{categoryStore && categoryStore.length > 0 ? (
+				categoryStore.map((category, key) => (
+					<CategoryBox
+						key={key}
+						idCategory={category.id}
+						NameCategory={category.name}
+						Product={category.products.map(product => ({
+							ProductId: product.id,
+							image: product.image,
+							NameProduct: product.name,
+						}))}
+					/>
+				))
+			) : (
+				<></>
+			)}
 		</Container>
 	);
 };
