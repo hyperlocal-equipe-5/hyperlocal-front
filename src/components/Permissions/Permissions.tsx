@@ -1,30 +1,40 @@
 import styled from './styled.module.scss';
-import { type PermissionsResponse } from './type';
 
-interface PermissionsProps {
-	permission: PermissionsResponse;
+interface PermissionsResponse {
+	name: string;
+	read: string;
+	create: string;
+	edit: string;
+	exclude: string;
 }
-const Permissions = ({ permission }: PermissionsProps) => {
+
+const Permissions = ({
+	name,
+	create,
+	read,
+	edit,
+	exclude,
+}: PermissionsResponse) => {
 	return (
 		<>
 			<div className={styled.box_permissions}>
-				<h2>{permission.name}</h2>
+				<h2>{name}</h2>
 				<div className={styled.checkbox}>
 					<label className={styled.label}>
 						<input type="checkbox" className={styled.box} />
-						{permission.ver}
+						{read}
 					</label>
 					<label className={styled.label}>
 						<input type="checkbox" className={styled.box} />
-						{permission.criar}
+						{create}
 					</label>
 					<label className={styled.label}>
 						<input type="checkbox" className={styled.box} />
-						{permission.editar}
+						{edit}
 					</label>
 					<label className={styled.label}>
 						<input type="checkbox" className={styled.box} />
-						{permission.deletar}
+						{exclude}
 					</label>
 				</div>
 			</div>

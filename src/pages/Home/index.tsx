@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CategoryBox from '../../components/CategoryBox';
@@ -11,6 +11,7 @@ const Home = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
+	const [anime, setAnime] = useState(true);
 
 	useEffect(() => {
 		makeCategoryRouterFactory()
@@ -19,7 +20,7 @@ const Home = () => {
 				dispatch(getCategories(data.body));
 			})
 			.catch(error => console.log(error));
-	});
+	}, []);
 
 	return (
 		<Container>

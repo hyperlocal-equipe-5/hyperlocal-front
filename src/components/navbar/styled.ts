@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
 
-export const Container = tw.div`
-
-`;
-
 export const NavBox = tw.div`
   flex
   w-full

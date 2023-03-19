@@ -1,11 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { ArraySort } from '../utils/array-sorter';
-import { type Category } from '../../domain/entities/category';
-import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { type CreateCategoryDto } from '../../domain/dto/category/createCategory-dto';
 import { type UpdateCategoryDto } from '../../domain/dto/category/updateCategory-dto';
-import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
+import { type Category } from '../../domain/entities/category';
 import { makeCategoryAdminRouterFactory } from '../../infra/api/factories/routers/category/categoryAdminRouter-factory';
+import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
+import { ArraySort } from '../utils/array-sorter';
 
 interface InitialState {
 	value: Category[];

@@ -6,7 +6,6 @@ import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/cat
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
 import Container from '../../style/Container';
-import { Title } from './styled';
 
 const CategoryPage = () => {
 	const dispatch = useDispatch();
@@ -28,7 +27,9 @@ const CategoryPage = () => {
 
 	return (
 		<Container>
-			<Title>{category ? category.name : ''}</Title>
+			<h1 className="text-details text-4xl font-semibold px-4 mobile:w-full border-b-[1px] border-details border-solid">
+				{category ? category.name : ''}
+			</h1>
 			{category ? (
 				category.products.map(product => (
 					<ProductButton
