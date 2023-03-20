@@ -4,8 +4,9 @@ import { type HttpResponse } from '../../../../domain/dto/http/http-response';
 import { type RequestPasswordRecoveryDto } from '../../../../domain/dto/passwordRecovery/requestPasswordRecovery-dto';
 import { type User } from '../../../../domain/entities/user';
 import { type UpdatePasswordDto } from '../../../../domain/dto/passwordRecovery/updatePassword-dto';
+import { type PasswordRecoveryRouterInterface } from '../../abstract/routers/passwordRecovery/passwordRecoveryRouter-interface';
 
-export class PasswordRecoveryRouter {
+export class PasswordRecoveryRouter implements PasswordRecoveryRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
 	private readonly apiConnection: ApiConnectionInterface;
 
