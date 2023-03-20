@@ -31,5 +31,6 @@ module.exports = {
 		'@typescript-eslint/triple-slash-reference': 'off',
 		'@typescript-eslint/no-confusing-void-expression': 'off',
 		'@typescript-eslint/no-unused-vars': 'off',
+		'@typescript-eslint/restrict-template-expressions': 'off',
 	},
 };
