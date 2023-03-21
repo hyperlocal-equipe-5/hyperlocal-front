@@ -1,5 +1,4 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import CategoryPage from '../pages/CategoryPage';
 import Form from '../pages/Form';
 import RestaurantForm from '../pages/Form/RestaurantForm';
@@ -8,6 +7,7 @@ import UserForm from '../pages/Form/UserForm';
 import Home from '../pages/Home';
 import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
+import Navbar from '../components/Navbar';
 
 const App = () => {
 	return (
@@ -25,7 +25,7 @@ const Routes = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: '/',
+				path: '/:restaurantId',
 				element: <Home />,
 			},
 			{

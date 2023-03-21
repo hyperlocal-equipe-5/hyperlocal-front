@@ -2,7 +2,6 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateOrderDto } from '../../domain/dto/order/createOrder-dto';
 import { type UpdateOrderDto } from '../../domain/dto/order/updateOrder-dto';
 import { type Order } from '../../domain/entities/order';
-import { makeOrderRouterFactory } from '../../infra/api/factories/routers/order/orderRouter-factory';
 import { makeOrderAdminRouterFactory } from '../../infra/api/factories/routers/order/orderRouterAdmin-factory';
 import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 
@@ -45,13 +44,10 @@ const orderSlice = createSlice({
 			state.value = newState;
 		},
 
-		deleteOrder(
-			state,
-			action: PayloadAction<{ orderId: string; restaurantId: string }>,
-		) {
+		deleteOrder(state, action: PayloadAction<{ orderId: string }>) {
 			const router = makeOrderAdminRouterFactory();
 			router
-				.deleteOrder(action.payload.orderId, action.payload.restaurantId)
+				.deleteOrder(action.payload.orderId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);

@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { RestaurantIdHandler } from '../../helpers/handlers/restaurantId/restaurantIdHandler-helper';
+import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { makeRestaurantRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantRouter-factory';
+import { getCategories } from '../../store/slices/category-slice';
 import { getRestaurats } from '../../store/slices/restaurant-slice';
 
 export default function DataLoader() {
@@ -12,13 +15,29 @@ export default function DataLoader() {
 			.getAllRestaurants()
 			.then(restaurants => {
 				dispatch(getRestaurats(restaurants.body));
+
+				const restaurantIdParameter = location.pathname
+					.replace('/', '')
+					.replace('/', '');
+				const selectedRestaurant = restaurants.body.find(item =>
+					item.id.includes(restaurantIdParameter),
+				);
+
+				new RestaurantIdHandler().store(selectedRestaurant?.id || '');
+
+				makeCategoryRouterFactory()
+					.getAllCategories()
+					.then(data => {
+						dispatch(getCategories(data.body));
+					})
+					.catch(error => console.log(error));
 			})
 			.catch(error => console.log(error));
 	}
 
 	useEffect(() => {
 		loadRestaurants();
-	});
+	}, []);
 
 	return <></>;
 }

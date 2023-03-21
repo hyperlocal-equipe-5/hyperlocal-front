@@ -5,10 +5,7 @@ import { type Product } from '../../../../../domain/entities/product';
 
 export interface ProductAdminRouterInterface {
 	createProduct: (body: CreateProductDto) => Promise<HttpResponse<Product>>;
-	deleteProduct: (
-		productId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Product>>;
+	deleteProduct: (productId: string) => Promise<HttpResponse<Product>>;
 	updateProduct: (
 		productId: string,
 		body: UpdateProductDto,

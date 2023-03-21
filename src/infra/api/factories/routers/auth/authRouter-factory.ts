@@ -1,5 +1,5 @@
 import { HttpRequestAdapter } from '../../../../../helpers/adapters/httpRequest-adapter';
-import { TokenHandler } from '../../../../../helpers/token/tokenHandler-helper';
+import { TokenHandler } from '../../../../../helpers/handlers/token/tokenHandler-helper';
 import { type AuthRouterInterface } from '../../../abstract/routers/auth/authRouter-interface';
 import { ApiConnection } from '../../../connection/apiConnection';
 import { AuthRouter } from '../../../routers/auth/auth-router';

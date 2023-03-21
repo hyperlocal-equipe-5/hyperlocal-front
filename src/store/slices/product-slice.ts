@@ -49,13 +49,10 @@ const productSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteProduct(
-			state,
-			action: PayloadAction<{ productId: string; restaurantId: string }>,
-		) {
+		deleteProduct(state, action: PayloadAction<{ productId: string }>) {
 			const router = makeProductAdminRouterFactory();
 			router
-				.deleteProduct(action.payload.productId, action.payload.restaurantId)
+				.deleteProduct(action.payload.productId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);

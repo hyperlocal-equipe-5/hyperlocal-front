@@ -16,7 +16,7 @@ const CategoryPage = () => {
 
 	useEffect(() => {
 		makeCategoryRouterFactory()
-			.getAllCategories(id || '')
+			.getAllCategories()
 			.then(data => {
 				dispatch(getCategories(data.body));
 			})

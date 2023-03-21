@@ -3,7 +3,7 @@ import { type CreateRestaurantDto } from '../../../../domain/dto/restaurant/crea
 import { type UpdateRestaurantDto } from '../../../../domain/dto/restaurant/updateRestaurant-dto';
 import { type Restaurant } from '../../../../domain/entities/restaurant';
 import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
-import { type TokenHandlerInterface } from '../../../../helpers/abstract/token/tokenHandler-helper-interface';
+import { type TokenHandlerInterface } from '../../../../helpers/abstract/handlers/tokenHandler-helper-interface';
 import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
 import { type RestaurantRouterAdminInterface } from '../../abstract/routers/restaurant/restaurantRouterAdmin-interface';
 
@@ -35,27 +35,25 @@ export class RestaurantAdminRouter implements RestaurantRouterAdminInterface {
 		);
 	}
 
-	public async deleteRestaurant(
-		restaurantId: string,
-	): Promise<HttpResponse<Restaurant>> {
+	public async deleteRestaurant(id: string): Promise<HttpResponse<Restaurant>> {
 		const apiLink = this.apiConnection.getLink();
 		const authentication = this.tokenHandler.getAuthorization();
 
 		return await this.httpRequestAdapter.delete(
-			apiLink + `/admin/restaurant/${restaurantId}`,
+			apiLink + `/admin/restaurant/${id}`,
 			authentication,
 		);
 	}
 
 	public async updateRestaurant(
-		restaurantId: string,
+		id: string,
 		body: UpdateRestaurantDto,
 	): Promise<HttpResponse<Restaurant>> {
 		const apiLink = this.apiConnection.getLink();
 		const authentication = this.tokenHandler.getAuthorization();
 
 		return await this.httpRequestAdapter.patch(
-			apiLink + `/admin/restaurant/${restaurantId}`,
+			apiLink + `/admin/restaurant/${id}`,
 			body,
 			authentication,
 		);

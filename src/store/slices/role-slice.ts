@@ -43,13 +43,10 @@ const roleSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteRole(
-			state,
-			action: PayloadAction<{ roleId: string; restaurantId: string }>,
-		) {
+		deleteRole(state, action: PayloadAction<{ roleId: string }>) {
 			const router = makeRoleAdminRouterFactory();
 			router
-				.deleteRole(action.payload.roleId, action.payload.restaurantId)
+				.deleteRole(action.payload.roleId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);

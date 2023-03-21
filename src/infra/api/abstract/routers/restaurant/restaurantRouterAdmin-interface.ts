@@ -7,9 +7,9 @@ export interface RestaurantRouterAdminInterface {
 	createRestaurant: (
 		body: CreateRestaurantDto,
 	) => Promise<HttpResponse<Restaurant>>;
-	deleteRestaurant: (restaurantId: string) => Promise<HttpResponse<Restaurant>>;
+	deleteRestaurant: (id: string) => Promise<HttpResponse<Restaurant>>;
 	updateRestaurant: (
-		restaurantId: string,
+		id: string,
 		body: UpdateRestaurantDto,
 	) => Promise<HttpResponse<Restaurant>>;
 }

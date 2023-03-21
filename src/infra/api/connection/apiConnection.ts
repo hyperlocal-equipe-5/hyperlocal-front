@@ -4,7 +4,7 @@ export class ApiConnection implements ApiConnectionInterface {
 	private readonly apiLink: string;
 
 	public constructor() {
-		this.apiLink = 'http://localhost:7777';
+		this.apiLink = 'https://hyperlocal-back-production-fb0e.up.railway.app';
 	}
 
 	public getLink(): string {
