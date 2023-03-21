@@ -76,7 +76,6 @@ const RoleForm = () => {
 						autoComplete="off"
 						required
 					/>
-
 					<h2 className={styled.titulo}>Permições:</h2>
 
 					<div className={styled.box_permissions}>
@@ -660,7 +659,7 @@ const RoleForm = () => {
 							</label>
 						</div>
 					</div>
-
+					<h2 className={styled.titulo}>Permições</h2>
 					<button type="submit">Cadastrar</button>
 				</form>
 			</div>

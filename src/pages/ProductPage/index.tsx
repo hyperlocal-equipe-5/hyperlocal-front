@@ -4,15 +4,9 @@ import { useParams } from 'react-router-dom';
 import CheckBox from '../../components/CheckBox';
 import { type RootState } from '../../store/store';
 
-import Button from '../../style/Button';
+import Button, { ButtonType } from '../../style/Button';
 import Container from '../../style/Container';
 import { Cover, PriceBox } from './styled';
-
-enum ButtonType {
-	submit = 'submit',
-	reset = 'reset',
-	button = 'button',
-}
 
 const ProductPage = () => {
 	const { id } = useParams();

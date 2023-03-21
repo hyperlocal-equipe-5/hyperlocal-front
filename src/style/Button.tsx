@@ -1,20 +1,19 @@
 interface ButtonProps {
 	children: React.ReactNode;
-	type: string;
+	type: ButtonType;
 }
 
-enum ButtonType {
+export enum ButtonType {
 	submit = 'submit',
 	reset = 'reset',
 	button = 'button',
 }
-
-const Button = ({ children }: ButtonProps, type: ButtonType) => {
+const Button = ({ children, type }: ButtonProps) => {
 	return (
 		<>
 			<button
 				type={type}
-				className="text-[#fefbff] text-3xl mobile:flex mobile:items-center mobile:justify-center mobile:w-auto mobile:h-auto mobile:px-5 mobile:py-2 mobile:bg-[#75ba12] mobile:rounded-xl">
+				className="text-textColor text-3xl flex items-center justify-center w-auto h-auto px-5 py-2 bg-details rounded-xl">
 				{children}
 			</button>
 		</>
