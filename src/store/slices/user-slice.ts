@@ -45,13 +45,10 @@ const userSlice = createSlice({
 			};
 		},
 
-		deleteUser(
-			state,
-			action: PayloadAction<{ userId: string; restaurantId: string }>,
-		) {
+		deleteUser(state, action: PayloadAction<{ userId: string }>) {
 			const userRouter = makeUserRouterFactory();
 			userRouter
-				.deleteUser(action.payload.userId, action.payload.restaurantId)
+				.deleteUser(action.payload.userId)
 				.catch(error => console.log(error.message));
 
 			state.value = {

@@ -1,5 +1,5 @@
-import Navbar from '../../components/Navbar';
 import Container from '../../style/Container';
+import Navbar from '../../components/Navbar';
 
 const ErrorPage = () => {
 	return (

@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CategoryBox from '../../components/CategoryBox';
-import { ImageInput } from '../../components/ImageInput/ImageInput';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
@@ -12,11 +11,10 @@ const Home = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
-	const [anime, setAnime] = useState(true);
 
 	useEffect(() => {
 		makeCategoryRouterFactory()
-			.getAllCategories(id || '')
+			.getAllCategories()
 			.then(data => {
 				dispatch(getCategories(data.body));
 			})

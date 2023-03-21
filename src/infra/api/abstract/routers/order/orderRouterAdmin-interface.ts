@@ -4,18 +4,12 @@ import { type UpdateOrderDto } from '../../../../../domain/dto/order/updateOrder
 import { type Order } from '../../../../../domain/entities/order';
 
 export interface OrderAdminRouterInterface {
-	getOneOrder: (
-		orderId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Order>>;
-	getAllOrders: (restaurantId: string) => Promise<HttpResponse<Order[]>>;
+	getOneOrder: (orderId: string) => Promise<HttpResponse<Order>>;
+	getAllOrders: () => Promise<HttpResponse<Order[]>>;
 	updateOrder: (
 		orderId: string,
 		body: UpdateOrderDto,
 	) => Promise<HttpResponse<Order>>;
-	deleteOrder: (
-		orderId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Order>>;
+	deleteOrder: (orderId: string) => Promise<HttpResponse<Order>>;
 	createOrder: (body: CreateOrderDto) => Promise<HttpResponse<Order>>;
 }

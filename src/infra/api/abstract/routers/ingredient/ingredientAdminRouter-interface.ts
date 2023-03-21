@@ -7,10 +7,7 @@ export interface IngredientAdminRouterInterface {
 	createIngredient: (
 		body: CreateIngredientDto,
 	) => Promise<HttpResponse<Ingredient>>;
-	deleteIngredient: (
-		ingredientId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Ingredient>>;
+	deleteIngredient: (ingredientId: string) => Promise<HttpResponse<Ingredient>>;
 	updateIngredient: (
 		ingredientId: string,
 		body: UpdateIngredientDto,

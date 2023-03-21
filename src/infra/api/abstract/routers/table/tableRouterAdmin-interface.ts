@@ -5,10 +5,7 @@ import { type Table } from '../../../../../domain/entities/table';
 
 export interface TableAdminRouterInterface {
 	createTable: (body: CreateTableDto) => Promise<HttpResponse<Table>>;
-	deleteTable: (
-		tableId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Table>>;
+	deleteTable: (tableId: string) => Promise<HttpResponse<Table>>;
 	updateTable: (
 		tableId: string,
 		body: UpdateTableDto,

@@ -41,13 +41,10 @@ const tableSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'number');
 		},
 
-		deleteTable(
-			state,
-			action: PayloadAction<{ tableId: string; restaurantId: string }>,
-		) {
+		deleteTable(state, action: PayloadAction<{ tableId: string }>) {
 			const router = makeTableAdminRouterFactory();
 			router
-				.deleteTable(action.payload.tableId, action.payload.restaurantId)
+				.deleteTable(action.payload.tableId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);

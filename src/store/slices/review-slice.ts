@@ -43,13 +43,10 @@ const reviewSlice = createSlice({
 			state.value = newState;
 		},
 
-		deleteReview(
-			state,
-			action: PayloadAction<{ reviewId: string; restaurantId: string }>,
-		) {
+		deleteReview(state, action: PayloadAction<{ reviewId: string }>) {
 			const router = makeReviewAdminRouterFactory();
 			router
-				.deleteReview(action.payload.reviewId, action.payload.restaurantId)
+				.deleteReview(action.payload.reviewId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);
@@ -58,7 +55,7 @@ const reviewSlice = createSlice({
 				.catch(error => console.log(error.message));
 
 			const newState = state.value.filter(
-				category => category.id !== action.payload.restaurantId,
+				category => category.id !== action.payload.reviewId,
 			);
 			state.value = newState;
 		},

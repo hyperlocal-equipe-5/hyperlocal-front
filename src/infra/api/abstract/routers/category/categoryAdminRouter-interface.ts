@@ -5,10 +5,7 @@ import { type Category } from '../../../../../domain/entities/category';
 
 export interface CategoryAdminRouterInterface {
 	createCategory: (body: CreateCategoryDto) => Promise<HttpResponse<Category>>;
-	deleteCategory: (
-		categoryId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<Category>>;
+	deleteCategory: (categoryId: string) => Promise<HttpResponse<Category>>;
 	updateCategory: (
 		categoryId: string,
 		body: UpdateCategoryDto,

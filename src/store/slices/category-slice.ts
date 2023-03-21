@@ -43,13 +43,10 @@ const categorySlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteCategory(
-			state,
-			action: PayloadAction<{ categoryId: string; restaurantId: string }>,
-		) {
+		deleteCategory(state, action: PayloadAction<{ categoryId: string }>) {
 			const router = makeCategoryAdminRouterFactory();
 			router
-				.deleteCategory(action.payload.categoryId, action.payload.restaurantId)
+				.deleteCategory(action.payload.categoryId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);

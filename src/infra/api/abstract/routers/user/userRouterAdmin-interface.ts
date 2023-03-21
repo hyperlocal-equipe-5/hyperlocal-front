@@ -5,17 +5,11 @@ import { type User } from '../../../../../domain/entities/user';
 
 export interface UserAdminRouterInterface {
 	createUser: (body: CreateUserDto) => Promise<HttpResponse<User>>;
-	deleteUser: (
-		userId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<User>>;
+	deleteUser: (userId: string) => Promise<HttpResponse<User>>;
 	updateUser: (
 		userId: string,
 		body: UpdateUserDto,
 	) => Promise<HttpResponse<User>>;
-	getOneUser: (
-		userId: string,
-		restaurantId: string,
-	) => Promise<HttpResponse<User>>;
-	getAllUsers: (restaurantId: string) => Promise<HttpResponse<User[]>>;
+	getOneUser: (userId: string) => Promise<HttpResponse<User>>;
+	getAllUsers: () => Promise<HttpResponse<User[]>>;
 }

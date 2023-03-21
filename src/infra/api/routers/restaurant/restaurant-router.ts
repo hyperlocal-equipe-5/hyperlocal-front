@@ -16,14 +16,10 @@ export class RestaurantRouter implements RestaurantRouterInterface {
 		this.apiConnection = apiConnection;
 	}
 
-	public async getOneRestaurant(
-		restaurantId: string,
-	): Promise<HttpResponse<Restaurant>> {
+	public async getOneRestaurant(id: string): Promise<HttpResponse<Restaurant>> {
 		const apiLink = this.apiConnection.getLink();
 
-		return await this.httpRequestAdapter.get(
-			apiLink + `/restaurant/${restaurantId}`,
-		);
+		return await this.httpRequestAdapter.get(apiLink + `/restaurant/${id}`);
 	}
 
 	public async getAllRestaurants(): Promise<HttpResponse<Restaurant[]>> {

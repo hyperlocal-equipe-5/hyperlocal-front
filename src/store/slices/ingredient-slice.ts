@@ -4,7 +4,6 @@ import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { type Ingredient } from '../../domain/entities/ingredient';
 import { type CreateIngredientDto } from '../../domain/dto/ingredient/createIngredient-dto';
 import { type UpdateIngredientDto } from '../../domain/dto/ingredient/updateIngredient-dto';
-import { makeIngredientRouterFactory } from '../../infra/api/factories/routers/ingredient/ingredientRouter-factory';
 import { makeIngredientAdminRouterFactory } from '../../infra/api/factories/routers/ingredient/IngredientAdminRouter-factory';
 
 interface InitialState {
@@ -45,16 +44,10 @@ const ingredientSlice = createSlice({
 			state.value = ArraySort.sort(newState, 'name');
 		},
 
-		deleteIngredient(
-			state,
-			action: PayloadAction<{ ingredientId: string; restaurantId: string }>,
-		) {
+		deleteIngredient(state, action: PayloadAction<{ ingredientId: string }>) {
 			const router = makeIngredientAdminRouterFactory();
 			router
-				.deleteIngredient(
-					action.payload.ingredientId,
-					action.payload.restaurantId,
-				)
+				.deleteIngredient(action.payload.ingredientId)
 				.then(data => {
 					const currentState = state.value;
 					currentState.push(data.body);

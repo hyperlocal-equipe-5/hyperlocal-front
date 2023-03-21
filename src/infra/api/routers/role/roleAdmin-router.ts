@@ -4,22 +4,26 @@ import { type HttpResponse } from '../../../../domain/dto/http/http-response';
 import { type CreateRoleDto } from '../../../../domain/dto/role/createRole-dto';
 import { type Role } from '../../../../domain/entities/role';
 import { type UpdateRoleDto } from '../../../../domain/dto/role/updateRole-dto';
-import { type TokenHandler } from '../../../../helpers/token/tokenHandler-helper';
+import { type TokenHandler } from '../../../../helpers/handlers/token/tokenHandler-helper';
 import { type RoleAdminRouterInterface } from '../../abstract/routers/role/roleRouterAdmin-interface';
+import { type RestaurantIdHandlerInterface } from '../../../../helpers/abstract/handlers/restaurantIdHandler-helper-interface';
 
 export class RoleAdminRouter implements RoleAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;
 	private readonly apiConnection: ApiConnectionInterface;
 	private readonly tokenHandler: TokenHandler;
+	private readonly restaurantIdHandler: RestaurantIdHandlerInterface;
 
 	public constructor(
 		httpRequestAdapter: HttpRequestAdapterInterface,
 		apiConnection: ApiConnectionInterface,
 		tokenHandler: TokenHandler,
+		restaurantIdHandler: RestaurantIdHandlerInterface,
 	) {
 		this.httpRequestAdapter = httpRequestAdapter;
 		this.apiConnection = apiConnection;
 		this.tokenHandler = tokenHandler;
+		this.restaurantIdHandler = restaurantIdHandler;
 	}
 
 	public async createRole(body: CreateRoleDto): Promise<HttpResponse<Role>> {
@@ -33,12 +37,10 @@ export class RoleAdminRouter implements RoleAdminRouterInterface {
 		);
 	}
 
-	public async deleteRole(
-		roleId: string,
-		restaurantId: string,
-	): Promise<HttpResponse<Role>> {
+	public async deleteRole(roleId: string): Promise<HttpResponse<Role>> {
 		const apiLink = this.apiConnection.getLink();
 		const authorization = this.tokenHandler.getAuthorization();
+		const restaurantId = this.restaurantIdHandler.get();
 
 		return await this.httpRequestAdapter.delete(
 			apiLink + `/admin/role/${roleId}?restaurant=${restaurantId}`,
@@ -60,12 +62,10 @@ export class RoleAdminRouter implements RoleAdminRouterInterface {
 		);
 	}
 
-	public async getOneRole(
-		roleId: string,
-		restaurantId: string,
-	): Promise<HttpResponse<Role>> {
+	public async getOneRole(roleId: string): Promise<HttpResponse<Role>> {
 		const apiLink = this.apiConnection.getLink();
 		const authorization = this.tokenHandler.getAuthorization();
+		const restaurantId = this.restaurantIdHandler.get();
 
 		return await this.httpRequestAdapter.get(
 			apiLink + `/admin/role/${roleId}?restaurant=${restaurantId}`,
@@ -73,11 +73,10 @@ export class RoleAdminRouter implements RoleAdminRouterInterface {
 		);
 	}
 
-	public async getAllRoles(
-		restaurantId: string,
-	): Promise<HttpResponse<Role[]>> {
+	public async getAllRoles(): Promise<HttpResponse<Role[]>> {
 		const apiLink = this.apiConnection.getLink();
 		const authorization = this.tokenHandler.getAuthorization();
+		const restaurantId = this.restaurantIdHandler.get();
 
 		return await this.httpRequestAdapter.get(
 			apiLink + `/admin/role?restaurant=${restaurantId}`,
