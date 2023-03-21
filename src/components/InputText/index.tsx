@@ -6,11 +6,11 @@ interface IInput {
 const InputText = ({ name, OnChange }: IInput) => {
 	return (
 		<div className="flex flex-col">
-			<h1 className="text-textColor py-2">{name}</h1>
+			<h1 className="text-details py-3 text-2xl font-semibold">{name}</h1>
 			<input
-				onChange={e => OnChange(e)}
+				onChange={(e: any) => OnChange(e)}
 				type="text"
-				className="bg-white h-8 w-full rounded-md text-bg px-2"
+				className="bg-white h-8 w-full rounded-xl text-bg px-2"
 				placeholder={`Criar um novo ${name}`}
 			/>
 		</div>

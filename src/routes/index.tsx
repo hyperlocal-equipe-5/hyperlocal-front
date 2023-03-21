@@ -41,6 +41,10 @@ const Routes = createBrowserRouter([
 				element: <Form />,
 			},
 			{
+				path: '/add/restaurant',
+				element: <RestaurantForm />,
+			},
+			{
 				path: '/add/user',
 				element: <UserForm />,
 			},

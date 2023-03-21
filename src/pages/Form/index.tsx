@@ -1,3 +1,4 @@
+import {} from 'react';
 import { Box, Container, ContentAddBox, Title } from './styled';
 
 const Form = () => {
@@ -5,7 +6,7 @@ const Form = () => {
 		<Container>
 			<Title>Adicionar</Title>
 			<ContentAddBox>
-				<Box to="/add">Restaurante</Box>
+				<Box to="/add/restaurant">Restaurante</Box>
 				<Box to="/add">Categoria</Box>
 				<Box to="/add">Produto</Box>
 				<Box to="/add/user">Usuário</Box>
