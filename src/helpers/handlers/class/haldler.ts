@@ -16,8 +16,8 @@ export class Handler implements HandlerInterface {
 	}
 
 	public get(): string {
-		const token = localStorage.getItem(this.handlerName) ?? '';
+		const item = localStorage.getItem(this.handlerName) ?? '';
 
-		return `Bearer ${token}`;
+		return item;
 	}
 }

@@ -1,25 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import CategoryBox from '../../components/CategoryBox';
-import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
-import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
 import Container from '../../style/Container';
 
 const Home = () => {
-	const dispatch = useDispatch();
-	const { id } = useParams();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
-
-	useEffect(() => {
-		makeCategoryRouterFactory()
-			.getAllCategories()
-			.then(data => {
-				dispatch(getCategories(data.body));
-			})
-			.catch(error => console.log(error));
-	}, []);
 
 	return (
 		<Container>
