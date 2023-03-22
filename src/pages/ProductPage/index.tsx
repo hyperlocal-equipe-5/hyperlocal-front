@@ -1,11 +1,12 @@
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import CheckBox from '../../components/CheckBox';
 import { type RootState } from '../../store/store';
 
-import Button, { ButtonType } from '../../style/Button';
+import Form from '../../components/Form';
+import Button from '../../style/Button';
 import Container from '../../style/Container';
+import { ButtonType } from '../../types/ButtonTypes';
 import { Cover, PriceBox } from './styled';
 
 const ProductPage = () => {
@@ -23,12 +24,17 @@ const ProductPage = () => {
 		<Container>
 			<Cover src={product?.image} />
 			<div className="flex flex-col justify-start items-start  mobile:min-h-[15rem] mobile:max-h-full mobile:w-full mobile:p-4">
-				<h1 className="text-3xl text-[#75ba12] capitalize  mobile:pb-4">
+				<h1 className="text-3xl text-details capitalize  mobile:pb-4">
 					{product?.name}
 				</h1>
-				{product?.ingredients.map((el, i) => (
-					<CheckBox key={i} id={el.id} name={el.name} OnChange={HandleChange} />
-				))}
+				<Form
+					ICheckbox={product?.ingredients.map(el => ({
+						id: el.id,
+						name: el.name,
+					}))}
+					Function={HandleChange}
+				/>
+				{}
 			</div>
 			<PriceBox>
 				<p className="text-[#fefbff] text-2xl font-black">

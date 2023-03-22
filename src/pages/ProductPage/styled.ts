@@ -1,12 +1,5 @@
 import tw from 'tailwind-styled-components';
 
-export const Container = tw.div`
-  flex flex-col items-center justify-between
-  w-full min-h-screen max-h-full
-  py-16 mobile:overflow-x-hidden
-  bg-[#010000]
-`;
-
 export const Cover = tw.img`
   mobile:bg-cover mobile:h-64 mobile:w-full mobile:rounded-b-[15%]
   bg-white

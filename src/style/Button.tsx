@@ -1,19 +1,17 @@
+import { type ButtonType } from '../types/ButtonTypes';
+
 interface ButtonProps {
 	children: React.ReactNode;
 	type: ButtonType;
+	styleInline?: string;
 }
 
-export enum ButtonType {
-	submit = 'submit',
-	reset = 'reset',
-	button = 'button',
-}
-const Button = ({ children, type }: ButtonProps) => {
+const Button = ({ children, type, styleInline }: ButtonProps) => {
 	return (
 		<>
 			<button
 				type={type}
-				className="text-textColor text-3xl flex items-center justify-center w-auto h-auto px-5 py-2 bg-details rounded-xl">
+				className={`text-textColor text-xl flex items-center justify-center w-auto h-auto px-5 py-2 bg-details rounded-xl ${styleInline}`}>
 				{children}
 			</button>
 		</>

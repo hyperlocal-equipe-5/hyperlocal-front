@@ -1,13 +1,14 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Add from '../pages/Add';
+import AddResutaurant from '../pages/Add/AddRestaurant';
 import CategoryPage from '../pages/CategoryPage';
-import Form from '../pages/Form';
-import RestaurantForm from '../pages/Form/RestaurantForm';
-import RoleForm from '../pages/Form/RoleForm';
-import UserForm from '../pages/Form/UserForm';
+import RestaurantForm from '../pages/Form11/RestaurantForm';
+import RoleForm from '../pages/Form11/RoleForm';
+import UserForm from '../pages/Form11/UserForm';
 import Home from '../pages/Home';
 import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
-import Navbar from '../components/Navbar';
 
 const App = () => {
 	return (
@@ -38,11 +39,11 @@ const Routes = createBrowserRouter([
 			},
 			{
 				path: '/add',
-				element: <Form />,
+				element: <Add />,
 			},
 			{
 				path: '/add/restaurant',
-				element: <RestaurantForm />,
+				element: <AddResutaurant />,
 			},
 			{
 				path: '/add/user',
