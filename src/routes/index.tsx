@@ -1,7 +1,10 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Add from '../pages/Add';
-import AddResutaurant from '../pages/Add/AddRestaurant';
+import AddCategory from '../pages/Add/AddCategory';
+import AddOrder from '../pages/Add/AddOrder';
+import AddProduct from '../pages/Add/AddProduct';
+import AddRestaurant from '../pages/Add/AddRestaurant';
 import CategoryPage from '../pages/CategoryPage';
 import RestaurantForm from '../pages/Form11/RestaurantForm';
 import RoleForm from '../pages/Form11/RoleForm';
@@ -43,7 +46,19 @@ const Routes = createBrowserRouter([
 			},
 			{
 				path: '/add/restaurant',
-				element: <AddResutaurant />,
+				element: <AddRestaurant />,
+			},
+			{
+				path: '/add/category',
+				element: <AddCategory />,
+			},
+			{
+				path: '/add/product',
+				element: <AddProduct />,
+			},
+			{
+				path: '/add/order',
+				element: <AddOrder />,
 			},
 			{
 				path: '/add/user',

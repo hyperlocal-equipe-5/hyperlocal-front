@@ -8,3 +8,9 @@ export interface CreateOrderDto {
 	table?: string;
 	restaurant: string;
 }
+
+// products: Array<{
+// 		name: string;
+// 		ingredients?: string[];
+// 		price?: number;
+// 	}>;

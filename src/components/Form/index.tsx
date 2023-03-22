@@ -1,46 +1,18 @@
-import { type InputType } from '../../types/InputTypes';
+import Help from '../../style/Help';
+import { type InputDto } from '../../types/Dto/InputDto';
 import DropdownButton from '../DropdownButton';
 
-interface IInputForm {
-	activeInputText?: boolean;
-	styleInput?: string;
-	IInput?: Array<{
-		name: string;
-		typeInput: InputType;
-		required?: boolean;
-	}>;
-
-	activeSelection?: boolean;
-	styleSelection?: string;
-	ISelection?: Array<{
-		name: string;
-		selections: string[];
-	}>;
-	activeCheckbox?: boolean;
-	styleCheckbox?: string;
-	ICheckbox?: Array<{
-		name: string;
-		id: string;
-	}>;
+interface InputForm {
+	Input: InputDto;
 	Function: (e: any, field: string) => void;
 }
-const Form = ({
-	IInput,
-	ICheckbox,
-	ISelection,
-	styleInput,
-	styleCheckbox,
-	styleSelection,
-	activeInputText,
-	activeCheckbox,
-	activeSelection,
-	Function,
-}: IInputForm) => {
+
+const Form = ({ Input, Function }: InputForm) => {
 	return (
 		<div className="flex flex-col w-11/12 h-5/6">
-			{activeInputText ? (
-				<div className={styleInput}>
-					{IInput?.map((el, i) => (
+			{Input.activeInputText ? (
+				<div className={Input.styleInput}>
+					{Input.Input?.map((el, i) => (
 						<div key={i} className="flex flex-col">
 							<h1 className="text-details py-3 text-2xl font-semibold">
 								{el.name}
@@ -67,23 +39,29 @@ const Form = ({
 			) : (
 				<></>
 			)}
-			{activeSelection ? (
-				<div className={styleSelection}>
-					{ISelection?.map((el, i) => (
-						<DropdownButton
-							key={i}
-							text={el.name}
-							names={el.selections}
-							OnClick={(e: any) => Function(e, el.name)}
-						/>
+			{Input.activeSelection ? (
+				<div className={Input.styleSelection}>
+					{Input.Selection?.map((el, i) => (
+						<div key={i}>
+							<h1 className="text-details py-3 text-2xl font-semibold">
+								{el.name}
+							</h1>
+							<DropdownButton
+								names={el.selections.names}
+								addLink={el.selections.addLink}
+								link={el.selections.link}
+								nameLink={el.selections.nameLink}
+								OnClick={(e: any) => Function(e, el.name)}
+							/>
+						</div>
 					))}
 				</div>
 			) : (
 				<></>
 			)}
-			{activeCheckbox ? (
-				<div className={styleCheckbox}>
-					{ICheckbox?.map((el, i) => (
+			{Input.activeCheckbox ? (
+				<div className={Input.styleCheckbox}>
+					{Input.Checkbox?.map((el, i) => (
 						<div key={i} className="flex flex-row items-center">
 							<input
 								onChange={e => Function(e, el.name)}
@@ -97,6 +75,7 @@ const Form = ({
 								htmlFor={el.id}>
 								{el.name}
 							</label>
+							{el.help ? <Help>{el.textHelp}</Help> : ''}
 						</div>
 					))}
 				</div>

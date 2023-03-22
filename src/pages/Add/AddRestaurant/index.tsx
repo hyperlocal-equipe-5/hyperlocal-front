@@ -5,28 +5,33 @@ import { type CreateRestaurantDto } from '../../../domain/dto/restaurant/createR
 import { makeRestaurantAdminRouterFactory } from '../../../infra/api/factories/routers/restaurant/restaurantAdminRouter-factory';
 import Button from '../../../style/Button';
 import Container from '../../../style/Container';
+import FormBox from '../../../style/Form';
 import { ButtonType } from '../../../types/ButtonTypes';
+import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
 
-const Restaurant = [
-	{
-		name: 'Restaurante',
-		typeInput: InputType.text,
-		required: true,
-	},
-	{
-		name: 'Endereço',
-		typeInput: InputType.text,
-	},
-	{
-		name: 'Email',
-		typeInput: InputType.email,
-	},
-	{
-		name: 'Telefone',
-		typeInput: InputType.tel,
-	},
-];
+const Restaurant: InputDto = {
+	activeInputText: true,
+	Input: [
+		{
+			name: 'Restaurante',
+			typeInput: InputType.text,
+			required: true,
+		},
+		{
+			name: 'Endereço',
+			typeInput: InputType.text,
+		},
+		{
+			name: 'Email',
+			typeInput: InputType.email,
+		},
+		{
+			name: 'Telefone',
+			typeInput: InputType.tel,
+		},
+	],
+};
 
 const AddRestaurant = () => {
 	const navigate = useNavigate();
@@ -56,17 +61,10 @@ const AddRestaurant = () => {
 	return (
 		<Container>
 			<h1 className="text-details">Cadastrar</h1>
-			<form
-				onSubmit={e => handleSubmit(e)}
-				className="flex flex-col min-w-[50rem] mobile:min-w-full max-w-screen-md items-center gap-4 "
-				action="">
-				<Form
-					activeInputText={true}
-					IInput={Restaurant}
-					Function={handleChange}
-				/>
+			<FormBox OnSubmit={handleSubmit}>
+				<Form Input={Restaurant} Function={handleChange} />
 				<Button type={ButtonType.submit}>Enviar</Button>
-			</form>
+			</FormBox>
 		</Container>
 	);
 };

@@ -3,7 +3,6 @@ import { BiDownArrow, BiRightArrow } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 interface IButtons {
-	text: string;
 	names: string[];
 	addLink?: boolean;
 	link?: string;
@@ -12,12 +11,11 @@ interface IButtons {
 }
 
 const DropdownButton = ({
-	text,
 	names,
-	OnClick,
 	link,
 	nameLink,
 	addLink,
+	OnClick,
 }: IButtons) => {
 	const [dropDown, setDropDown] = useState(false);
 	const [name, setName] = useState('');
@@ -41,20 +39,18 @@ const DropdownButton = ({
 				<div className={dropDown ? 'h-full w-full' : 'hidden'}>
 					{names.map(el => (
 						<button
-							className="flex items-center justify-between pl-4 pr-4 text-xl font-semibold w-full h-8 hover:bg-details hover:w-full hover:text-textColor  hover:duration-300 hover: cursor-pointer capitalize"
+							className="flex items-center justify-between pl-4 pr-4 text-xl font-semibold w-full h-8 hover:bg-details hover:w-full hover:text-textColor hover:duration-300 hover: cursor-pointer capitalize"
 							type="button"
-							onClick={e => {
-								handleClick(e);
-							}}
+							onClick={handleClick}
 							key={el.toString()}>
 							{el}
 						</button>
 					))}
 					{addLink ? (
 						<Link
-							to={`/add/${link}`}
-							className="flex items-center justify-between pl-4 pr-4 text-xl font-semibold w-full h-8 hover:bg-details hover:w-full hover:text-textColor  hover:duration-300 hover: cursor-pointer capitalize">
-							{`Adicionar ${nameLink}`}
+							to={`${link}`}
+							className="flex items-center justify-between pl-4 pr-4 text-xl font-semibold w-full h-8 hover:bg-details hover:w-full hover:text-textColor  hover:duration-300 hover: cursor-pointer">
+							{nameLink}
 						</Link>
 					) : (
 						<></>
