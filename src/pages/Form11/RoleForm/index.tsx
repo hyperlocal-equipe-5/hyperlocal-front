@@ -10,42 +10,100 @@ const RoleForm = () => {
 	const [funcao, setFuncao] = useState<CreateRoleDto>({
 		name: '',
 		restaurant: '',
-		access: {
-			createRestaurants: false,
-			createUsers: false,
-			createProducts: false,
-			createCategories: false,
-			createIngredients: false,
-			createOrders: false,
-			createRoles: false,
-			createTables: false,
-			readRestaurants: false,
-			readUsers: false,
-			readProducts: false,
-			readCategories: false,
-			readIngredients: false,
-			readOrders: false,
-			readRoles: false,
-			readTables: false,
-			updateRestaurants: false,
-			updateUsers: false,
-			updateProducts: false,
-			updateCategories: false,
-			updateIngredients: false,
-			updateOrders: false,
-			updateRoles: false,
-			updateTables: false,
-			deleteRestaurants: false,
-			deleteUsers: false,
-			deleteProducts: false,
-			deleteCategories: false,
-			deleteIngredients: false,
-			deleteOrders: false,
-			deleteRoles: false,
-			deleteTables: false,
-			defineAccess: false,
-		},
+		access: {},
 	});
+
+	const accesses = [
+		'createRestaurants',
+		'createUsers',
+		'createProducts',
+		'createCategories',
+		'createIngredients',
+		'createOrders',
+		'createRoles',
+		'createTables',
+		'readRestaurants',
+		'readUsers',
+		'readProducts',
+		'readCategories',
+		'readIngredients',
+		'readOrders',
+		'readRoles',
+		'readTables',
+		'updateRestaurants',
+		'updateUsers',
+		'updateProducts',
+		'updateCategories',
+		'updateIngredients',
+		'updateOrders',
+		'updateRoles',
+		'updateTables',
+		'deleteRestaurants',
+		'deleteUsers',
+		'deleteProducts',
+		'deleteCategories',
+		'deleteIngredients',
+		'deleteOrders',
+		'deleteRoles',
+		'deleteTables',
+		'defineAccess',
+	];
+
+	const getAccessType = (access: string) => {
+		const accessName = access.toString().toLowerCase();
+
+		if (accessName.includes('create')) {
+			return 'Criar';
+		}
+
+		if (accessName.includes('update')) {
+			return 'Editar';
+		}
+
+		if (accessName.includes('delete')) {
+			return 'Deletar';
+		}
+
+		if (accessName.includes('read')) {
+			return 'Ver';
+		}
+
+		if (accessName.includes('define')) {
+			return 'Definir';
+		}
+	};
+
+	const getCheckBoxes = (title: string, field: string) => {
+		const accessFields = accesses.filter(accessName =>
+			accessName.toString().toLowerCase().includes(field.toLowerCase()),
+		);
+
+		return (
+			<div className={styled.box_permissions}>
+				<h2>{title}:</h2>
+				<div className={styled.checkbox}>
+					{accessFields.map((access, index) => (
+						<label key={index} className={styled.label}>
+							<input
+								type="checkbox"
+								className={styled.box}
+								onChange={event =>
+									setFuncao({
+										...funcao,
+										access: {
+											...funcao.access,
+											[access]: event.target.checked,
+										},
+									})
+								}
+							/>
+							{getAccessType(access)}
+						</label>
+					))}
+				</div>
+			</div>
+		);
+	};
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -77,589 +135,15 @@ const RoleForm = () => {
 						required
 					/>
 					<h2 className={styled.titulo}>Permições:</h2>
-
-					<div className={styled.box_permissions}>
-						<h2>Restaurantes:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readRestaurants: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createRestaurants: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateRestaurants: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteRestaurants: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Usuários:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readUsers: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createUsers: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateUsers: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteUsers: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Produtos:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readProducts: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createProducts: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateProducts: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteProducts: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Categorias:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readCategories: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createCategories: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateCategories: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteCategories: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Ingredients:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readIngredients: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createIngredients: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateIngredients: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteIngredients: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Ordens:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readOrders: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createOrders: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateOrders: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteOrders: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Funções:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readRoles: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createRoles: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateRoles: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteRoles: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Mesas:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												readTables: event.target.checked,
-											},
-										})
-									}
-								/>
-								Ver
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												createTables: event.target.checked,
-											},
-										})
-									}
-								/>
-								Criar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												updateTables: event.target.checked,
-											},
-										})
-									}
-								/>
-								Editar
-							</label>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												deleteTables: event.target.checked,
-											},
-										})
-									}
-								/>
-								Deletar
-							</label>
-						</div>
-					</div>
-
-					<div className={styled.box_permissions}>
-						<h2>Acessos:</h2>
-						<div className={styled.checkbox}>
-							<label className={styled.label}>
-								<input
-									type="checkbox"
-									className={styled.box}
-									onChange={event =>
-										setFuncao({
-											...funcao,
-											access: {
-												...funcao.access,
-												defineAccess: event.target.checked,
-											},
-										})
-									}
-								/>
-								Definir acessos
-							</label>
-						</div>
-					</div>
-					<h2 className={styled.titulo}>Permições</h2>
+					{getCheckBoxes('Restaurantes', 'restaurants')}
+					{getCheckBoxes('Usuários', 'users')}
+					{getCheckBoxes('Categorias', 'categories')}
+					{getCheckBoxes('Produtos', 'products')}
+					{getCheckBoxes('Ingredientes', 'ingredients')}
+					{getCheckBoxes('Funções', 'roles')}
+					{getCheckBoxes('Pedidos', 'orders')}
+					{getCheckBoxes('Mesas', 'tables')}
+					{getCheckBoxes('Definir acessos', 'access')}
 					<button type="submit">Cadastrar</button>
 				</form>
 			</div>
