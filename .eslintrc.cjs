@@ -33,5 +33,6 @@ module.exports = {
 		'@typescript-eslint/no-unused-vars': 'off',
 		'react-hooks/exhaustive-deps': 'off',
 		'@typescript-eslint/restrict-template-expressions': 'off',
+
 	},
 };

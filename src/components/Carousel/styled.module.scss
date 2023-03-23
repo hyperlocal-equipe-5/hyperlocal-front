@@ -1,0 +1,75 @@
+.box_carousel{
+ display: flex;
+ color: #fff;
+ justify-content: space-between;
+ align-items: center;
+ width: auto;
+ gap: 2rem;
+ position: relative;
+
+ .chevronL{
+  position: absolute;
+  right: 1;
+ }
+ .chevronR{
+  position: absolute;
+  right: 0;
+ }
+
+ h1{
+  font-size: 3rem;
+  color: #fff;
+ }
+
+ h2{
+  font-size: 2rem;
+  color: #13b315;
+}
+
+ p{
+  margin-top: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 50%;
+  margin-bottom: 10px;
+  list-style-type: square;
+}
+
+img{
+ width: 350px;
+ height: 250px;
+ border-radius: 10px;
+ margin-left: 100px;
+}
+
+.product_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 45px;
+  background: #8bf24f;
+  border-radius: 20px;
+  margin-top: 20px;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+
+.product_button:hover {
+  transform: scale(1.05);
+}
+
+}
+
+
+// .showActiveCarousel{
+//   display: inline!important;
+// }
+

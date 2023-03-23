@@ -1,12 +1,10 @@
 interface ContainerProps {
 	children: React.ReactNode;
-	styleInline?: string;
 }
 
-const Container = ({ children, styleInline }: ContainerProps) => {
+const Container = ({ children }: ContainerProps) => {
 	return (
-		<div
-			className={`flex flex-col justify-start items-center w-full min-h-screen max-h-full pt-16 mobile:py-16 mobile:overflow-x-hidden overflow-auto bg-bg ${styleInline}`}>
+		<div className="flex flex-col items-center justify-between w-full min-h-screen max-h-full py-16 mobile:overflow-x-hidden bg-bg">
 			{children}
 		</div>
 	);
