@@ -5,6 +5,7 @@ import {
 	AiOutlineUser,
 	AiTwotoneHome,
 } from 'react-icons/ai';
+import { SetRestaurant } from '../SetRestaurant/SetRestaurant';
 import { NavBox, NavButton, Title } from './styled';
 
 const Navbar = () => {
@@ -32,6 +33,7 @@ const Navbar = () => {
 					<Title>Financeiro</Title>
 				</NavButton>
 			</NavBox>
+			<SetRestaurant />
 		</div>
 	);
 };
