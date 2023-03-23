@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CategoryBox from '../../components/CategoryBox';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
@@ -7,11 +7,12 @@ import { type RootState } from '../../store/store';
 import Container from '../../style/Container';
 
 const Home = () => {
+	const dispatch = useDispatch();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
 
 	useEffect(() => {
 		makeCategoryRouterFactory()
-			.getAllCategories(id || '')
+			.getAllCategories()
 			.then(data => {
 				dispatch(getCategories(data.body));
 			})

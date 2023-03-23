@@ -1,5 +1,4 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import Add from '../pages/Add';
 import AddCategory from '../pages/Add/AddCategory';
 import AddOrder from '../pages/Add/AddOrder';
@@ -12,6 +11,9 @@ import UserForm from '../pages/Form11/UserForm';
 import Home from '../pages/Home';
 import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
+import Login from '../pages/Login/Login';
+import Navbar from '../components/Navbar';
+import Cadastro from '../pages/Cadastro/Cadastro';
 
 const App = () => {
 	return (
@@ -28,6 +30,14 @@ const Routes = createBrowserRouter([
 		element: <App />,
 		errorElement: <ErrorPage />,
 		children: [
+			{
+				path: '/login',
+				element: <Login />,
+			},
+			{
+				path: '/cadastro',
+				element: <Cadastro />,
+			},
 			{
 				path: '/:restaurantId',
 				element: <Home />,

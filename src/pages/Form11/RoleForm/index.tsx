@@ -82,7 +82,7 @@ const RoleForm = () => {
 			<div className={styled.box_permissions}>
 				<h2>{title}:</h2>
 				<div className={styled.checkbox}>
-					{accessFields.map((access, index) => (
+					{accessFields.map((element, index) => (
 						<label key={index} className={styled.label}>
 							<input
 								type="checkbox"
@@ -92,12 +92,12 @@ const RoleForm = () => {
 										...funcao,
 										access: {
 											...funcao.access,
-											[access]: event.target.checked,
+											[element]: event.target.checked,
 										},
 									})
 								}
 							/>
-							{getAccessType(access)}
+							{getAccessType(element)}
 						</label>
 					))}
 				</div>
