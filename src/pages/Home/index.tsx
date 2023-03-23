@@ -57,13 +57,13 @@ const Home = () => {
 			<footer>
 				<div className={styled.icons}>
 					<a href="https://www.facebook.com/">
-						<SiFacebook color="grey" size={45} />
+						<SiFacebook color="grey" size={35} />
 					</a>
 					<a href="https://www.instagram.com/">
-						<AiFillInstagram color="grey" size={50} />
+						<AiFillInstagram color="grey" size={40} />
 					</a>
 					<a href="https://www.youtube.com/">
-						<AiFillYoutube color="grey" size={55} />
+						<AiFillYoutube color="grey" size={45} />
 					</a>
 				</div>
 			</footer>
