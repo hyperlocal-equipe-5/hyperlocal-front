@@ -1,0 +1,71 @@
+.box_geral{
+  display: flex;
+  width: auto;
+  height: 80vh;
+
+
+}
+
+.box_section{
+   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 1280px;
+  // min-width: 300px;
+  height: 100%;
+  margin: 0 auto;
+  gap: 5rem;
+
+
+}
+.box_produto{
+  position: relative ;
+
+  .chevronL{
+    position: absolute;
+    right: 1;
+   }
+   .chevronR{
+    position: absolute;
+    right: 0;
+   }
+}
+
+.box_titulo{
+  display: flex;
+  flex-direction: column;
+
+  h1{
+    font-size: 5rem;
+    color: #fff;
+  }
+
+  h2{
+    font-size: 3rem;
+    color: #13b315;
+  }
+
+  h3{
+    margin-top: 10px;
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  p{
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+}
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  margin:20px;
+}
+footer{
+  margin-left: 100px;
+}
+

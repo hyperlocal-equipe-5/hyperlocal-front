@@ -1,12 +1,13 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import Navbar from '../components/navbar';
+
 import CategoryPage from '../pages/CategoryPage';
+import ErrorPage from '../pages/errorPage';
 import Form from '../pages/Form';
+import Home from '../pages/Home';
+import Navbar from '../components/navbar';
 import RestaurantForm from '../pages/Form/RestaurantForm';
 import RoleForm from '../pages/Form/RoleForm';
 import UserForm from '../pages/Form/UserForm';
-import Home from '../pages/Home';
-import ErrorPage from '../pages/errorPage';
 
 const App = () => {
 	return (
@@ -24,7 +25,7 @@ const Routes = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: '/:id',
+				path: '/',
 				element: <Home />,
 			},
 			{
