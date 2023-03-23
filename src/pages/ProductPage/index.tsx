@@ -27,13 +27,13 @@ const ProductPage = () => {
 				<h1 className="text-3xl text-details capitalize  mobile:pb-4">
 					{product?.name}
 				</h1>
-				<Form
+				{/* <Form
 					ICheckbox={product?.ingredients.map(el => ({
 						id: el.id,
 						name: el.name,
 					}))}
 					Function={HandleChange}
-				/>
+				/> */}
 				{}
 			</div>
 			<PriceBox>
