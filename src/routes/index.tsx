@@ -1,4 +1,5 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
+import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import Add from '../pages/Add';
 import AddCategory from '../pages/Add/AddCategory';
@@ -16,6 +17,7 @@ import ErrorPage from '../pages/errorPage';
 const App = () => {
 	return (
 		<>
+			<Header />
 			<Navbar />
 			<Outlet />
 		</>

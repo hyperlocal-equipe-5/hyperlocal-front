@@ -4,8 +4,8 @@ module.exports = {
 	theme: {
 		extend: {
 			screens: {
-				mobile: { max: '540px' },
-				tablet: { min: '541px', max: '1100px' },
+				mobile: { max: '599px' },
+				tablet: { min: '600px', max: '1100px' },
 			},
 			colors: {
 				textColor: '#fefbff',

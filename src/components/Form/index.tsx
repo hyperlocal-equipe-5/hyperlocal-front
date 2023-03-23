@@ -9,7 +9,7 @@ interface InputForm {
 
 const Form = ({ Input, Function }: InputForm) => {
 	return (
-		<div className="flex flex-col w-11/12 h-5/6">
+		<div className="flex flex-col w-6/12 h-5/6 mobile:w-11/12">
 			{Input.activeInputText ? (
 				<div className={Input.styleInput}>
 					{Input.Input?.map((el, i) => (

@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../../../components/Header/Header';
+import Header from '../../../components/Header';
 import { type CreateRoleDto } from '../../../domain/dto/role/createRole-dto';
 import { makeRoleAdminRouterFactory } from '../../../infra/api/factories/routers/role/roleAdminRouter-factory';
 import styled from './styled.module.scss';

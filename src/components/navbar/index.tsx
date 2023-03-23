@@ -9,7 +9,7 @@ import { NavBox, NavButton, Title } from './styled';
 
 const Navbar = () => {
 	return (
-		<div className="flex flex-row w-full pl-6 pr-6 bg-black text-white mobile:fixed mobile:bottom-0 mobile:h-16">
+		<div className="mobile:flex mobile:flex-row mobile:w-full mobile:px-6 bg-bg text-textColor mobile:fixed mobile:bottom-0 mobile:h-16">
 			<NavBox>
 				<NavButton to="/">
 					<AiTwotoneHome />
