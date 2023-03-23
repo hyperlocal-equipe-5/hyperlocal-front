@@ -1,60 +1,72 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { Form } from '../../components/form/Form';
+import Form from '../../components/Form';
+import { type LoginDto } from '../../domain/dto/login/login-dto';
+import { RestaurantIdHandler } from '../../helpers/handlers/restaurantId/restaurantIdHandler-helper';
 import { makeAuthRouterFactory } from '../../infra/api/factories/routers/auth/authRouter-factory';
+import Button from '../../style/Button';
+import Container from '../../style/Container';
+import FormBox from '../../style/Form';
+import { ButtonType } from '../../types/ButtonTypes';
+import { type InputDto } from '../../types/Dto/InputDto';
+import { InputType } from '../../types/InputTypes';
 
-enum ButonType {
-	submit = 'submit',
-	reset = 'reset',
-	button = 'button',
-}
-
-const Login: React.FC = () => {
+const Login = () => {
 	const navigate = useNavigate();
-	const [error, setError] = useState('');
-	const handleLogin = (body: any, buttonName: any) => {
-		if (buttonName === 'Cadastrar') {
-			navigate('/cadastro');
+	const inputs: InputDto = {
+		activeInputText: true,
+		Input: [
+			{
+				name: 'Email',
+				typeInput: InputType.email,
+				required: true,
+			},
+			{
+				name: 'Senha',
+				typeInput: InputType.password,
+				required: true,
+			},
+		],
+		activeCheckbox: false,
+		Checkbox: [],
+	};
+	const [loginData, setLoginData] = useState<LoginDto>({
+		email: '',
+		password: '',
+	});
+
+	const handleChange = (event: any, field: string) => {
+		event.preventDefault();
+
+		if (field === 'Email') {
+			setLoginData({ ...loginData, email: event.target.value });
 		}
-		if (!body.Email || !body.Senha) {
-			setError('Preencha todos os Campos');
-			setTimeout(() => {
-				setError('');
-			}, 2000);
+
+		if (field === 'Senha') {
+			setLoginData({ ...loginData, password: event.target.value });
 		}
+	};
+
+	const handleSubmit = (event: any) => {
+		event.preventDefault();
 
 		makeAuthRouterFactory()
-			.login({
-				email: body.Email,
-				password: body.Senha,
+			.login(loginData)
+			.then(response => {
+				const restaurantId = new RestaurantIdHandler().get();
+				navigate(`/${restaurantId}`);
 			})
-			.catch(function (error) {
-				console.log(error);
-			});
+			.catch(error => error);
 	};
+
 	return (
-		<Form
-			title={'Acessar sua Conta'}
-			buttons={[
-				{ type: ButonType.button, name: 'Login', color: 'green' },
-				{ type: ButonType.button, name: 'Cadastrar', color: 'yellow' },
-			]}
-			titleSecundary={error}
-			fields={[
-				{
-					label: 'Email',
-					inputType: 'text',
-					placeholder: 'Digite seu email',
-				},
-				{
-					label: 'Senha',
-					inputType: 'password',
-					placeholder: 'Digite sua Senha',
-				},
-			]}
-			callbackFunction={handleLogin}
-		/>
+		<Container>
+			<h1 className="text-textColor">Login</h1>
+			<FormBox OnSubmit={handleSubmit}>
+				<Form Function={handleChange} Input={inputs} />
+				<Button type={ButtonType.submit}>login</Button>
+			</FormBox>
+		</Container>
 	);
 };
 

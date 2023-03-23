@@ -6,11 +6,13 @@ import AddCategory from '../pages/Add/AddCategory';
 import AddOrder from '../pages/Add/AddOrder';
 import AddProduct from '../pages/Add/AddProduct';
 import AddRestaurant from '../pages/Add/AddRestaurant';
+import Cadastro from '../pages/Cadastro/Cadastro';
 import CategoryPage from '../pages/CategoryPage';
 import RestaurantForm from '../pages/Form11/RestaurantForm';
 import RoleForm from '../pages/Form11/RoleForm';
 import UserForm from '../pages/Form11/UserForm';
 import Home from '../pages/Home';
+import Login from '../pages/Login/Login';
 import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
 
@@ -30,6 +32,14 @@ const Routes = createBrowserRouter([
 		element: <App />,
 		errorElement: <ErrorPage />,
 		children: [
+			{
+				path: '/login',
+				element: <Login />,
+			},
+			{
+				path: '/cadastro',
+				element: <Cadastro />,
+			},
 			{
 				path: '/:restaurantId',
 				element: <Home />,

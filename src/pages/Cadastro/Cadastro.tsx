@@ -1,104 +1,102 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Form } from '../../components/form/Form';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Form from '../../components/Form';
+import { ImageInput } from '../../components/ImageInput/ImageInput';
+import { type CreateUserDto } from '../../domain/dto/user/createUser-dto';
+import { RestaurantIdHandler } from '../../helpers/handlers/restaurantId/restaurantIdHandler-helper';
 import { makeUserRouterFactory } from '../../infra/api/factories/routers/user/userRouter-factory';
+import Button from '../../style/Button';
+import Container from '../../style/Container';
+import FormBox from '../../style/Form';
+import { ButtonType } from '../../types/ButtonTypes';
+import { type InputDto } from '../../types/Dto/InputDto';
+import { InputType } from '../../types/InputTypes';
 
-enum ButonType {
-	submit = 'submit',
-	reset = 'reset',
-	button = 'button',
-}
-
-const Cadastro: React.FC = () => {
+const Cadastro = () => {
 	const navigate = useNavigate();
-	const [error, setError] = useState('');
-	const { id } = useParams();
+	const inputs: InputDto = {
+		activeInputText: true,
+		Input: [
+			{
+				name: 'Nome',
+				typeInput: InputType.text,
+				required: true,
+			},
+			{
+				name: 'Email',
+				typeInput: InputType.email,
+				required: true,
+			},
+			{
+				name: 'Senha',
+				typeInput: InputType.password,
+				required: true,
+			},
+			{
+				name: 'Celular',
+				typeInput: InputType.tel,
+				required: false,
+			},
+		],
+		activeCheckbox: false,
+		Checkbox: [],
+	};
+	const [createData, setCreateData] = useState<CreateUserDto>({
+		name: '',
+		email: '',
+		password: '',
+		cellphone: 0,
+		image: '',
+		restaurant: '',
+	});
 
-	const handleLogin = (body: any, buttonName: any) => {
-		if (buttonName === 'Login') {
-			navigate('/login');
+	const handleChange = (event: any, label: string) => {
+		event.preventDefault();
+		if (label === 'Nome') {
+			setCreateData({ ...createData, name: event.target.value });
 		}
-		if (!body.Email || !body.Senha || !body.Nome || !body.Celular) {
-			setError('Preencha todos os Campos');
-			setTimeout(() => {
-				setError('');
-			}, 2000);
+
+		if (label === 'Email') {
+			setCreateData({ ...createData, email: event.target.value });
 		}
+
+		if (label === 'Senha') {
+			setCreateData({ ...createData, password: event.target.value });
+		}
+
+		if (label === 'Celular') {
+			setCreateData({ ...createData, cellphone: event.target.value });
+		}
+	};
+
+	const handleChangeImage = (convertedImage: string) => {
+		setCreateData({ ...createData, image: convertedImage });
+	};
+
+	const handleSubmit = (event: any) => {
+		event.preventDefault();
 
 		makeUserRouterFactory()
 			.createUser({
-				name: body.Nome,
-				email: body.Email,
-				password: body.Senha,
-				cellphone: body.Celular,
-				restaurant: id || '',
+				...createData,
+				restaurant: new RestaurantIdHandler().get(),
 			})
-			.catch(function (error) {
-				console.log(error);
-			});
+			.then(response => {
+				// navigate('/');
+			})
+			.catch(error => error);
 	};
 
 	return (
-		<>
-			<Form
-				title={'Cadastre um novo Usuario'}
-				buttons={[
-					{ type: ButonType.button, name: 'Cadastrar', color: 'yellow' },
-					{ type: ButonType.button, name: 'Login', color: 'green' },
-				]}
-				titleSecundary={error}
-				fields={[
-					{
-						label: 'Nome',
-						inputType: 'text',
-						placeholder: 'Digite seu Nome',
-					},
-					{
-						label: 'Celular',
-						inputType: 'number',
-						placeholder: 'Digite seu Contato',
-					},
-					{
-						label: 'Email',
-						inputType: 'email',
-						placeholder: 'Digite seu email',
-					},
-					{
-						label: 'Senha',
-						inputType: 'password',
-						placeholder: 'Digite sua Senha',
-					},
-				]}
-				callbackFunction={handleLogin}
-			/>
-		</>
+		<Container>
+			<h1 className="text-textColor">Cadastro</h1>
+			<FormBox OnSubmit={handleSubmit}>
+				<Form Function={handleChange} Input={inputs} />
+				<ImageInput onChange={handleChangeImage} />
+				<Button type={ButtonType.submit}>cadastrar</Button>
+			</FormBox>
+		</Container>
 	);
 };
 
 export default Cadastro;
-
-/*
-const [email, setEmail] = useState('');
-	const [nome, setNome] = useState('');
-	const [password, setPassword] = useState('');
-	const [restaurante, setRestaurante] = useState('');
-	const [imagem, setImagem] = useState('');
-	const [error, setError] = useState('');
-	const navigate = useNavigate();
-	const handleCadastrar = () => {
-		if (!email || !password) {
-			setError('Prencha todos os campos');
-			return;
-		}
-
-		alert('Usuario cadastrado com sucesso!');
-		navigate('/');
-	};
-	const handleSublimit = useCallback(
-		(e: any) => {
-			e.preventDefault();
-			console.log(email, password);
-		},
-		[email, password],
-	);
-	*/
