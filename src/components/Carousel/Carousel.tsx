@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { type ProductResponse } from './type';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/Bs';
 import styled from './styled.module.scss';
+import { type ProductResponse } from './type';
 
 interface ProductsProps {
 	product: ProductResponse;
