@@ -13,6 +13,7 @@ import RoleForm from '../pages/Form11/RoleForm';
 import UserForm from '../pages/Form11/UserForm';
 import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
+import Menu from '../pages/Menu';
 import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
 
@@ -41,7 +42,7 @@ const Routes = createBrowserRouter([
 				element: <Cadastro />,
 			},
 			{
-				path: '/:restaurantId',
+				path: '/',
 				element: <Home />,
 			},
 			{
@@ -90,7 +91,7 @@ const Routes = createBrowserRouter([
 			},
 			{
 				path: '/menu',
-				element: <Home />,
+				element: <Menu />,
 			},
 			{
 				path: '/finance',

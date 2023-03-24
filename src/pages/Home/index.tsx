@@ -1,4 +1,3 @@
-// <<<<<<< HEAD
 // import { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 // import CategoryBox from '../../components/CategoryBox';
@@ -10,6 +9,7 @@
 // const Home = () => {
 // 	const dispatch = useDispatch();
 // 	const categoryStore = useSelector((state: RootState) => state.category.value);
+// 	console.log(categoryStore);
 
 // 	useEffect(() => {
 // 		makeCategoryRouterFactory()
@@ -19,6 +19,7 @@
 // 			})
 // 			.catch(error => console.log(error));
 // 	}, []);
+
 // 	return (
 // 		<Container>
 // 			{categoryStore && categoryStore.length > 0 ? (
@@ -38,7 +39,10 @@
 // 				<></>
 // 			)}
 // 		</Container>
-// =======
+// 	);
+// };
+
+// export default Home;
 import { useState } from 'react';
 
 import { SiFacebook } from 'react-icons/Si';

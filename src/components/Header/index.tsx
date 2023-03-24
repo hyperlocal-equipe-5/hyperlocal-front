@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import AsideNavbar from '../AsideNavbar';
+import { SetRestaurant } from '../SetRestaurant/SetRestaurant';
 
 interface header {
 	active?: boolean;
@@ -14,7 +15,7 @@ const Header = ({ link }: header) => {
 	return (
 		<>
 			<div className="flex flex-row self-start mobile:justify-between h-16 w-full fixed top-0 items-center justify-between px-6 bg-bg z-50">
-				<Link to={`${link}`}>
+				<Link to="/">
 					<AiOutlineLeft className=" hidden text-2xl font-semibold mobile:text-details mobile:flex text-textColor" />
 				</Link>
 				<Link to="/" className="text-textColor text-2xl">
@@ -24,7 +25,7 @@ const Header = ({ link }: header) => {
 					<Link to="/" onClick={() => setMenu(false)}>
 						Inicio
 					</Link>
-					<Link to={`/category/${id}`} onClick={() => setMenu(true)}>
+					<Link to="/menu" onClick={() => setMenu(false)}>
 						Menu
 					</Link>
 					<Link to="/" onClick={() => setMenu(false)}>
@@ -36,6 +37,7 @@ const Header = ({ link }: header) => {
 					<Link to="/add" onClick={() => setMenu(false)}>
 						Cadastrar
 					</Link>
+					<SetRestaurant />
 				</nav>
 			</div>
 			{menu ? <AsideNavbar /> : <></>}
