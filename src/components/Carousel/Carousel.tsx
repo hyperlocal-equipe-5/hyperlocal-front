@@ -1,4 +1,4 @@
-import { BsChevronLeft, BsChevronRight } from 'react-icons/Bs';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import styled from './styled.module.scss';
 import { type ProductResponse } from './type';
 
