@@ -16,6 +16,8 @@ import Login from '../pages/Login/Login';
 import Menu from '../pages/Menu';
 import ProductPage from '../pages/ProductPage';
 import ErrorPage from '../pages/errorPage';
+import { TableListPage } from '../pages/TableListPage/TableListPage';
+import { TableQrCode } from '../pages/TableQrCode/TableQrCode';
 
 const App = () => {
 	return (
@@ -96,6 +98,14 @@ const Routes = createBrowserRouter([
 			{
 				path: '/finance',
 				element: <Home />,
+			},
+			{
+				path: '/tables',
+				element: <TableListPage />,
+			},
+			{
+				path: '/table/qr-code/:tableNumber',
+				element: <TableQrCode />,
 			},
 		],
 	},
