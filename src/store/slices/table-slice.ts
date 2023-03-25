@@ -11,8 +11,21 @@ interface InitialState {
 	value: Table[];
 }
 
+const teste: any = '';
+
 const initialState: InitialState = {
-	value: [],
+	value: [
+		{ id: '0', restaurant: teste, number: 0, createdAt: '', updatedAt: '' },
+		{ id: '1', restaurant: teste, number: 1, createdAt: '', updatedAt: '' },
+		{ id: '2', restaurant: teste, number: 2, createdAt: '', updatedAt: '' },
+		{ id: '3', restaurant: teste, number: 3, createdAt: '', updatedAt: '' },
+		{ id: '4', restaurant: teste, number: 4, createdAt: '', updatedAt: '' },
+		{ id: '5', restaurant: teste, number: 5, createdAt: '', updatedAt: '' },
+		{ id: '6', restaurant: teste, number: 6, createdAt: '', updatedAt: '' },
+		{ id: '7', restaurant: teste, number: 77, createdAt: '', updatedAt: '' },
+		{ id: '8', restaurant: teste, number: 888, createdAt: '', updatedAt: '' },
+		{ id: '9', restaurant: teste, number: 9999, createdAt: '', updatedAt: '' },
+	],
 };
 
 const tableSlice = createSlice({
@@ -88,7 +101,7 @@ const tableSlice = createSlice({
 		},
 
 		getTables(state, action: PayloadAction<Table[]>) {
-			state.value = action.payload;
+			// state.value = action.payload;
 		},
 	},
 });
