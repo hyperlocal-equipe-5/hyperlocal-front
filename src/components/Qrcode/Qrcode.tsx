@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-no-undef */
-import { useState } from 'react';
 import QRCode from 'react-qr-code';
 import QRCodeLink from 'qrcode';
 import './Qrcode.scss';
 
-const Qrcode = () => {
-	const [qrlink, setQrlink] = useState('');
+interface Props {
+	qrlink: string;
+}
 
+const Qrcode = ({ qrlink }: Props) => {
 	function handleDownload(linkUrl: string) {
 		QRCodeLink.toDataURL(linkUrl, function (_err, url) {
 			const link = document.createElement('a');
@@ -22,23 +23,9 @@ const Qrcode = () => {
 		<div className="container">
 			<div className="qrcode">
 				<QRCode value={qrlink} />
-				<input
-					className="input"
-					type="text"
-					placeholder="Digite o Qrcode desejado"
-					value={qrlink}
-					required
-					onChange={e => {
-						setQrlink(e.target.value);
-					}}
-				/>
 				<button
 					onClick={() => {
-						if (!qrlink || qrlink.toString().trim() === '') {
-							alert('Insira um link válido!');
-						} else {
-							handleDownload(qrlink);
-						}
+						handleDownload(qrlink);
 					}}
 					className="dowload">
 					Baixar Qrcode
