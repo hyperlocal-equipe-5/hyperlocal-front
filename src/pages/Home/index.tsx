@@ -100,13 +100,13 @@ const Home = () => {
 			</div>
 			<footer>
 				<div className={styled.icons}>
-					<a href="https://www.facebook.com/">
+					<a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
 						<SiFacebook color="grey" size={35} />
 					</a>
-					<a href="https://www.instagram.com/">
+					<a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
 						<AiFillInstagram color="grey" size={40} />
 					</a>
-					<a href="https://www.youtube.com/">
+					<a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
 						<AiFillYoutube color="grey" size={45} />
 					</a>
 				</div>

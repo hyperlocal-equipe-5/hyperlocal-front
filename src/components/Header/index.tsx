@@ -34,6 +34,9 @@ const Header = ({ link }: header) => {
 					<Link to="/" onClick={() => setMenu(false)}>
 						Funcionários
 					</Link>
+					<Link to="/tables" onClick={() => setMenu(false)}>
+						Mesas
+					</Link>
 					<Link to="/add" onClick={() => setMenu(false)}>
 						Cadastrar
 					</Link>

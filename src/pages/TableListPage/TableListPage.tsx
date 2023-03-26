@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { BoxesBody } from '../../components/BoxesBody/BoxesBody';
 import { type RootState } from '../../store/store';
+import Container from '../../style/Container';
 import styled from './styled.module.scss';
 
 export function TableListPage() {
@@ -30,8 +31,10 @@ export function TableListPage() {
 	};
 
 	return (
-		<div className={styled.tableListDiv}>
-			<BoxesBody content={tableList} />
-		</div>
+		<Container>
+			<div className={styled.tableListDiv}>
+				<BoxesBody content={tableList} />
+			</div>
+		</Container>
 	);
 }

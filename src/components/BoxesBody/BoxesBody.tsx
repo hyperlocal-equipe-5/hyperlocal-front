@@ -22,20 +22,22 @@ interface Props {
 export function BoxesBody({ content }: Props) {
 	function renderSectionBoxes(sectionBoxes: SectionBox[]) {
 		return sectionBoxes.length > 0 ? (
-			<div className={styled.boxList}>
+			<div className={`${styled.boxList}`}>
 				{sectionBoxes.map((box, index) => (
 					<div
-						className={styled.box}
+						className={`${styled.box} bg-bg border-box hover:border-details`}
 						key={index}
 						onClick={() => content.boxSelectionCallback(box.id)}>
 						<div>
 							{box.imageBox ? (
-								<img className={styled.boxImage} src={box.boxContent} />
+								<img className={`${styled.boxImage}`} src={box.boxContent} />
 							) : (
-								<h2 className={styled.boxTitle}>{box.boxContent}</h2>
+								<h2 className={`${styled.boxTitle} bg-details `}>
+									{box.boxContent}
+								</h2>
 							)}
 						</div>
-						<p className={styled.boxLabel}>{box.boxLabel}</p>
+						<p className={`${styled.boxLabel}`}>{box.boxLabel}</p>
 					</div>
 				))}
 			</div>
@@ -46,10 +48,10 @@ export function BoxesBody({ content }: Props) {
 
 	function renderSections(sections: Section[]) {
 		return sections.length > 0 ? (
-			<div className={styled.sectionList}>
+			<div className={`${styled.sectionList} text-textColor`}>
 				{sections.map((section, index) => (
-					<div className={styled.section} key={index}>
-						<h3 className={styled.sectionTitle}>{section.sectionTitle}</h3>
+					<div className={`${styled.section}`} key={index}>
+						<h3 className={`${styled.sectionTitle}`}>{section.sectionTitle}</h3>
 						{renderSectionBoxes(section.sectionBoxes)}
 					</div>
 				))}

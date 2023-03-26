@@ -1,11 +1,11 @@
-.tableListDiv{
-   margin-top: 30px;
-   margin-bottom: 30px;
+.tableListDiv {
+	width: 100%;
 }
 
-@media(max-width: 600px){
-    .tableListDiv{
-        margin-top: 70px;
-        margin-bottom: 70px;
-     }
+@media (max-width: 600px) {
+	.tableListDiv {
+		width: 95%;
+		margin-top: 70px;
+		margin-bottom: 70px;
+	}
 }
