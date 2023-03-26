@@ -5,10 +5,12 @@ import {
 	AiOutlineUser,
 	AiTwotoneHome,
 } from 'react-icons/ai';
+import { useParams } from 'react-router-dom';
 import { SetRestaurant } from '../SetRestaurant/SetRestaurant';
 import { NavBox, NavButton, Title } from './styled';
 
 const Navbar = () => {
+	const { id } = useParams();
 	return (
 		<div className="mobile:flex mobile:flex-row mobile:w-full mobile:px-6 bg-bg text-textColor mobile:fixed mobile:bottom-0 mobile:h-16">
 			<NavBox>

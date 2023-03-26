@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Container from '../../style/Container';
 
 interface IForm {
@@ -9,35 +9,35 @@ interface IForm {
 const data: IForm[] = [
 	{
 		name: 'Restaurante',
-		link: '/add/restaurant',
+		link: 'restaurant',
 	},
 	{
 		name: 'Categoria',
-		link: '/add/category',
+		link: 'category',
 	},
 	{
 		name: 'Produto',
-		link: '/add/product',
+		link: 'product',
 	},
 	{
 		name: 'Usuário',
-		link: '/add/user',
+		link: 'user',
 	},
 	{
 		name: 'Função',
-		link: '/add/role',
+		link: 'role',
 	},
 	{
 		name: 'Pedidos',
-		link: '/add/order',
+		link: 'order',
 	},
 	{
 		name: 'Mesa',
-		link: '/add/table',
+		link: 'table',
 	},
 	{
 		name: 'Ingrediente',
-		link: '/add/ingredient',
+		link: 'ingredient',
 	},
 ];
 
@@ -61,6 +61,7 @@ const Add = () => {
 					</div>
 				</div>
 			</div>
+			<Outlet />
 		</Container>
 	);
 };

@@ -33,70 +33,22 @@ const Routes = createBrowserRouter([
 		element: <App />,
 		errorElement: <ErrorPage />,
 		children: [
-			{
-				path: '/login',
-				element: <Login />,
-			},
-			{
-				path: '/cadastro',
-				element: <Cadastro />,
-			},
-			{
-				path: '/',
-				element: <Home />,
-			},
-			{
-				path: '/category/:id',
-				element: <CategoryPage />,
-			},
-			{
-				path: '/product/:id',
-				element: <ProductPage />,
-			},
-			{
-				path: '/add',
-				element: <Add />,
-			},
-			{
-				path: '/add/restaurant',
-				element: <AddRestaurant />,
-			},
-			{
-				path: '/add/category',
-				element: <AddCategory />,
-			},
-			{
-				path: '/add/product',
-				element: <AddProduct />,
-			},
-			{
-				path: '/add/order',
-				element: <AddOrder />,
-			},
-			{
-				path: '/add/user',
-				element: <UserForm />,
-			},
-			{
-				path: '/add/role',
-				element: <RoleForm />,
-			},
-			{
-				path: '/form/restaurantes/:id',
-				element: <RestaurantForm />,
-			},
-			{
-				path: '/workers',
-				element: <Home />,
-			},
-			{
-				path: '/menu',
-				element: <Menu />,
-			},
-			{
-				path: '/finance',
-				element: <Home />,
-			},
+			{ path: '/login', element: <Login /> },
+			{ path: '/cadastro', element: <Cadastro /> },
+			{ path: '/', element: <Home /> },
+			{ path: '/category/:id', element: <CategoryPage /> },
+			{ path: '/product/:id', element: <ProductPage /> },
+			{ path: '/add', element: <Add /> },
+			{ path: '/add/restaurant', element: <AddRestaurant /> },
+			{ path: '/add/category', element: <AddCategory /> },
+			{ path: '/add/product', element: <AddProduct /> },
+			{ path: '/add/order', element: <AddOrder /> },
+			{ path: '/add/user', element: <UserForm /> },
+			{ path: '/add/role', element: <RoleForm /> },
+			{ path: '/form/restaurantes/:id', element: <RestaurantForm /> },
+			{ path: '/workers', element: <Home /> },
+			{ path: '/menu', element: <Menu /> },
+			{ path: '/finance', element: <Home /> },
 		],
 	},
 ]);

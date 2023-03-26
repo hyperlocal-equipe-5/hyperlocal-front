@@ -50,6 +50,7 @@ import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
 import useRecursiveTimeout from '../../Hooks/useRecursiveTimeout';
 import Carousel from '../../components/Carousel/Carousel';
 import { products } from '../../mocks/produtos';
+import Container from '../../style/Container';
 import styled from './styled.module.scss';
 
 const Home = () => {
@@ -71,8 +72,7 @@ const Home = () => {
 	}
 
 	return (
-		<>
-			{/* <Container> */}
+		<Container>
 			{/* aqui {active} */}
 			<div className={styled.box_geral}>
 				<section className={styled.box_section}>
@@ -111,8 +111,7 @@ const Home = () => {
 					</a>
 				</div>
 			</footer>
-			{/* </Container> */}
-		</>
+		</Container>
 	);
 };
 
