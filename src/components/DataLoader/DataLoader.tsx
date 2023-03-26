@@ -23,7 +23,9 @@ export default function DataLoader() {
 					item.id.includes(restaurantIdParameter),
 				);
 
-				new RestaurantIdHandler().store(selectedRestaurant?.id || '');
+				new RestaurantIdHandler().store(
+					selectedRestaurant?.id || new RestaurantIdHandler().get(),
+				);
 
 				makeCategoryRouterFactory()
 					.getAllCategories()

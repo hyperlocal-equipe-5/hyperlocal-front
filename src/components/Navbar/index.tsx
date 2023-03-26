@@ -7,13 +7,13 @@ import {
 } from 'react-icons/ai';
 import { useParams } from 'react-router-dom';
 import { SetRestaurant } from '../SetRestaurant/SetRestaurant';
-import { NavBox, NavButton, Title } from './styled';
+import { NavButton, Title } from './styled';
 
 const Navbar = () => {
 	const { id } = useParams();
 	return (
 		<div className="mobile:flex mobile:flex-row mobile:w-full mobile:px-6 bg-bg text-textColor mobile:fixed mobile:bottom-0 mobile:h-16">
-			<NavBox>
+			<div className=" flex w-full mobile:text-3xl mobile:h-14 items-center justify-between border-solid border-red-400">
 				<NavButton to="/">
 					<AiTwotoneHome />
 					<Title>Inicio</Title>
@@ -34,7 +34,7 @@ const Navbar = () => {
 					<AiOutlineBank />
 					<Title>Financeiro</Title>
 				</NavButton>
-			</NavBox>
+			</div>
 			<SetRestaurant />
 		</div>
 	);

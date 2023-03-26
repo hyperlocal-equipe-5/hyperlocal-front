@@ -45,8 +45,8 @@
 // export default Home;
 import { useState } from 'react';
 
-import { SiFacebook } from 'react-icons/Si';
 import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
+import { SiFacebook } from 'react-icons/si';
 import useRecursiveTimeout from '../../Hooks/useRecursiveTimeout';
 import Carousel from '../../components/Carousel/Carousel';
 import { products } from '../../mocks/produtos';

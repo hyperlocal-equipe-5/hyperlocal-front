@@ -75,7 +75,7 @@ const Form = ({ Input, Function }: InputForm) => {
 								htmlFor={el.id}>
 								{el.name}
 							</label>
-							{el.help ? <Help>{el.textHelp}</Help> : ''}
+							{el.help ? <Help Text={el.textHelp} /> : ''}
 						</div>
 					))}
 				</div>

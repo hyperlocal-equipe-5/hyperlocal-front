@@ -15,6 +15,8 @@ import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
 import Menu from '../pages/Menu';
 import ProductPage from '../pages/ProductPage';
+import { TableListPage } from '../pages/TableListPage/TableListPage';
+import { TableQrCode } from '../pages/TableQrCode/TableQrCode';
 import ErrorPage from '../pages/errorPage';
 
 const App = () => {
@@ -49,6 +51,8 @@ const Routes = createBrowserRouter([
 			{ path: '/workers', element: <Home /> },
 			{ path: '/menu', element: <Menu /> },
 			{ path: '/finance', element: <Home /> },
+			{ path: '/tables', element: <TableListPage /> },
+			{ path: '/table/qr-code/:tableNumber', element: <TableQrCode /> },
 		],
 	},
 ]);
