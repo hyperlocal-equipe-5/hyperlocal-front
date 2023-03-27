@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ProductButton from '../../components/ProductButton';
+import SelectButton from '../../components/SelectButton';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
@@ -32,7 +32,7 @@ const CategoryPage = () => {
 			</h1>
 			{category ? (
 				category.products.map(product => (
-					<ProductButton
+					<SelectButton
 						key={product.id}
 						name={product.image}
 						img={product.image}
