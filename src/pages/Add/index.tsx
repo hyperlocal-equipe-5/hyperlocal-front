@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import Container from '../../style/Container';
+import Title from '../../style/Title';
 
 interface IForm {
 	link: string;
@@ -46,9 +47,7 @@ const Add = () => {
 		<Container styleInline="overflow-y-hidden">
 			<div className="flex flex-col items-center overflow-x-hidden justify-center py-3 w-auto">
 				<div className="flex flex-col items-start justify-center w-auto">
-					<h1 className="text-4xl text-details font-bold px-6 mb-5">
-						Adicionar
-					</h1>
+					<Title>Adicionar</Title>
 					<div className="grid grid-cols-4 tablet:flex tablet:flex-row tablet:flex-wrap mobile:flex mobile:flex-row mobile:flex-wrap items-start justify-center px-6 gap-2 ">
 						{data.map((el, i) => (
 							<Link

@@ -1,5 +1,7 @@
 .tableListDiv {
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	width: auto;
 }
 
 @media (max-width: 600px) {

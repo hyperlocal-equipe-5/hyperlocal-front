@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BoxesBody } from '../../components/BoxesBody/BoxesBody';
 import { type RootState } from '../../store/store';
 import Container from '../../style/Container';
+import Title from '../../style/Title';
 import styled from './styled.module.scss';
 
 export function TableListPage() {
@@ -27,12 +28,14 @@ export function TableListPage() {
 				sectionBoxes: tables,
 			},
 		],
+
 		boxSelectionCallback: onTableSelect,
 	};
 
 	return (
 		<Container>
 			<div className={styled.tableListDiv}>
+				<Title>Mesas</Title>
 				<BoxesBody content={tableList} />
 			</div>
 		</Container>

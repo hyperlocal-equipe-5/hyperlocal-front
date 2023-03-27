@@ -51,7 +51,6 @@ export function BoxesBody({ content }: Props) {
 			<div className={`${styled.sectionList} text-textColor`}>
 				{sections.map((section, index) => (
 					<div className={`${styled.section}`} key={index}>
-						<h3 className={`${styled.sectionTitle}`}>{section.sectionTitle}</h3>
 						{renderSectionBoxes(section.sectionBoxes)}
 					</div>
 				))}

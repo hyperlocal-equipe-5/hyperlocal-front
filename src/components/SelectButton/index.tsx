@@ -1,17 +1,12 @@
 import { Link } from 'react-router-dom';
 
-interface IProductButton {
+interface ISelectButton {
 	name: string;
 	img: string;
 	ProductId: string;
-	ingredient: string[];
+	ingredient?: string[];
 }
-const ProductButton = ({
-	name,
-	img,
-	ProductId,
-	ingredient,
-}: IProductButton) => {
+const SelectButton = ({ name, img, ProductId, ingredient }: ISelectButton) => {
 	return (
 		<>
 			<div className="mobile:w-full mobile:h-auto mobile:overflow-x-hidden mobile:overflow-y-auto">
@@ -22,7 +17,7 @@ const ProductButton = ({
 					<div className="flex flex-col items-start max-w-full h-full">
 						<h2 className="text-details text-xl font-semibold px-4">{name}</h2>
 						<div className="mobile:flex mobile:flex-row mobile:flex-wrap  mobile:w-56 mobile:h-auto text-sm text-justify px-4">
-							{ingredient.map((el, i) => (
+							{ingredient?.map((el, i) => (
 								<p key={i}>{`${el}, `}</p>
 							))}
 						</div>
@@ -32,4 +27,4 @@ const ProductButton = ({
 		</>
 	);
 };
-export default ProductButton;
+export default SelectButton;
