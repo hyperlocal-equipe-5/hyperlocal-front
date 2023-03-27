@@ -26,7 +26,7 @@ const Navbar = () => {
 					<AiOutlinePlus />
 					<Title>Adicionar</Title>
 				</NavButton>
-				<NavButton to="/workers">
+				<NavButton to="/employees">
 					<AiOutlineUser />
 					<Title>Pessoal</Title>
 				</NavButton>

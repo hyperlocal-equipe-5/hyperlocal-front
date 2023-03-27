@@ -31,7 +31,7 @@ const Header = ({ link }: header) => {
 					<Link to="/" onClick={() => setMenu(false)}>
 						Pedidos
 					</Link>
-					<Link to="/" onClick={() => setMenu(false)}>
+					<Link to="/employees" onClick={() => setMenu(false)}>
 						Funcionários
 					</Link>
 					<Link to="/tables" onClick={() => setMenu(false)}>
