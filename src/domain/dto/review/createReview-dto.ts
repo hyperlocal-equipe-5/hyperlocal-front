@@ -1,6 +1,11 @@
 export interface CreateReviewDto {
-	stars: number;
-	comment?: string;
+	stars: any;
+	comment: string;
+	responses: Array<{
+		question: string;
+		answer: string;
+		stars: number;
+	}>;
 	user?: string;
 	restaurant: string;
 }

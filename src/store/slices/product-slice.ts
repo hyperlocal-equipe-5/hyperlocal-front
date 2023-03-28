@@ -5,7 +5,6 @@ import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
 import { type Product } from '../../domain/entities/product';
 import { type CreateProductDto } from '../../domain/dto/product/createProduct-dto';
 import { type UpdateProductDto } from '../../domain/dto/product/updateProduct-dto';
-import { makeProductRouterFactory } from '../../infra/api/factories/routers/product/productRouter-factory';
 import { makeProductAdminRouterFactory } from '../../infra/api/factories/routers/product/productAdminRouter-factory';
 
 interface InitialState {
