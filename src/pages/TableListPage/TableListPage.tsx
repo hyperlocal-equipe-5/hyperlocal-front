@@ -1,42 +1,38 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BoxesBody } from '../../components/BoxesBody/BoxesBody';
+import BoxButton from '../../components/BoxButton';
+import { type Table } from '../../domain/entities/table';
 import { type RootState } from '../../store/store';
 import Container from '../../style/Container';
 import Title from '../../style/Title';
-import styled from './styled.module.scss';
 
 export function TableListPage() {
 	const navigate = useNavigate();
-	const tables = useSelector((state: RootState) => state.table.value).map(
-		table => ({
-			id: table.number.toString(),
-			boxLabel: `Mesa ${table.number}`,
-			boxContent: table.number.toString(),
-			imageBox: false,
-		}),
-	);
+	const [table, setTables] = useState<Table[]>();
+	const tables = useSelector((state: RootState) => state.table.value);
 
-	function onTableSelect(selectedTableId: string) {
-		navigate(`/table/qr-code/${selectedTableId}`);
-	}
-
-	const tableList = {
-		sections: [
-			{
-				sectionTitle: 'Mesas',
-				sectionBoxes: tables,
-			},
-		],
-
-		boxSelectionCallback: onTableSelect,
-	};
+	useEffect(() => {
+		setTables(tables);
+	}, [tables]);
 
 	return (
 		<Container>
-			<div className={styled.tableListDiv}>
+			<div className="flex flex-col items-center overflow-x-hidden justify-center py-3 max-w-[1300px] w-auto">
+				{/* <div className="flex flex-col items-center overflow-x-hidden justify-center py-3 w-auto">
+				<div className={styled.tableListDiv}> */}
 				<Title>Mesas</Title>
-				<BoxesBody content={tableList} />
+				<div className="flex flex-row flex-wrap  items-start justify-center px-6 gap-y-10">
+					{tables.map((el, i) => (
+						<BoxButton
+							key={i}
+							img={''}
+							title={`Mesa ${el.number}`}
+							click={() => navigate(`/table/qr-code/${el.id}`)}
+						/>
+					))}
+					{/* <BoxesBody content={tableList} /> */}
+				</div>
 			</div>
 		</Container>
 	);

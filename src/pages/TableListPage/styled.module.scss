@@ -1,7 +1,10 @@
 .tableListDiv {
 	display: flex;
 	flex-direction: column;
-	width: auto;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	margin: 0 2rem;
 }
 
 @media (max-width: 600px) {

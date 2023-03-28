@@ -22,22 +22,26 @@ const Menu = () => {
 
 	return (
 		<Container>
-			{categoryStore && categoryStore.length > 0 ? (
-				categoryStore.map((category, key) => (
-					<CategoryBox
-						key={key}
-						idCategory={category.id}
-						NameCategory={category.name}
-						Product={category.products.map(product => ({
-							ProductId: product.id,
-							image: product.image,
-							NameProduct: product.name,
-						}))}
-					/>
-				))
-			) : (
-				<></>
-			)}
+			<div className="flex flex-col items-center justify-center py-3 max-w-[1300px] w-auto">
+				<div className="flex flex-row flex-wrap  items-start justify-center px-6 gap-y-10">
+					{categoryStore && categoryStore.length > 0 ? (
+						categoryStore.map((category, key) => (
+							<CategoryBox
+								key={key}
+								idCategory={category.id}
+								NameCategory={category.name}
+								Product={category.products.map(product => ({
+									ProductId: product.id,
+									image: product.image,
+									NameProduct: product.name,
+								}))}
+							/>
+						))
+					) : (
+						<></>
+					)}
+				</div>
+			</div>
 		</Container>
 	);
 };
