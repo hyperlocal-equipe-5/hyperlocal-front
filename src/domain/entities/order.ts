@@ -1,3 +1,4 @@
+import { type Ingredient } from './ingredient';
 import { type Product } from './product';
 import { type Restaurant } from './restaurant';
 import { type Table } from './table';
@@ -8,8 +9,22 @@ export interface Order {
 	takeAway: boolean;
 	orderNumber?: number;
 	customerName?: string;
-	products: Product[];
-	quantities: number[];
+	finished: boolean;
+	products: Array<{
+		id: string;
+		product: Product;
+		ingredientsAdded: Array<{
+			id: string;
+			ingredient: Ingredient;
+			quantity: number;
+		}>;
+		ingredientsRemoved: Array<{
+			id: string;
+			ingredient: Ingredient;
+			quantity: number;
+		}>;
+	}>;
+	price: number;
 	user?: User;
 	table?: Table;
 	restaurant: Restaurant;

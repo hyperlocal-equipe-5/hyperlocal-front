@@ -33,12 +33,13 @@ const orderSlice = createSlice({
 				id: '',
 				takeAway: action.payload.takeAway ?? false,
 				products: [],
-				quantities: action.payload.quantities,
 				restaurant: makeRestaurantStub(action.payload.restaurant),
-				orderNumber: action.payload.orderNumber ?? 0,
+				orderNumber: 0,
 				customerName: action.payload.customerName ?? '',
 				createdAt: '',
 				updatedAt: '',
+				finished: false,
+				price: 0,
 			});
 
 			state.value = newState;
@@ -72,16 +73,16 @@ const orderSlice = createSlice({
 				id: foundEntity?.id ?? '',
 				takeAway: action.payload.takeAway ?? foundEntity?.takeAway ?? false,
 				products: foundEntity?.products ?? [],
-				quantities: action.payload.quantities ?? foundEntity?.quantities ?? [],
 				restaurant:
 					foundEntity?.restaurant ??
 					makeRestaurantStub(action.payload.restaurant),
-				orderNumber:
-					action.payload.orderNumber ?? foundEntity?.orderNumber ?? 0,
+				orderNumber: 0,
 				customerName:
 					action.payload.customerName ?? foundEntity?.customerName ?? '',
 				createdAt: foundEntity?.createdAt ?? '',
 				updatedAt: foundEntity?.updatedAt ?? '',
+				finished: false,
+				price: 0,
 			});
 			state.value = newState;
 		},

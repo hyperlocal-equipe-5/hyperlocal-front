@@ -3,6 +3,7 @@ export interface UpdateRoleDto {
 	restaurant: string;
 	name?: string;
 	access?: {
+		id: string;
 		createRestaurants?: boolean;
 		createUsers?: boolean;
 		createProducts?: boolean;
@@ -11,6 +12,7 @@ export interface UpdateRoleDto {
 		createOrders?: boolean;
 		createRoles?: boolean;
 		createTables?: boolean;
+		createReviewQuestions?: boolean;
 		readRestaurants?: boolean;
 		readUsers?: boolean;
 		readProducts?: boolean;
@@ -19,6 +21,7 @@ export interface UpdateRoleDto {
 		readOrders?: boolean;
 		readRoles?: boolean;
 		readTables?: boolean;
+		readReviewQuestions?: boolean;
 		updateRestaurants?: boolean;
 		updateUsers?: boolean;
 		updateProducts?: boolean;
@@ -27,6 +30,7 @@ export interface UpdateRoleDto {
 		updateOrders?: boolean;
 		updateRoles?: boolean;
 		updateTables?: boolean;
+		updateReviewQuestions?: boolean;
 		deleteRestaurants?: boolean;
 		deleteUsers?: boolean;
 		deleteProducts?: boolean;
@@ -35,6 +39,7 @@ export interface UpdateRoleDto {
 		deleteOrders?: boolean;
 		deleteRoles?: boolean;
 		deleteTables?: boolean;
+		deleteReviewQuestions?: boolean;
 		defineAccess?: boolean;
 	};
 }

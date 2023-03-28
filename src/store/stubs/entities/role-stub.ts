@@ -1,12 +1,17 @@
+import { type Role } from '../../../domain/entities/role';
 import { makeRestaurantStub } from './restaurant-stub';
 
-export function makeRoleStub() {
+export function makeRoleStub(): Role {
 	return {
 		id: '29r928e892e',
 		name: 'Role',
 		restaurant: makeRestaurantStub(),
 		access: {
 			id: '32423reretretert',
+			createReviewQuestions: false,
+			readReviewQuestions: false,
+			updateReviewQuestions: false,
+			deleteReviewQuestions: false,
 			createRestaurants: false,
 			createUsers: false,
 			createProducts: false,

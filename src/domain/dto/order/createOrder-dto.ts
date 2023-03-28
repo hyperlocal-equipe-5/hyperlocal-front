@@ -1,16 +1,19 @@
 export interface CreateOrderDto {
-	products: string[];
-	quantities: number[];
+	finished: boolean;
+	products: Array<{
+		product: string;
+		ingredientsAdded: Array<{
+			ingredient: string;
+			quantity: number;
+		}>;
+		ingredientsRemoved: Array<{
+			ingredient: string;
+			quantity: number;
+		}>;
+	}>;
 	takeAway?: boolean;
-	orderNumber?: number;
 	customerName?: string;
 	user?: string;
 	table?: string;
 	restaurant: string;
 }
-
-// products: Array<{
-// 		name: string;
-// 		ingredients?: string[];
-// 		price?: number;
-// 	}>;

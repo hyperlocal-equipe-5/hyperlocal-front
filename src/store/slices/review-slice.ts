@@ -34,11 +34,10 @@ const reviewSlice = createSlice({
 			const newState = state.value;
 			newState.push({
 				id: '',
-				stars: action.payload.stars,
-				comment: action.payload.comment ?? '',
 				restaurant: makeRestaurantStub(action.payload.restaurant),
 				createdAt: '',
 				updatedAt: '',
+				responses: [],
 			});
 			state.value = newState;
 		},
@@ -69,13 +68,12 @@ const reviewSlice = createSlice({
 			);
 			const newState = state.value.splice(index, 1, {
 				id: foundEntity?.id ?? '',
-				stars: action.payload.stars ?? foundEntity?.stars ?? 0,
-				comment: action.payload.comment ?? foundEntity?.comment ?? '',
 				restaurant:
 					foundEntity?.restaurant ??
 					makeRestaurantStub(action.payload.restaurant),
 				createdAt: foundEntity?.createdAt ?? '',
 				updatedAt: foundEntity?.updatedAt ?? '',
+				responses: [],
 			});
 			state.value = newState;
 		},
