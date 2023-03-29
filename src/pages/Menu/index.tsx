@@ -9,7 +9,6 @@ import Container from '../../style/Container';
 const Menu = () => {
 	const dispatch = useDispatch();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
-	console.log(categoryStore);
 
 	useEffect(() => {
 		makeCategoryRouterFactory()
@@ -36,6 +35,7 @@ const Menu = () => {
 									NameProduct: product.name,
 								}))}
 							/>
+							// <BoxButton key={key} img={category.} title={category.name} click={() => navigate(`/product/${category.id}`} />
 						))
 					) : (
 						<></>

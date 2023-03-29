@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Title from '../../style/Title';
 import BoxButton from '../BoxButton';
-import { BoxContainer, ContentBox, TitleCategory } from './styled';
 
 export interface ICategoryBox {
 	NameCategory: string;
@@ -12,12 +12,12 @@ export interface ICategoryBox {
 const CategoryBox = ({ NameCategory, idCategory, Product }: ICategoryBox) => {
 	const navigate = useNavigate();
 	return (
-		<BoxContainer>
-			<TitleCategory to={`/category/${idCategory}`}>
-				{NameCategory}
-			</TitleCategory>
-			<ContentBox>
-				<div className="mobile:flex mobile:flex-row mobile:w-max mobile:h-full mobile:overflow-x-auto mobile:overflow-y-hidden mt-2">
+		<div className="flex flex-col w-full mobile:h-60 mobile:overflow-y-hidden">
+			<Title>
+				<Link to={`/category/${idCategory}`}>{NameCategory}</Link>
+			</Title>
+			<div className="mobile:w-full mobile:h-full mobile:overflow-y-hidden">
+				<div className="mobile:flex mobile:flex-row mobile:w-max mobile:overflow-x-scroll mobile:h-full mt-2">
 					{Product.map((el, i) => (
 						<BoxButton
 							key={i}
@@ -27,8 +27,8 @@ const CategoryBox = ({ NameCategory, idCategory, Product }: ICategoryBox) => {
 						/>
 					))}
 				</div>
-			</ContentBox>
-		</BoxContainer>
+			</div>
+		</div>
 	);
 };
 
