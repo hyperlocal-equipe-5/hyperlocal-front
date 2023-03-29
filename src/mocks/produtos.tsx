@@ -5,7 +5,7 @@ export const products: ProductResponse[] = [
 		id: 0,
 		name: 'Veg Burguer',
 		description:
-			'Pão, alface, Tomate, american cheese, VegBurguer e Batata Rústica',
+			'Pão de leite com deliciosa salada tropical american cheese e VegBurguer acompanhado de Batata Rústica',
 		price: '30,00 Reais',
 		image:
 			'https://img.freepik.com/fotos-gratis/delicioso-hamburguer-de-carne-com-batata-frita-em-piso-escuro-de-frente_140725-89724.jpg?size=626&ext=jpg',
@@ -14,7 +14,7 @@ export const products: ProductResponse[] = [
 		id: 1,
 		name: 'Duplo Burguer',
 		description:
-			'Pão , alface, tomate, cebola crispy, queijo cheader, picles e Duplo Burguer',
+			'Pão especial com fatias de bacon defumado - salada -  cebola crispy - queijo cheader - picles e Duplo Burguer',
 		price: '45,00 Reais',
 		image:
 			'https://as1.ftcdn.net/v2/jpg/03/34/88/16/1000_F_334881645_vLmn5Hs1YyIYY1r0fcGGNAGZ0HL4ix8T.jpg',
@@ -22,9 +22,10 @@ export const products: ProductResponse[] = [
 	{
 		id: 2,
 		name: 'Frango Burguer',
-		description: 'Pão , salada , cebola crisp, cheader e VegBurguer',
-		price: '30,00 Reais',
+		description:
+			'Pão com gergelim - salada - sour cream - queijo prato e Chicken Burguer',
+		price: '25,00 Reais',
 		image:
-			'https://w7.pngwing.com/pngs/128/759/png-transparent-hamburger-with-bun-hamburger-cheeseburger-fast-food-barbecue-pizza-hamburguer-food-recipe-cheese-thumbnail.png',
+			'https://receitinhas.com.br/wp-content/uploads/2017/09/hamb%C3%BArguer-de-frango.jpg',
 	},
 ];
