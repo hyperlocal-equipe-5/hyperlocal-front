@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BoxButton from '../../components/BoxButton';
 import Container from '../../style/Container';
 import Title from '../../style/Title';
@@ -54,7 +54,6 @@ const Add = () => {
 						{data.map((el, i) => (
 							<BoxButton
 								key={i}
-								img={el.name}
 								title={el.name}
 								click={() => navigate(`${el.link}`)}
 							/>
@@ -62,7 +61,6 @@ const Add = () => {
 					</div>
 				</div>
 			</div>
-			<Outlet />
 		</Container>
 	);
 };

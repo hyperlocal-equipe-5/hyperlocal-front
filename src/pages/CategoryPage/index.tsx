@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import BoxButton from '../../components/BoxButton';
+import ColumnBox from '../../components/ColumnBox';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
@@ -30,9 +30,11 @@ const CategoryPage = () => {
 			<Title>{category ? category.name : ''}</Title>
 			{category ? (
 				category.products.map(product => (
-					<BoxButton
+					<ColumnBox
 						key={product.id}
 						title={product.name}
+						ingredient={product.ingredients.map(el => el.name)}
+						price={product.price}
 						img={product.image}
 						click={() => navigate(`/product/${product.id}`)}
 					/>

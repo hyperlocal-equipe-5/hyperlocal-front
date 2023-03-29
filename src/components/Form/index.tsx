@@ -3,16 +3,16 @@ import { type InputDto } from '../../types/Dto/InputDto';
 import DropdownButton from '../DropdownButton';
 
 interface InputForm {
-	Input: InputDto;
+	Input?: InputDto;
 	Function: (e: any, field: string) => void;
 }
 
 const Form = ({ Input, Function }: InputForm) => {
 	return (
 		<div className="flex flex-col w-6/12 h-5/6 mobile:w-11/12">
-			{Input.activeInputText ? (
-				<div className={Input.styleInput}>
-					{Input.Input?.map((el, i) => (
+			{Input?.activeInputText ? (
+				<div className={Input?.styleInput}>
+					{Input?.Input?.map((el, i) => (
 						<div key={i} className="flex flex-col">
 							<h1 className="text-details py-3 text-2xl font-semibold">
 								{el.name}
@@ -39,8 +39,8 @@ const Form = ({ Input, Function }: InputForm) => {
 			) : (
 				<></>
 			)}
-			{Input.activeSelection ? (
-				<div className={Input.styleSelection}>
+			{Input?.activeSelection ? (
+				<div className={Input?.styleSelection}>
 					{Input.Selection?.map((el, i) => (
 						<div key={i}>
 							<h1 className="text-details py-3 text-2xl font-semibold">
@@ -59,9 +59,9 @@ const Form = ({ Input, Function }: InputForm) => {
 			) : (
 				<></>
 			)}
-			{Input.activeCheckbox ? (
-				<div className={Input.styleCheckbox}>
-					{Input.Checkbox?.map((el, i) => (
+			{Input?.activeCheckbox ? (
+				<div className={Input?.styleCheckbox}>
+					{Input?.Checkbox?.map((el, i) => (
 						<div key={i} className="flex flex-row items-center">
 							<input
 								onChange={e => Function(e, el.name)}
