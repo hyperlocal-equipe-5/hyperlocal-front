@@ -45,7 +45,8 @@ const AddRestaurant = () => {
 		if (field === 'Restaurante') setState({ ...state, name: e.target.value });
 		if (field === 'Endereço') setState({ ...state, address: e.target.value });
 		if (field === 'Email') setState({ ...state, email: e.target.value });
-		if (field === 'Telefone') setState({ ...state, telephone: e.target.value });
+		if (field === 'Telefone')
+			setState({ ...state, telephone: +e.target.value });
 	};
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
@@ -56,7 +57,6 @@ const AddRestaurant = () => {
 				navigate('/add');
 			})
 			.catch(error => error);
-		// console.log(state);
 	};
 	return (
 		<Container>

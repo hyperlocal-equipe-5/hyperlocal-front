@@ -3,7 +3,7 @@ import { BiDownArrow, BiRightArrow } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 interface IButtons {
-	names: string[];
+	names: Array<{ name: string; id: string }>;
 	addLink?: boolean;
 	link?: string;
 	nameLink?: string;
@@ -37,13 +37,14 @@ const DropdownButton = ({
 					{dropDown ? <BiDownArrow /> : <BiRightArrow />}
 				</button>
 				<div className={dropDown ? 'h-full w-full' : 'hidden'}>
-					{names.map(el => (
+					{names.map((el, index) => (
 						<button
+							value={el.id}
 							className="flex items-center justify-between pl-4 pr-4 text-xl font-semibold w-full h-8 hover:bg-details hover:w-full hover:text-textColor hover:duration-300 hover: cursor-pointer capitalize"
 							type="button"
 							onClick={handleClick}
-							key={el.toString()}>
-							{el}
+							key={index}>
+							{el.name}
 						</button>
 					))}
 					{addLink ? (
