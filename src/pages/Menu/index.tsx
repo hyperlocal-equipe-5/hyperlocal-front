@@ -9,6 +9,7 @@ import Container from '../../style/Container';
 const Menu = () => {
 	const dispatch = useDispatch();
 	const categoryStore = useSelector((state: RootState) => state.category.value);
+	console.log(categoryStore);
 
 	useEffect(() => {
 		makeCategoryRouterFactory()

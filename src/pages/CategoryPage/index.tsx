@@ -33,7 +33,7 @@ const CategoryPage = () => {
 					<ColumnBox
 						key={product.id}
 						title={product.name}
-						ingredient={product.ingredients.map(el => el.name)}
+						description={product.description}
 						price={product.price}
 						img={product.image}
 						click={() => navigate(`/product/${product.id}`)}

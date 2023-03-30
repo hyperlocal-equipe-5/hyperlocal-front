@@ -48,7 +48,7 @@ const Header = ({ link }: header) => {
 						to="/employees"
 						className="hover:text-details"
 						onClick={() => setMenu(false)}>
-						Funcionários
+						Colaboradores
 					</Link>
 					<Link
 						to="/tables"

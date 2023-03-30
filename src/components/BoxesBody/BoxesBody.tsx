@@ -28,15 +28,13 @@ export function BoxesBody({ content }: Props) {
 						className={`${styled.box} bg-bg border-box hover:border-details`}
 						key={index}
 						onClick={() => content.boxSelectionCallback(box.id)}>
-						<div>
-							{box.imageBox ? (
-								<img className={`${styled.boxImage}`} src={box.boxContent} />
-							) : (
-								<h2 className={`${styled.boxTitle} bg-details `}>
-									{box.boxContent}
-								</h2>
-							)}
-						</div>
+						{box.imageBox ? (
+							<img className={`${styled.boxImage}`} src={box.boxContent} />
+						) : (
+							<h2 className={`${styled.boxTitle} bg-details`}>
+								{box.boxContent}
+							</h2>
+						)}
 						<p className={`${styled.boxLabel}`}>{box.boxLabel}</p>
 					</div>
 				))}
