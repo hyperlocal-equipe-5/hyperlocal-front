@@ -1,5 +1,7 @@
-import { Link, Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import BoxButton from '../../components/BoxButton';
 import Container from '../../style/Container';
+import Title from '../../style/Title';
 
 interface IForm {
 	link: string;
@@ -42,26 +44,23 @@ const data: IForm[] = [
 ];
 
 const Add = () => {
+	const navigate = useNavigate();
 	return (
 		<Container styleInline="overflow-y-hidden">
-			<div className="flex flex-col items-center overflow-x-hidden justify-center py-3 w-auto">
+			<div className="flex flex-col items-center overflow-x-hidden justify-center py-3 max-w-[1300px] w-auto">
 				<div className="flex flex-col items-start justify-center w-auto">
-					<h1 className="text-4xl text-details font-bold px-6 mb-5">
-						Adicionar
-					</h1>
-					<div className="grid grid-cols-4 tablet:flex tablet:flex-row tablet:flex-wrap mobile:flex mobile:flex-row mobile:flex-wrap items-start justify-center px-6 gap-2 ">
+					<Title>Adicionar</Title>
+					<div className="flex flex-row flex-wrap  items-start justify-center px-6 gap-y-10">
 						{data.map((el, i) => (
-							<Link
+							<BoxButton
 								key={i}
-								className="flex items-center h-64 w-64 justify-center mobile:w-36 mobile:h-32 hover:duration-300 hover:bg-details rounded-2xl text-textColor font-semibold text-2xl bg-box"
-								to={el.link}>
-								{el.name}
-							</Link>
+								title={el.name}
+								click={() => navigate(`${el.link}`)}
+							/>
 						))}
 					</div>
 				</div>
 			</div>
-			<Outlet />
 		</Container>
 	);
 };

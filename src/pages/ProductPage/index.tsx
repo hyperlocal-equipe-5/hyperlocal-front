@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { type RootState } from '../../store/store';
 
-import Form from '../../components/Form';
 import Button from '../../style/Button';
 import Container from '../../style/Container';
 import { ButtonType } from '../../types/ButtonTypes';
@@ -27,14 +26,6 @@ const ProductPage = () => {
 				<h1 className="text-3xl text-details capitalize  mobile:pb-4">
 					{product?.name}
 				</h1>
-				{/* <Form
-					ICheckbox={product?.ingredients.map(el => ({
-						id: el.id,
-						name: el.name,
-					}))}
-					Function={HandleChange}
-				/> */}
-				{}
 			</div>
 			<PriceBox>
 				<p className="text-[#fefbff] text-2xl font-black">

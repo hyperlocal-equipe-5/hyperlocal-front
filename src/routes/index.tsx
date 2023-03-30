@@ -8,6 +8,7 @@ import AddProduct from '../pages/Add/AddProduct';
 import AddRestaurant from '../pages/Add/AddRestaurant';
 import Cadastro from '../pages/Cadastro/Cadastro';
 import CategoryPage from '../pages/CategoryPage';
+import Employees from '../pages/Employees';
 import RestaurantForm from '../pages/Form11/RestaurantForm';
 import RoleForm from '../pages/Form11/RoleForm';
 import UserForm from '../pages/Form11/UserForm';
@@ -48,7 +49,7 @@ const Routes = createBrowserRouter([
 			{ path: '/add/user', element: <UserForm /> },
 			{ path: '/add/role', element: <RoleForm /> },
 			{ path: '/form/restaurantes/:id', element: <RestaurantForm /> },
-			{ path: '/workers', element: <Home /> },
+			{ path: '/employees', element: <Employees /> },
 			{ path: '/menu', element: <Menu /> },
 			{ path: '/finance', element: <Home /> },
 			{ path: '/tables', element: <TableListPage /> },

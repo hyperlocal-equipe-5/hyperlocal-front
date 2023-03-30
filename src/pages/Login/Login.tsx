@@ -30,6 +30,7 @@ const Login = () => {
 		activeCheckbox: false,
 		Checkbox: [],
 	};
+
 	const [loginData, setLoginData] = useState<LoginDto>({
 		email: '',
 		password: '',
@@ -54,7 +55,7 @@ const Login = () => {
 			.login(loginData)
 			.then(response => {
 				const restaurantId = new RestaurantIdHandler().get();
-				navigate(`/${restaurantId}`);
+				navigate(`/`);
 			})
 			.catch(error => error);
 	};

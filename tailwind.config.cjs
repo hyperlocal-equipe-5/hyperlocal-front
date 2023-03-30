@@ -5,13 +5,13 @@ module.exports = {
 		extend: {
 			screens: {
 				mobile: { max: '599px' },
-				tablet: { min: '600px', max: '1100px' },
+				tablet: { min: '600px', max: '900px' },
 			},
 			colors: {
 				textColor: '#fefbff',
 				bg: '#010000',
 				details: '#75ba12',
-				box: '#979393',
+				box: '#30404d',
 			},
 		},
 	},

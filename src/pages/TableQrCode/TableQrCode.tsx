@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import Qrcode from '../../components/Qrcode/Qrcode';
 import { RestaurantIdHandler } from '../../helpers/handlers/restaurantId/restaurantIdHandler-helper';
+import Container from '../../style/Container';
 import styled from './styled.module.scss';
 
 export function TableQrCode() {
@@ -14,9 +15,11 @@ export function TableQrCode() {
 	}
 
 	return (
-		<div className={styled.mainDiv}>
-			<h2 className={styled.title}>Código QR da mesa {tableNumber}:</h2>
-			<Qrcode qrlink={getLink()} />
-		</div>
+		<Container>
+			<div className={styled.mainDiv}>
+				<h2 className={styled.title}>Código QR da mesa {tableNumber}:</h2>
+				<Qrcode qrlink={getLink()} />
+			</div>
+		</Container>
 	);
 }

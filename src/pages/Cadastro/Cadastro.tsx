@@ -93,7 +93,7 @@ const Cadastro = () => {
 			<FormBox OnSubmit={handleSubmit}>
 				<Form Function={handleChange} Input={inputs} />
 				<ImageInput onChange={handleChangeImage} />
-				<Button type={ButtonType.submit}>cadastrar</Button>
+				<Button type={ButtonType.submit}>Cadastrar</Button>
 			</FormBox>
 		</Container>
 	);
