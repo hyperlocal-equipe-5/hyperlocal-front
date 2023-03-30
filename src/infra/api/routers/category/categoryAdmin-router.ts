@@ -33,7 +33,7 @@ export class CategoryAdminRouter implements CategoryAdminRouterInterface {
 		const authentication = this.tokenHandler.getAuthorization();
 
 		return await this.httpRequestAdapter.post(
-			apiLink + `admin/category`,
+			apiLink + `/admin/category`,
 			body,
 			authentication,
 		);
@@ -47,7 +47,7 @@ export class CategoryAdminRouter implements CategoryAdminRouterInterface {
 		const restaurantId = this.restaurantIdHandler.get();
 
 		return await this.httpRequestAdapter.delete(
-			apiLink + `admin/category/${categoryId}?restaurant=${restaurantId}`,
+			apiLink + `/admin/category/${categoryId}?restaurant=${restaurantId}`,
 
 			authentication,
 		);
@@ -61,7 +61,7 @@ export class CategoryAdminRouter implements CategoryAdminRouterInterface {
 		const authentication = this.tokenHandler.getAuthorization();
 
 		return await this.httpRequestAdapter.patch(
-			apiLink + `admin/category/${categoryId}`,
+			apiLink + `/admin/category/${categoryId}`,
 			body,
 			authentication,
 		);

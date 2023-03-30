@@ -40,7 +40,10 @@ const Header = ({ link }: header) => {
 					<Link to="/add" onClick={() => setMenu(false)}>
 						Cadastrar
 					</Link>
-					<SetRestaurant />
+					<Link to="/login" onClick={() => setMenu(false)}>
+						Login
+					</Link>
+					{/* <SetRestaurant /> */}
 				</nav>
 			</div>
 			{menu ? <AsideNavbar /> : <></>}

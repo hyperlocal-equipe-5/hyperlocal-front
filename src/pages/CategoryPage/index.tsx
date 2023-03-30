@@ -23,7 +23,7 @@ const CategoryPage = () => {
 			.catch(error => {
 				console.log(error);
 			});
-	});
+	}, []);
 
 	return (
 		<Container>
@@ -34,7 +34,7 @@ const CategoryPage = () => {
 				category.products.map(product => (
 					<ProductButton
 						key={product.id}
-						name={product.image}
+						name={product.name}
 						img={product.image}
 						ProductId={product.id}
 						ingredient={product.ingredients.map(ingredient => ingredient.id)}
