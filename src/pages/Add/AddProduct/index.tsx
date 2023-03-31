@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../components/Form';
+import { ImageInput } from '../../../components/ImageInput/ImageInput';
 import { type CreateProductDto } from '../../../domain/dto/product/createProduct-dto';
 import { type Category } from '../../../domain/entities/category';
 import { type Ingredient } from '../../../domain/entities/ingredient';
@@ -100,6 +101,9 @@ const AddProduct = () => {
 		if (field === 'Imagem') setState({ ...state, image: e.target.value });
 		if (field === 'Preço') setState({ ...state, price: e.target.value });
 	};
+	const onImageChange = (convertedImage: string) => {
+		setState({ ...state, image: convertedImage });
+	};
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
@@ -126,6 +130,7 @@ const AddProduct = () => {
 					Function={handleChange}
 					Input={selectData(restaurant, category)}
 				/>
+				<ImageInput onChange={onImageChange} />
 				<Button type={ButtonType.submit}>Cadastrar</Button>
 			</FormBox>
 		</Container>
