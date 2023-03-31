@@ -5,10 +5,11 @@ import { type ProductResponse } from './type';
 interface ProductsProps {
 	product: ProductResponse;
 	active: boolean;
-	onClick: () => void;
+	onPrev: () => void;
+	onNext: () => void;
 }
 
-const Carousel = ({ product, active, onClick }: ProductsProps) => {
+const Carousel = ({ product, active, onPrev, onNext }: ProductsProps) => {
 	return active ? (
 		<div className={styled.box_carousel}>
 			<img src={product.image} alt="foto" />
@@ -19,10 +20,10 @@ const Carousel = ({ product, active, onClick }: ProductsProps) => {
 				<button className={styled.product_button}>Produto</button>
 			</div>
 			<button className={styled.chevronL}>
-				<BsChevronLeft size={50} color="#8bf24f" onClick={onClick} />
+				<BsChevronLeft size={50} color="#8bf24f" onClick={onPrev} />
 			</button>
 			<button className={styled.chevronR}>
-				<BsChevronRight size={50} color="#8bf24f" onClick={onClick} />
+				<BsChevronRight size={50} color="#8bf24f" onClick={onNext} />
 			</button>
 		</div>
 	) : (

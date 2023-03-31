@@ -47,6 +47,7 @@ import { useState } from 'react';
 
 import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
 import { SiFacebook } from 'react-icons/si';
+
 import useRecursiveTimeout from '../../Hooks/useRecursiveTimeout';
 import Carousel from '../../components/Carousel/Carousel';
 import { products } from '../../mocks/produtos';
@@ -61,20 +62,23 @@ const Home = () => {
 	}, 5000);
 
 	function handleActive(posicao: number) {
-		const total = products.length - 1;
+		const total = products.length;
 		if (active % total === posicao) {
 			return true;
 		}
 		return false;
 	}
 
-	function handleClick() {
-		setActive(active - 1 || active + 1);
+	function handlePrev() {
+		setActive(active - 1);
+	}
+
+	function handleNext() {
+		setActive(active + 1);
 	}
 
 	return (
 		<Container>
-			{/* aqui {active} */}
 			<div className={styled.box_geral}>
 				<section className={styled.box_section}>
 					<div className={styled.box_titulo}>
@@ -92,7 +96,8 @@ const Home = () => {
 									key={product.name}
 									product={product}
 									active={handleActive(index)}
-									onClick={handleClick}
+									onPrev={handlePrev}
+									onNext={handleNext}
 								/>
 							))}
 						</div>
