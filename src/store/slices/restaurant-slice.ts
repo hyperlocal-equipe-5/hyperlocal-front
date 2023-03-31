@@ -3,7 +3,6 @@ import { type CreateRestaurantDto } from '../../domain/dto/restaurant/createRest
 import { type UpdateRestaurantDto } from '../../domain/dto/restaurant/updateRestaurant-dto';
 import { type Restaurant } from '../../domain/entities/restaurant';
 import { makeRestaurantAdminRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantAdminRouter-factory';
-import { makeRestaurantRouterFactory } from '../../infra/api/factories/routers/restaurant/restaurantRouter-factory';
 import { ArraySort } from '../utils/array-sorter';
 
 interface InitialState {
@@ -40,6 +39,7 @@ const restaurantSlice = createSlice({
 				colorScheme: action.payload.colorScheme ?? 1,
 				createdAt: '',
 				updatedAt: '',
+				reference: 0,
 			});
 
 			state.value = ArraySort.sort(newState, 'name');
@@ -90,6 +90,7 @@ const restaurantSlice = createSlice({
 					action.payload.colorScheme ?? foundEntity?.colorScheme ?? 1,
 				createdAt: foundEntity?.createdAt ?? '',
 				updatedAt: foundEntity?.updatedAt ?? '',
+				reference: 0,
 			});
 			state.value = ArraySort.sort(newState, 'name');
 		},
