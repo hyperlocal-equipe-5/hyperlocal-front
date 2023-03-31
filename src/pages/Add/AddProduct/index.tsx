@@ -106,6 +106,7 @@ const AddProduct = () => {
 
 		makeProductAdminRouterFactory()
 			.createProduct(state)
+			.then(() => navigate('/menu'))
 			.catch(error => error);
 	};
 
