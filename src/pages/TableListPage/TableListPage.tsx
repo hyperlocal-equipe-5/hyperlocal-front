@@ -1,9 +1,7 @@
 import { AccessValidator } from '../../components/AccessValidator/AccessValidator';
-import { BoxesBody } from '../../components/BoxesBody/BoxesBody';
 import { type RootState } from '../../store/store';
 import Container from '../../style/Container';
 import { UserAccess } from '../../types/UserAccessType';
-import styled from './styled.module.scss';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +17,7 @@ export function TableListPage() {
 
 	useEffect(() => {
 		setTables(tables);
-	}, [tables]);
+	}, []);
 
 	return (
 		<Container>
@@ -37,7 +35,7 @@ export function TableListPage() {
 				<div className={styled.tableListDiv}> */}
 					<Title>Mesas</Title>
 					<div className="flex flex-row flex-wrap  items-start justify-center px-6 gap-y-10">
-						{tables.map((el, i) => (
+						{table?.map((el, i) => (
 							<BoxButton
 								key={i}
 								img={''}

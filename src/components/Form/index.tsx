@@ -22,6 +22,7 @@ const Form = ({ Input, Function }: InputForm) => {
 									onChange={(e: any) => Function(e, el.name)}
 									type={el.typeInput}
 									required
+									step="0.01"
 									className="bg-white h-8 w-full rounded-xl text-bg px-2"
 									placeholder={`Criar um novo ${el.name}`}
 								/>
@@ -29,6 +30,7 @@ const Form = ({ Input, Function }: InputForm) => {
 								<input
 									onChange={(e: any) => Function(e, el.name)}
 									type={el.typeInput}
+									step="0.01"
 									className="bg-white h-8 w-full rounded-xl text-bg px-2"
 									placeholder={`Criar um novo ${el.name}`}
 								/>

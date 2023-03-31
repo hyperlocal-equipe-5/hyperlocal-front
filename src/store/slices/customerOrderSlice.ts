@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type CreateOrderDto } from '../../domain/dto/order/createOrder-dto';
+import { OrderProductsHandler } from '../../helpers/handlers/orderProductIds/orderProductsHandler-helper';
 
 const initialState: CreateOrderDto = {
 	restaurant: '',
@@ -61,6 +62,7 @@ const customerOrderSlice = createSlice({
 				}>;
 			}>,
 		) {
+			new OrderProductsHandler().addProduct(action.payload.product);
 			state.products = [...state.products, action.payload];
 		},
 	},

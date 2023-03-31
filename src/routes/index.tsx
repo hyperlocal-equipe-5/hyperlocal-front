@@ -38,6 +38,8 @@ const Routes = createBrowserRouter([
 		children: [
 			{ path: '/login', element: <Login /> },
 			{ path: '/cadastro', element: <Cadastro /> },
+			{ path: '/:restaurantId/:tableId', element: <Home /> },
+			{ path: '/:restaurantId', element: <Home /> },
 			{ path: '/', element: <Home /> },
 			{ path: '/category/:id', element: <CategoryPage /> },
 			{ path: '/product/:id', element: <ProductPage /> },

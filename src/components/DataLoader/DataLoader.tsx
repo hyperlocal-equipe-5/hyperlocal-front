@@ -9,9 +9,15 @@ import { makeProductRouterFactory } from '../../infra/api/factories/routers/prod
 import { getProducts } from '../../store/slices/product-slice';
 import { makeTableRouterFactory } from '../../infra/api/factories/routers/table/tableRouter-factory';
 import { getTables } from '../../store/slices/table-slice';
+import { TableIdHandler } from '../../helpers/handlers/tableId/tableIdHandler-helper';
+import { makeIngredientRouterFactory } from '../../infra/api/factories/routers/ingredient/ingredientRouter-factory';
+import { getIngredients } from '../../store/slices/ingredient-slice';
 
 export default function DataLoader() {
 	const dispatch = useDispatch();
+	const urlParams = location.pathname.split('/');
+	const urlRestaurantId = urlParams.length >= 2 ? urlParams[1] : '';
+	const urlTableId = urlParams.length >= 3 ? urlParams[2] : '';
 
 	function loadRestaurants() {
 		const restaurantRouter = makeRestaurantRouterFactory();
@@ -20,18 +26,28 @@ export default function DataLoader() {
 			.then(restaurants => {
 				dispatch(getRestaurats(restaurants.body));
 
-				const restaurantIdParameter = location.pathname
-					.replace('/', '')
-					.replace('/', '');
 				const selectedRestaurant = restaurants.body.find(item =>
-					item.id.includes(restaurantIdParameter),
+					item.id.includes(urlRestaurantId),
 				);
-
-				console.log(selectedRestaurant);
 
 				new RestaurantIdHandler().store(
 					selectedRestaurant?.id || new RestaurantIdHandler().get(),
 				);
+
+				makeTableRouterFactory()
+					.getAllTables()
+					.then(tables => {
+						dispatch(getTables(tables.body));
+
+						const selectedTable = tables.body.find(table =>
+							table.id.includes(urlTableId),
+						);
+
+						new TableIdHandler().store(
+							selectedTable?.id || new TableIdHandler().get(),
+						);
+					})
+					.catch(error => error);
 
 				makeCategoryRouterFactory()
 					.getAllCategories()
@@ -42,6 +58,13 @@ export default function DataLoader() {
 							.getAllProducts()
 							.then(products => {
 								dispatch(getProducts(products.body));
+							})
+							.catch(error => error);
+
+						makeIngredientRouterFactory()
+							.getAllIngredients()
+							.then(ingredients => {
+								dispatch(getIngredients(ingredients.body));
 							})
 							.catch(error => error);
 					})

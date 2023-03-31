@@ -1,26 +1,32 @@
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import { type RootState } from '../../store/store';
-
 import Button from '../../style/Button';
 import Container from '../../style/Container';
 import { ButtonType } from '../../types/ButtonTypes';
 import { Cover, PriceBox } from './styled';
+import { addProduct } from '../../store/slices/customerOrderSlice';
 
 const ProductPage = () => {
 	const { id } = useParams();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const product = useSelector((state: RootState) =>
 		state.product.value.find(item => item.id === id),
 	);
 
-	const HandleChange = (e: any) => {
-		console.log(e.target.value, e.target.checked);
-	};
-
 	const handleClick = () => {
-		alert('Adicionado ao carrinho');
+		navigate('/add/order');
+		dispatch(
+			addProduct({
+				product: product?.id ?? '',
+				ingredientsAdded: [],
+				ingredientsRemoved: [],
+			}),
+		);
+		alert('Produto adicionado ao carrinho.');
 	};
 
 	return (

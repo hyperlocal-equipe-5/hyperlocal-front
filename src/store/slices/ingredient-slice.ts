@@ -99,6 +99,10 @@ const ingredientSlice = createSlice({
 	},
 });
 
-export const { createIngredient, deleteIngredient, updateIngredient } =
-	ingredientSlice.actions;
+export const {
+	createIngredient,
+	deleteIngredient,
+	updateIngredient,
+	getIngredients,
+} = ingredientSlice.actions;
 export default ingredientSlice.reducer;

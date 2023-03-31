@@ -11,7 +11,7 @@ export function TableQrCode() {
 	function getLink() {
 		const restaurantId = new RestaurantIdHandler().get();
 
-		return `${originUrl}?restaurant=${restaurantId}&table=${tableNumber}`;
+		return `${originUrl}/${restaurantId}/${tableNumber}`;
 	}
 
 	return (
