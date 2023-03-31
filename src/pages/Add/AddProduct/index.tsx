@@ -101,6 +101,7 @@ const AddProduct = () => {
 		if (field === 'Imagem') setState({ ...state, image: e.target.value });
 		if (field === 'Preço') setState({ ...state, price: e.target.value });
 	};
+
 	const onImageChange = (convertedImage: string) => {
 		setState({ ...state, image: convertedImage });
 	};

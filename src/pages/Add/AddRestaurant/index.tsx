@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../components/Form';
+import { ImageInput } from '../../../components/ImageInput/ImageInput';
 import { type CreateRestaurantDto } from '../../../domain/dto/restaurant/createRestaurant-dto';
 import { makeRestaurantAdminRouterFactory } from '../../../infra/api/factories/routers/restaurant/restaurantAdminRouter-factory';
 import Button from '../../../style/Button';
@@ -39,6 +40,7 @@ const AddRestaurant = () => {
 		name: '',
 		address: '',
 		email: '',
+		logo: '',
 		telephone: undefined,
 	});
 	const handleChange = (e: any, field: string) => {
@@ -48,6 +50,11 @@ const AddRestaurant = () => {
 		if (field === 'Telefone')
 			setState({ ...state, telephone: +e.target.value });
 	};
+
+	const onImageChange = (convertedImage: string) => {
+		setState({ ...state, logo: convertedImage });
+	};
+
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		makeRestaurantAdminRouterFactory()
@@ -58,14 +65,17 @@ const AddRestaurant = () => {
 			})
 			.catch(error => error);
 	};
+
 	return (
 		<Container>
 			<h1 className="text-details">Cadastrar</h1>
 			<FormBox OnSubmit={handleSubmit}>
 				<Form Input={Restaurant} Function={handleChange} />
+				<ImageInput onChange={onImageChange} />
 				<Button type={ButtonType.submit}>Enviar</Button>
 			</FormBox>
 		</Container>
 	);
 };
+
 export default AddRestaurant;

@@ -126,7 +126,6 @@ const RoleForm = () => {
 			<div className={styled.box_form}>
 				<form onSubmit={handleSubmit}>
 					<label>Função</label>
-					{/* <Form /> */}
 					<input
 						id="funcao"
 						name="funcao"

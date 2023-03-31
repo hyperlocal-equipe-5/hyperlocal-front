@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { UserIdHandler } from '../../helpers/handlers/userId/userIHandler-helper';
 import { userAccessValidator } from '../../helpers/validators/userAccess-validator';
 import { makeUserRouterFactory } from '../../infra/api/factories/routers/user/userRouter-factory';
@@ -24,7 +24,6 @@ export function AccessValidator({
 				if (!userAccessValidator(response.body, accessType)) {
 					navigateFunction(redirectRouteOnFail);
 				}
-
 				setLoading(false);
 			})
 			.catch(error => error);
