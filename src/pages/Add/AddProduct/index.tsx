@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../components/Form';
+import { ImageInput } from '../../../components/ImageInput/ImageInput';
 import { type CreateProductDto } from '../../../domain/dto/product/createProduct-dto';
 import { type Category } from '../../../domain/entities/category';
 import { type Ingredient } from '../../../domain/entities/ingredient';
 import { type Restaurant } from '../../../domain/entities/restaurant';
 import { makeIngredientRouterFactory } from '../../../infra/api/factories/routers/ingredient/ingredientRouter-factory';
 import { makeProductAdminRouterFactory } from '../../../infra/api/factories/routers/product/productAdminRouter-factory';
+import { makeProductRouterFactory } from '../../../infra/api/factories/routers/product/productRouter-factory';
+import { getProducts } from '../../../store/slices/product-slice';
 import { type RootState } from '../../../store/store';
 import Button from '../../../style/Button';
 import Container from '../../../style/Container';
@@ -15,9 +18,6 @@ import FormBox from '../../../style/Form';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
-import { ImageInput } from '../../../components/ImageInput/ImageInput';
-import { makeProductRouterFactory } from '../../../infra/api/factories/routers/product/productRouter-factory';
-import { getProducts } from '../../../store/slices/product-slice';
 
 const AddProduct = () => {
 	const restaurant = useSelector((state: RootState) => state.restaurant.value);
@@ -120,6 +120,7 @@ const AddProduct = () => {
 
 		makeProductAdminRouterFactory()
 			.createProduct(state)
+			.then(() => navigate('/menu'))
 			.catch(error => error);
 	};
 
