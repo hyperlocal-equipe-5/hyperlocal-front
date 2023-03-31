@@ -101,10 +101,11 @@ const tableSlice = createSlice({
 		},
 
 		getTables(state, action: PayloadAction<Table[]>) {
-			// state.value = action.payload;
+			state.value = action.payload;
 		},
 	},
 });
 
-export const { createTable, deleteTable, updateTable } = tableSlice.actions;
+export const { createTable, deleteTable, updateTable, getTables } =
+	tableSlice.actions;
 export default tableSlice.reducer;

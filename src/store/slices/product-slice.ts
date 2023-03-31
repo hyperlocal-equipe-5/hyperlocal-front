@@ -10,7 +10,6 @@ import { ArraySort } from '../utils/array-sorter';
 interface InitialState {
 	value: Product[];
 }
-const teste: any = '';
 
 const initialState: InitialState = {
 	value: [],
@@ -103,11 +102,11 @@ const productSlice = createSlice({
 		},
 
 		getProducts(state, action: PayloadAction<Product[]>) {
-			// state.value = action.payload;
+			state.value = action.payload;
 		},
 	},
 });
 
-export const { createProduct, deleteProduct, updateProduct } =
+export const { createProduct, deleteProduct, updateProduct, getProducts } =
 	productSlice.actions;
 export default productSlice.reducer;

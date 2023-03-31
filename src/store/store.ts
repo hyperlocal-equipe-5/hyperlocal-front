@@ -8,6 +8,7 @@ import reviewSlice from './slices/review-slice';
 import roleSlice from './slices/role-slice';
 import tableSlice from './slices/table-slice';
 import userSlice from './slices/user-slice';
+import customerOrderSlice from './slices/customerOrderSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
 		role: roleSlice,
 		table: tableSlice,
 		user: userSlice,
+		customerOrder: customerOrderSlice,
 	},
 });
 

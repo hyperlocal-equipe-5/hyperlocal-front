@@ -19,6 +19,10 @@ const ProductPage = () => {
 		console.log(e.target.value, e.target.checked);
 	};
 
+	const handleClick = () => {
+		alert('Adicionado ao carrinho');
+	};
+
 	return (
 		<Container>
 			<Cover src={product?.image} />
@@ -32,8 +36,8 @@ const ProductPage = () => {
 					R$ {product?.price}
 				</p>
 			</PriceBox>
-			<Button type={ButtonType.button}>
-				<AiOutlineShoppingCart /> Carrinho
+			<Button callbackFunction={handleClick} type={ButtonType.button}>
+				<AiOutlineShoppingCart /> Adicionar
 			</Button>
 		</Container>
 	);
