@@ -15,6 +15,7 @@ import { type RootState } from '../../../store/store';
 import Button from '../../../style/Button';
 import Container from '../../../style/Container';
 import FormBox from '../../../style/Form';
+import Title from '../../../style/Title';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
@@ -141,7 +142,7 @@ const AddProduct = () => {
 
 	return (
 		<Container>
-			<h1 className="text-textColor">teste</h1>
+			<Title>Cadastrar</Title>
 			<FormBox OnSubmit={handleSubmit}>
 				<Form Function={handleChange} Input={Product} />
 				<Form

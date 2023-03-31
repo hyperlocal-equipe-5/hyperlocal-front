@@ -61,12 +61,13 @@ const Login = () => {
 	};
 
 	return (
-		<Container>
-			<h1 className="text-textColor">Login</h1>
-			<FormBox OnSubmit={handleSubmit}>
-				<Form Function={handleChange} Input={inputs} />
-				<Button type={ButtonType.submit}>login</Button>
-			</FormBox>
+		<Container styleInline="">
+			<div className="flex h-screen items-center justify-center overflow-y-hidden">
+				<FormBox OnSubmit={handleSubmit}>
+					<Form Function={handleChange} Input={inputs} />
+					<Button type={ButtonType.submit}>login</Button>
+				</FormBox>
+			</div>
 		</Container>
 	);
 };

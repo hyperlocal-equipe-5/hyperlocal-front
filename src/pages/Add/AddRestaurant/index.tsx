@@ -7,6 +7,7 @@ import { makeRestaurantAdminRouterFactory } from '../../../infra/api/factories/r
 import Button from '../../../style/Button';
 import Container from '../../../style/Container';
 import FormBox from '../../../style/Form';
+import Title from '../../../style/Title';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
@@ -68,7 +69,7 @@ const AddRestaurant = () => {
 
 	return (
 		<Container>
-			<h1 className="text-details">Cadastrar</h1>
+			<Title>Cadastrar</Title>
 			<FormBox OnSubmit={handleSubmit}>
 				<Form Input={Restaurant} Function={handleChange} />
 				<ImageInput onChange={onImageChange} />

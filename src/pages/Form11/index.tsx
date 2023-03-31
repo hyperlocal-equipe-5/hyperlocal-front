@@ -35,15 +35,11 @@ const data: IForm[] = [
 		name: 'Mesa',
 		link: '/add/table',
 	},
-	{
-		name: 'Ingrediente',
-		link: '/add/ingredient',
-	},
 ];
 const Form = () => {
 	return (
 		<Container>
-			<h1 className="text-4xl text-[#75ba12] font-bold mobile:pl-6 mobile:mb-5">
+			<h1 className="text-4xl  text-[#75ba12] font-bold mobile:pl-6 mobile:mb-5">
 				Adicionar
 			</h1>
 			<div className="flex flex-row flex-wrap items-start gap-2 justify-center w-full h-full">

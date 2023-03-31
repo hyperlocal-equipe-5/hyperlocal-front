@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import ColumnBox from '../../../components/ColumnBox';
 import Form from '../../../components/Form';
 import { type CreateOrderDto } from '../../../domain/dto/order/createOrder-dto';
+import { OrderProductsHandler } from '../../../helpers/handlers/orderProductIds/orderProductsHandler-helper';
 import { RestaurantIdHandler } from '../../../helpers/handlers/restaurantId/restaurantIdHandler-helper';
+import { TableIdHandler } from '../../../helpers/handlers/tableId/tableIdHandler-helper';
+import { makeOrderRouterFactory } from '../../../infra/api/factories/routers/order/orderRouter-factory';
+import { type RootState } from '../../../store/store';
 import Button from '../../../style/Button';
 import Container from '../../../style/Container';
 import FormBox from '../../../style/Form';
+import Title from '../../../style/Title';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
-import { makeOrderRouterFactory } from '../../../infra/api/factories/routers/order/orderRouter-factory';
-import { useSelector } from 'react-redux';
-import { type RootState } from '../../../store/store';
-import { TableIdHandler } from '../../../helpers/handlers/tableId/tableIdHandler-helper';
-import ColumnBox from '../../../components/ColumnBox';
-import { OrderProductsHandler } from '../../../helpers/handlers/orderProductIds/orderProductsHandler-helper';
 
 const AddOrder = () => {
 	const customerOrder = new OrderProductsHandler().getProducts().map(item => ({
@@ -114,28 +115,32 @@ const AddOrder = () => {
 
 	return (
 		<Container>
-			<h1 className="text-details">Pedido</h1>
+			<Title>Cadastrar</Title>
 			<FormBox OnSubmit={handleSubmit}>
 				<Form Input={OrderInto} Function={handleChange} />
-				{customerOrderProducts.map((item, index) => (
-					<div key={index}>
-						<ColumnBox
-							img={item.img}
-							title={item.title}
-							ingredient={item.ingredient}
-							price={item.price}
-							click={() => {}}
-							description={''}
-						/>
-						<Button
-							callbackFunction={() => {
-								deleteProduct(index);
-							}}
-							type={ButtonType.button}>
-							Apagar
-						</Button>
-					</div>
-				))}
+				{customerOrderProducts.map((item, index) =>
+					item.title !== '' ? (
+						<div key={index}>
+							<ColumnBox
+								img={item.img}
+								title={item.title}
+								ingredient={item.ingredient}
+								price={item.price}
+								click={() => {}}
+								description={''}
+							/>
+							<Button
+								callbackFunction={() => {
+									deleteProduct(index);
+								}}
+								type={ButtonType.button}>
+								Apagar
+							</Button>
+						</div>
+					) : (
+						<div key={index}></div>
+					),
+				)}
 				<h1 className="text-details py-3 text-2xl font-semibold">
 					Total: R$ {getTotalPrice()},00
 				</h1>

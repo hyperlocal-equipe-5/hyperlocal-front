@@ -1,8 +1,7 @@
 import { useState, type FormEvent } from 'react';
-import { useParams } from 'react-router-dom';
-import Header from '../../../components/Header';
 import { makeRoleAdminRouterFactory } from '../../../infra/api/factories/routers/role/roleAdminRouter-factory';
 import Container from '../../../style/Container';
+import Title from '../../../style/Title';
 import styled from './styled.module.scss';
 
 const RoleForm = () => {
@@ -79,7 +78,6 @@ const RoleForm = () => {
 
 		return (
 			<div className={styled.box_permissions}>
-				<h2>{title}:</h2>
 				<div className={styled.checkbox}>
 					{accessFields.map((element, index) => (
 						<label key={index} className={styled.label}>
@@ -120,7 +118,7 @@ const RoleForm = () => {
 
 	return (
 		<Container>
-			<Header />
+			<Title>Cadastrar</Title>
 			<div className={styled.box_form}>
 				<form onSubmit={handleSubmit}>
 					<label>Função</label>

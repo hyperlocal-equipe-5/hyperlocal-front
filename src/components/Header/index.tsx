@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineLeft } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { type RootState } from '../../store/store';
 import AsideNavbar from '../AsideNavbar';
-import { SetRestaurant } from '../SetRestaurant/SetRestaurant';
 
 interface header {
 	active?: boolean;
@@ -12,7 +13,10 @@ interface header {
 const Header = ({ link }: header) => {
 	const { id } = useParams();
 	const [menu, setMenu] = useState(false);
-	// const gestor = useSelector((state: RootState) => state.role.value);
+
+	const restaurant = useSelector(
+		(state: RootState) => state.restaurant.value,
+	).find(item => item.logo);
 
 	useEffect(() => {}, []);
 
@@ -23,17 +27,11 @@ const Header = ({ link }: header) => {
 					<AiOutlineLeft className=" hidden text-2xl tablet:flex font-semibold mobile:text-details mobile:flex text-textColor" />
 				</Link>
 				<Link to="/" className="text-textColor text-2xl">
-					Logo
+					{restaurant?.logo}
 				</Link>
 				<nav className=" tablet:hidden mobile:hidden flex flex-row justify-evenly w-9/12 tablet:pl-10 text-xl font-semibold text-textColor ">
 					<Link
 						to="/"
-						className="hover:text-details"
-						onClick={() => setMenu(false)}>
-						Inicio
-					</Link>
-					<Link
-						to="/menu"
 						className="hover:text-details"
 						onClick={() => setMenu(false)}>
 						Menu
@@ -65,7 +63,6 @@ const Header = ({ link }: header) => {
 					<Link to="/login" onClick={() => setMenu(false)}>
 						Login
 					</Link>
-					<SetRestaurant />
 				</nav>
 			</div>
 			{menu ? <AsideNavbar /> : <></>}

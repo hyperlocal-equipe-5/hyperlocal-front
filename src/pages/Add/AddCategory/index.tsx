@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../components/Form';
 import { type CreateCategoryDto } from '../../../domain/dto/category/createCategory-dto';
-import { Category } from '../../../domain/entities/category';
 import { type Restaurant } from '../../../domain/entities/restaurant';
 import { makeCategoryAdminRouterFactory } from '../../../infra/api/factories/routers/category/categoryAdminRouter-factory';
 import { type RootState } from '../../../store/store';
 import Button from '../../../style/Button';
 import Container from '../../../style/Container';
 import FormBox from '../../../style/Form';
+import Title from '../../../style/Title';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
@@ -82,7 +82,7 @@ const AddCategory = () => {
 
 	return (
 		<Container>
-			<h1 className="text-textColor">teste</h1>
+			<Title>Cadastrar</Title>
 			<FormBox OnSubmit={handleSubmit}>
 				{restaurant.length > 0 ? (
 					<Form Function={handleChange} Input={categoryData(restaurant)} />

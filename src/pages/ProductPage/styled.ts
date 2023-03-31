@@ -1,7 +1,8 @@
 import tw from 'tailwind-styled-components';
 
 export const Cover = tw.img`
-  mobile:bg-cover mobile:h-64 mobile:w-full mobile:rounded-b-[15%]
+h-72 rounded-b-[15%]
+bg-cover mobile:h-64 mobile:w-full mobile:rounded-b-[15%]
   bg-white
 `;
 

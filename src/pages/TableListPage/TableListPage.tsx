@@ -1,13 +1,13 @@
-import { AccessValidator } from '../../components/AccessValidator/AccessValidator';
-import { type RootState } from '../../store/store';
-import Container from '../../style/Container';
-import { UserAccess } from '../../types/UserAccessType';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { AccessValidator } from '../../components/AccessValidator/AccessValidator';
 import BoxButton from '../../components/BoxButton';
 import { type Table } from '../../domain/entities/table';
+import { type RootState } from '../../store/store';
+import Container from '../../style/Container';
 import Title from '../../style/Title';
+import { UserAccess } from '../../types/UserAccessType';
 
 export function TableListPage() {
 	const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ export function TableListPage() {
 
 	useEffect(() => {
 		setTables(tables);
-	}, []);
+	}, [loading]);
 
 	return (
 		<Container>

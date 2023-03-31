@@ -16,8 +16,8 @@ const RowBox = ({ NameCategory, idCategory, Product }: IRowBox) => {
 			<Title>
 				<Link to={`/category/${idCategory}`}>{NameCategory}</Link>
 			</Title>
-			<div className="mobile:w-full mobile:h-full mobile:overflow-x-auto mobile:overflow-y-hidden">
-				<div className="mobile:flex mobile:flex-row mobile:w-max mobile:overflow-x-auto mobile:h-full mt-2">
+			<div className="h-auto mobile:w-full mobile:h-full mobile:overflow-x-auto mobile:overflow-y-hidden">
+				<div className="flex flex-row flex-wrap gap-y-10 w-full max-w-[1300px] mobile:flex mobile:flex-row mobile:w-max mobile:overflow-x-auto mobile:h-full my-2">
 					{Product.map((el, i) => (
 						<BoxButton
 							key={i}
