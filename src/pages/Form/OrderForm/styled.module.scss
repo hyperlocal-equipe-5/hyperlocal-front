@@ -1,16 +1,18 @@
-body{
+body {
   background-color: #1e222b;
 }
 
 .box_pedido {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 500px;
   min-width: 300px;
   height: 100%;
   margin: 0 auto;
+  gap: 5px;
+
 
   .titulo {
     display: flex;
@@ -26,22 +28,65 @@ body{
     margin-top: 80px;
   }
 }
-.box_itens{
+
+.box_itens {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start ;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 200px;
   background-color: #ccc;
   border: 1px solid #8bf24f;
   border-radius: 5px;
 
-  li{
+  div {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    width: 180px;
+    height: 200px;
+    background-color: #5d5d5d;
+    display: flex;
+    margin-bottom: 10px;
+    border-radius: 5px
+  }
+
+  li,
+  h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 5px;
+  }
+}
+
+.box_cozinha {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 800px;
+  background-color: #ccc;
+  border: 1px solid #8bf24f;
+  border-radius: 5px;
+
+
+  h2,
+  li,
+  h3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
@@ -49,14 +94,38 @@ body{
     line-height: 24px;
     margin: 10px;
   }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 200px;
+    background-color: #5d5d5d;
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .box_bebidas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 80px;
+    background-color: #5d5d5d;
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
 }
 
-.ordem_pedido{
+
+.ordem_pedido {
   color: #8bf24f;
   text-align: center;
   margin-top: 20px;
 
-  h3{
+  h3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,10 +136,9 @@ body{
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 10px;
-    // border-top: 1px solid #8bf24f;
   }
 
-  p{
+  p {
     width: 100%;
     font-family: 'Poppins';
     font-style: normal;
@@ -83,19 +151,6 @@ body{
 
 }
 
-.border{
+.border {
   border: none;
 }
-// h2 {
-//   display: flex;
-//   justify-content: center;
-//   width: 50%;
-//   font-family: 'Poppins';
-//   font-style: normal;
-//   font-weight: 700;
-//   font-size: 20px;
-//   line-height: 24px;
-//   color: #8bf24f;
-//   margin: 15px;
-//   border-bottom: 1px solid #8bf24f;
-// }
