@@ -1,12 +1,12 @@
-import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
-import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
-import { type HttpResponse } from '../../../../domain/dto/http/http-response';
-import { type Category } from '../../../../domain/entities/category';
 import { type CreateCategoryDto } from '../../../../domain/dto/category/createCategory-dto';
 import { type UpdateCategoryDto } from '../../../../domain/dto/category/updateCategory-dto';
-import { type CategoryAdminRouterInterface } from '../../abstract/routers/category/categoryAdminRouter-interface';
-import { type TokenHandlerInterface } from '../../../../helpers/abstract/handlers/tokenHandler-helper-interface';
+import { type HttpResponse } from '../../../../domain/dto/http/http-response';
+import { type Category } from '../../../../domain/entities/category';
+import { type HttpRequestAdapterInterface } from '../../../../helpers/abstract/adapters/httpRequest-adapter-interface';
 import { type RestaurantIdHandlerInterface } from '../../../../helpers/abstract/handlers/restaurantIdHandler-helper-interface';
+import { type TokenHandlerInterface } from '../../../../helpers/abstract/handlers/tokenHandler-helper-interface';
+import { type ApiConnectionInterface } from '../../abstract/connection/apiConnection-abstract';
+import { type CategoryAdminRouterInterface } from '../../abstract/routers/category/categoryAdminRouter-interface';
 
 export class CategoryAdminRouter implements CategoryAdminRouterInterface {
 	private readonly httpRequestAdapter: HttpRequestAdapterInterface;

@@ -67,6 +67,7 @@ const Home = () => {
 		}
 		return false;
 	}
+
 	function handleClick() {
 		setActive(active - 1 || active + 1);
 	}

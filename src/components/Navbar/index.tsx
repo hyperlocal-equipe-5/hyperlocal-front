@@ -30,7 +30,7 @@ const Navbar = () => {
 				</NavButton>
 				<NavButton to="/employees">
 					<AiOutlineUser />
-					<Title>Pessoal</Title>
+					<Title>Colaboradores</Title>
 				</NavButton>
 				<NavButton to="/finance">
 					<AiOutlineBank />

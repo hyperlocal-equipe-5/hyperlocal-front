@@ -5,9 +5,17 @@ interface IColumnBox {
 	title: string;
 	ingredient?: string[];
 	price: number;
+	description: string;
 	click: () => void;
 }
-const ColumnBox = ({ img, title, ingredient, price, click }: IColumnBox) => {
+const ColumnBox = ({
+	img,
+	title,
+	ingredient,
+	price,
+	description,
+	click,
+}: IColumnBox) => {
 	const HandleChange = () => {};
 	return (
 		<div
@@ -30,11 +38,7 @@ const ColumnBox = ({ img, title, ingredient, price, click }: IColumnBox) => {
 						{title}
 					</Title>
 					<div className="flex flex-row">
-						{ingredient?.map((el, i) => (
-							<p key={i} className="text-white text-lg">
-								{el},
-							</p>
-						))}
+						<p className="text-white">{description}</p>
 					</div>
 				</div>
 			</div>

@@ -14,10 +14,7 @@ export interface InputDto {
 	Selection?: Array<{
 		name: string;
 		selections: {
-			names: Array<{
-				name: string;
-				id: string;
-			}>;
+			names: Array<{ id: string; name: string }>;
 			addLink?: boolean;
 			link?: string;
 			nameLink?: string;

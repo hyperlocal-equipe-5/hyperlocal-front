@@ -68,9 +68,9 @@ export default function DataLoader() {
 							})
 							.catch(error => error);
 					})
-					.catch(error => console.log(error));
+					.catch(error => error);
 			})
-			.catch(error => console.log(error));
+			.catch(error => error);
 	}
 
 	useEffect(() => {

@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { ArraySort } from '../utils/array-sorter';
-import { makeCategoryStub } from '../stubs/entities/category-stub';
-import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
-import { type Product } from '../../domain/entities/product';
 import { type CreateProductDto } from '../../domain/dto/product/createProduct-dto';
 import { type UpdateProductDto } from '../../domain/dto/product/updateProduct-dto';
+import { type Product } from '../../domain/entities/product';
 import { makeProductAdminRouterFactory } from '../../infra/api/factories/routers/product/productAdminRouter-factory';
+import { makeCategoryStub } from '../stubs/entities/category-stub';
+import { makeRestaurantStub } from '../stubs/entities/restaurant-stub';
+import { ArraySort } from '../utils/array-sorter';
 
 interface InitialState {
 	value: Product[];

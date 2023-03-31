@@ -57,7 +57,6 @@ const AddRestaurant = () => {
 				navigate('/add');
 			})
 			.catch(error => error);
-		// console.log(state);
 	};
 	return (
 		<Container>
