@@ -115,7 +115,7 @@ const AddOrder = () => {
 
 	return (
 		<Container>
-			<Title>Cadastrar</Title>
+			<Title>Pedidos</Title>
 			<FormBox OnSubmit={handleSubmit}>
 				<Form Input={OrderInto} Function={handleChange} />
 				{customerOrderProducts.map((item, index) =>

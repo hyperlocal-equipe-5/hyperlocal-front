@@ -37,7 +37,7 @@ const Header = ({ link }: header) => {
 						Menu
 					</Link>
 					<Link
-						to="/"
+						to="/add/order"
 						className="hover:text-details"
 						onClick={() => setMenu(false)}>
 						Pedidos
