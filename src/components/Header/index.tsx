@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AiOutlineLeft } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { type RootState } from '../../store/store';
@@ -23,9 +22,6 @@ const Header = ({ link }: header) => {
 	return (
 		<>
 			<div className="flex flex-row self-start mobile:justify-between h-16 w-full fixed top-0 items-center justify-between px-6 py-5 bg-bg z-50">
-				<Link to="/">
-					<AiOutlineLeft className=" hidden text-2xl tablet:flex font-semibold mobile:text-details mobile:flex text-textColor" />
-				</Link>
 				<Link to="/" className="text-textColor text-2xl">
 					{restaurant?.logo}
 				</Link>

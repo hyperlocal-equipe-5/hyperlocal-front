@@ -1,7 +1,7 @@
 import {
 	AiFillBook,
-	AiOutlineBank,
 	AiOutlinePlus,
+	AiOutlineShoppingCart,
 	AiOutlineUser,
 	AiTwotoneHome,
 } from 'react-icons/ai';
@@ -32,8 +32,8 @@ const Navbar = () => {
 					<AiOutlineUser />
 					<Title>Colaboradores</Title>
 				</NavButton>
-				<NavButton to="/finance">
-					<AiOutlineBank />
+				<NavButton to="/add/order">
+					<AiOutlineShoppingCart />
 					<Title>Financeiro</Title>
 				</NavButton>
 			</div>
