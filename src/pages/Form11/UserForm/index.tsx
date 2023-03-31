@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { type CreateUserDto } from '../../../domain/dto/user/createUser-dto';
 import { makeUserAdminRouterFactory } from '../../../infra/api/factories/routers/user/userAdminRouter-factory';
 import { type RootState } from '../../../store/store';
+import Container from '../../../style/Container';
 import styled from './styled.module.scss';
 
 interface UserFormRequest {
@@ -40,7 +41,7 @@ const UserForm = () => {
 	};
 
 	return (
-		<>
+		<Container>
 			<div className={styled.box_form}>
 				<form onSubmit={handleSubmit}>
 					<label>Nome</label>
@@ -95,7 +96,7 @@ const UserForm = () => {
 					<button type="submit">Cadastrar</button>
 				</form>
 			</div>
-		</>
+		</Container>
 	);
 };
 export default UserForm;

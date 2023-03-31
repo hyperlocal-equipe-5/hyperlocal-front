@@ -32,9 +32,9 @@ export default function DataLoader() {
 					.then(data => {
 						dispatch(getCategories(data.body));
 					})
-					.catch(error => console.log(error));
+					.catch(error => error);
 			})
-			.catch(error => console.log(error));
+			.catch(error => error);
 	}
 
 	useEffect(() => {

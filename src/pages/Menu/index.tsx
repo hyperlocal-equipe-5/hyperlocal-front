@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import RowBox from '../../components/RowBoxex';
+import RowBox from '../../components/RowBox';
 import { makeCategoryRouterFactory } from '../../infra/api/factories/routers/category/categoryRouter-factory';
 import { getCategories } from '../../store/slices/category-slice';
 import { type RootState } from '../../store/store';
@@ -17,7 +17,7 @@ const Menu = () => {
 			.then(data => {
 				dispatch(getCategories(data.body));
 			})
-			.catch(error => console.log(error));
+			.catch(error => error);
 	}, []);
 
 	return (
@@ -35,7 +35,6 @@ const Menu = () => {
 								NameProduct: product.name,
 							}))}
 						/>
-						// <BoxButton key={key} img={category.} title={category.name} click={() => navigate(`/product/${category.id}`} />
 					))
 				) : (
 					<></>

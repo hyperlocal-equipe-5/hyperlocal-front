@@ -65,7 +65,7 @@ const Header = ({ link }: header) => {
 					<Link to="/login" onClick={() => setMenu(false)}>
 						Login
 					</Link>
-					{/* <SetRestaurant /> */}
+					<SetRestaurant />
 				</nav>
 			</div>
 			{menu ? <AsideNavbar /> : <></>}

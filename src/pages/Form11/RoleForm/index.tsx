@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from '../../../components/Header';
 import { type CreateRoleDto } from '../../../domain/dto/role/createRole-dto';
 import { makeRoleAdminRouterFactory } from '../../../infra/api/factories/routers/role/roleAdminRouter-factory';
+import Container from '../../../style/Container';
 import styled from './styled.module.scss';
 
 const RoleForm = () => {
@@ -107,6 +108,8 @@ const RoleForm = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		console.log(funcao);
+
 		makeRoleAdminRouterFactory()
 			.createRole({
 				...funcao,
@@ -118,11 +121,12 @@ const RoleForm = () => {
 	};
 
 	return (
-		<>
+		<Container>
 			<Header />
 			<div className={styled.box_form}>
 				<form onSubmit={handleSubmit}>
 					<label>Função</label>
+					{/* <Form /> */}
 					<input
 						id="funcao"
 						name="funcao"
@@ -147,7 +151,7 @@ const RoleForm = () => {
 					<button type="submit">Cadastrar</button>
 				</form>
 			</div>
-		</>
+		</Container>
 	);
 };
 
