@@ -125,6 +125,7 @@ const AddOrder = () => {
 							ingredient={item.ingredient}
 							price={item.price}
 							click={() => {}}
+							description={''}
 						/>
 						<Button
 							callbackFunction={() => {
