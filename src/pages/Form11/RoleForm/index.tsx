@@ -1,13 +1,11 @@
 import { useState, type FormEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../../components/Header';
-import { type CreateRoleDto } from '../../../domain/dto/role/createRole-dto';
 import { makeRoleAdminRouterFactory } from '../../../infra/api/factories/routers/role/roleAdminRouter-factory';
 import styled from './styled.module.scss';
 
 const RoleForm = () => {
-	const { id } = useParams();
-	const [funcao, setFuncao] = useState<CreateRoleDto>({
+	const [funcao, setFuncao] = useState<any>({
 		name: '',
 		restaurant: '',
 		access: {},
@@ -110,7 +108,7 @@ const RoleForm = () => {
 		makeRoleAdminRouterFactory()
 			.createRole({
 				...funcao,
-				restaurant: id || '',
+				restaurant: '',
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -129,7 +127,7 @@ const RoleForm = () => {
 						type="text"
 						placeholder="Digite sua função."
 						onChange={e => {
-							setFuncao({ ...funcao, name: e.target.name });
+							setFuncao({ ...funcao, name: e.target.value });
 						}}
 						autoComplete="off"
 						required

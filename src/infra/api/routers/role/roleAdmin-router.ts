@@ -29,10 +29,11 @@ export class RoleAdminRouter implements RoleAdminRouterInterface {
 	public async createRole(body: CreateRoleDto): Promise<HttpResponse<Role>> {
 		const apiLink = this.apiConnection.getLink();
 		const authorization = this.tokenHandler.getAuthorization();
+		const restaurant = this.restaurantIdHandler.get();
 
 		return await this.httpRequestAdapter.post(
 			apiLink + '/admin/role',
-			body,
+			{ ...body, restaurant },
 			authorization,
 		);
 	}

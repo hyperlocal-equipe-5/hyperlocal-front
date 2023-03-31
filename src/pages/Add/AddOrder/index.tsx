@@ -8,32 +8,50 @@ import Container from '../../../style/Container';
 import FormBox from '../../../style/Form';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
+import { InputType } from '../../../types/InputTypes';
 
 const AddOrder = () => {
-	const Restaurant: InputDto = {};
+	const OrderInto: InputDto = {
+		activeInputText: true,
+		Input: [
+			{
+				name: 'Seu nome',
+				typeInput: InputType.text,
+				required: true,
+			},
+		],
+		activeCheckbox: true,
+		Checkbox: [
+			{
+				id: 'takeaway',
+				name: 'Para levar',
+				help: true,
+				textHelp: 'Levar o pedido para casa',
+			},
+		],
+	};
 	const navigate = useNavigate();
 	const [restaurant, setRestaurant] = useState('');
 	const [state, setState] = useState<CreateOrderDto>({
+		finished: false,
 		products: [],
-		quantities: [],
-		restaurant,
-		customerName: '',
-		table: '',
 		takeAway: false,
-		user: '',
+		table: '',
+		customerName: '',
+		restaurant: new RestaurantIdHandler().get(),
 	});
 
 	const handleChange = (e: any, field: string) => {
-		// if (field === 'Restaurante') setState({ ...state, name: e.target.value });
-		// if (field === 'Endereço') setState({ ...state, address: e.target.value });
-		// if (field === 'Email') setState({ ...state, email: e.target.value });
-		// if (field === 'Telefone') setState({ ...state, telephone: e.target.value });
+		if (field === 'Seu nome')
+			setState({ ...state, customerName: e.target.value });
+		if (field === 'Para levar')
+			setState({ ...state, takeAway: e.target.checked });
 	};
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 
-		// console.log(state);
+		console.log(state);
 	};
 
 	useEffect(() => {
@@ -45,7 +63,7 @@ const AddOrder = () => {
 		<Container>
 			<h1 className="text-details">Cadastrar</h1>
 			<FormBox OnSubmit={handleSubmit}>
-				<Form Input={Restaurant} Function={handleChange} />
+				<Form Input={OrderInto} Function={handleChange} />
 				<Button type={ButtonType.submit}>Enviar</Button>
 			</FormBox>
 		</Container>

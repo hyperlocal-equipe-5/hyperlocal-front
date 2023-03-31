@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../components/Form';
 import { type CreateProductDto } from '../../../domain/dto/product/createProduct-dto';
@@ -15,10 +15,14 @@ import FormBox from '../../../style/Form';
 import { ButtonType } from '../../../types/ButtonTypes';
 import { type InputDto } from '../../../types/Dto/InputDto';
 import { InputType } from '../../../types/InputTypes';
+import { ImageInput } from '../../../components/ImageInput/ImageInput';
+import { makeProductRouterFactory } from '../../../infra/api/factories/routers/product/productRouter-factory';
+import { getProducts } from '../../../store/slices/product-slice';
 
 const AddProduct = () => {
 	const restaurant = useSelector((state: RootState) => state.restaurant.value);
 	const category = useSelector((state: RootState) => state.category.value);
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [ingredient, setIngredient] = useState<Ingredient[]>([]);
 
@@ -28,6 +32,11 @@ const AddProduct = () => {
 			{
 				name: 'Produto',
 				typeInput: InputType.text,
+				required: true,
+			},
+			{
+				name: 'Preço',
+				typeInput: InputType.number,
 				required: true,
 			},
 			{
@@ -98,7 +107,12 @@ const AddProduct = () => {
 		if (field === 'Descrição')
 			setState({ ...state, description: e.target.value });
 		if (field === 'Imagem') setState({ ...state, image: e.target.value });
-		if (field === 'Preço') setState({ ...state, price: e.target.value });
+		if (field === 'Preço')
+			setState({ ...state, price: Number(e.target.value) });
+	};
+
+	const onImageChange = (convertedImage: string) => {
+		setState({ ...state, image: convertedImage });
 	};
 
 	const handleSubmit = (e: any) => {
@@ -113,7 +127,15 @@ const AddProduct = () => {
 		makeIngredientRouterFactory()
 			.getAllIngredients()
 			.then(data => setIngredient(data.body))
-			.catch(error => error);
+			.catch(error => error)
+			.finally(() => {
+				makeProductRouterFactory()
+					.getAllProducts()
+					.then(products => {
+						dispatch(getProducts(products.body));
+					})
+					.catch(error => error);
+			});
 	}, []);
 
 	return (
@@ -125,6 +147,10 @@ const AddProduct = () => {
 					Function={handleChange}
 					Input={selectData(restaurant, category)}
 				/>
+				<div>
+					<h1 className="text-details py-3 text-2xl font-semibold">Imagem</h1>
+					<ImageInput onChange={onImageChange} />
+				</div>
 				<Button type={ButtonType.submit}>Cadastrar</Button>
 			</FormBox>
 		</Container>
