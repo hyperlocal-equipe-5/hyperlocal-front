@@ -7,6 +7,7 @@ import AddOrder from '../pages/Add/AddOrder';
 import AddProduct from '../pages/Add/AddProduct';
 import AddRestaurant from '../pages/Add/AddRestaurant';
 import AddUser from '../pages/Add/AddUser';
+import AddTable from '../pages/Add/addTable';
 import Cadastro from '../pages/Cadastro/Cadastro';
 import CategoryPage from '../pages/CategoryPage';
 import Employees from '../pages/Employees';
@@ -48,6 +49,7 @@ const Routes = createBrowserRouter([
 			{ path: '/add/product', element: <AddProduct /> },
 			{ path: '/add/order', element: <AddOrder /> },
 			{ path: '/add/user', element: <AddUser /> },
+			{ path: '/add/table', element: <AddTable /> },
 			{ path: '/add/role', element: <RoleForm /> },
 			{ path: '/employees', element: <Employees /> },
 			{ path: '/menu', element: <Menu /> },

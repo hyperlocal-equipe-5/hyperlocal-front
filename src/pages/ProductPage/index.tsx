@@ -1,21 +1,35 @@
+import { useEffect } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { makeProductRouterFactory } from '../../infra/api/factories/routers/product/productRouter-factory';
+import { addProduct } from '../../store/slices/customerOrderSlice';
+import { getProducts } from '../../store/slices/product-slice';
 import { type RootState } from '../../store/store';
 import Button from '../../style/Button';
 import Container from '../../style/Container';
 import { ButtonType } from '../../types/ButtonTypes';
 import { Cover, PriceBox } from './styled';
-import { addProduct } from '../../store/slices/customerOrderSlice';
 
 const ProductPage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const product = useSelector((state: RootState) =>
-		state.product.value.find(item => item.id === id),
+	const product = useSelector((state: RootState) => state.product.value).find(
+		item => item.id === id,
 	);
+
+	console.log(product);
+
+	useEffect(() => {
+		makeProductRouterFactory()
+			.getAllProducts()
+			.then(data => {
+				dispatch(getProducts(data.body));
+			})
+			.catch(error => error);
+	}, []);
 
 	const handleClick = () => {
 		navigate('/add/order');
@@ -38,7 +52,7 @@ const ProductPage = () => {
 				</h1>
 			</div>
 			<PriceBox>
-				<p className="text-[#fefbff] text-2xl font-black">
+				<p className="text-textColor text-2xl font-black">
 					R$ {product?.price}
 				</p>
 			</PriceBox>
